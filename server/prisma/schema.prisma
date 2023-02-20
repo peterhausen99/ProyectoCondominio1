@@ -34,18 +34,18 @@ model Usuario {
   createdAt DateTime
   updatedAt DateTime
 
-  //reservas Reserva[]
-  //residencias Residencia[]
-  //incidencias Incidencia[]
+  reservas Reserva[]
+  residencias Residencia[]
+  incidencias Incidencia[]
 }
 
 model Reserva{
   id Int @id
-  //usuario Usuario  @relation(fields: [idUsuario], references: [idCedula]) 
-  //idUsuario Int
+  usuario Usuario  @relation(fields: [idUsuario], references: [idCedula]) 
+  idUsuario Int
 
- // areaComun AreaComun  @relation(fields: [idAreaComun], references: [id]) 
-  //idAreaComun Int
+  areaComun AreaComun  @relation(fields: [idAreaComun], references: [id]) 
+  idAreaComun Int
   
 
   diaReservacion DateTime
@@ -64,14 +64,14 @@ model AreaComun{
   createdAt DateTime
   updatedAt DateTime
 
-  //reservas Reserva[]
+  reservas Reserva[]
 }
 
 model Residencia{
   id   Int     @id
 
-  //usuario Usuario  @relation(fields: [idUsuario], references: [idCedula])  
-  //idUsuario Int
+  usuario Usuario  @relation(fields: [idUsuario], references: [idCedula])  
+  idUsuario Int
 
   cantidadPersonas Int
   estado String
@@ -84,8 +84,8 @@ model Residencia{
 model Incidencia{
   id   Int     @id
 
- // usuario Usuario  @relation(fields: [idUsuario], references: [idCedula])  
-  //idUsuario Int
+  usuario Usuario  @relation(fields: [idUsuario], references: [idCedula])  
+  idUsuario Int
 
   descripcion String
   estado String
