@@ -33,7 +33,64 @@ model Usuario {
   estado String
   createdAt DateTime
   updatedAt DateTime
+
+  //reservas Reserva[]
+  //residencias Residencia[]
+  //incidencias Incidencia[]
 }
 
+model Reserva{
+  id Int @id
+  //usuario Usuario  @relation(fields: [idUsuario], references: [idCedula]) 
+  //idUsuario Int
 
+ // areaComun AreaComun  @relation(fields: [idAreaComun], references: [id]) 
+  //idAreaComun Int
+  
+
+  diaReservacion DateTime
+  estado String
+  detalles String
+  createdAt DateTime
+  updatedAt DateTime
+}
+
+model AreaComun{
+  id Int @id
+  descripcion String
+  capacidad Int
+  estado String
+  ubicacion String
+  createdAt DateTime
+  updatedAt DateTime
+
+  //reservas Reserva[]
+}
+
+model Residencia{
+  id   Int     @id
+
+  //usuario Usuario  @relation(fields: [idUsuario], references: [idCedula])  
+  //idUsuario Int
+
+  cantidadPersonas Int
+  estado String
+  annoInicio DateTime
+  cantidadCarros Int
+  createdAt DateTime
+  updatedAt DateTime
+}
+
+model Incidencia{
+  id   Int     @id
+
+ // usuario Usuario  @relation(fields: [idUsuario], references: [idCedula])  
+  //idUsuario Int
+
+  descripcion String
+  estado String
+  fecha DateTime
+  createdAt DateTime
+  updatedAt DateTime
+}
 
