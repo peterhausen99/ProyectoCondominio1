@@ -10,87 +10,147 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-
-
+///Perfil Usuario///
 model PerfilUsuario {
-  id Int @id
+  id          Int       @id @default(autoincrement())
+  usuarios    Usuario[]
+
   descripcion String
-  usuarios Usuario[]
+  
 }
 
+/// Usuario///
 model Usuario {
-  idCedula       Int     @id
+  idCedula Int @id
 
-  perfilUsuario PerfilUsuario  @relation(fields: [perfilUsuarioId], references: [id])  
+  perfilUsuario   PerfilUsuario @relation(fields: [perfilUsuarioId], references: [id])
   perfilUsuarioId Int
 
-  nombre   String
-  apellido1 String
-  apellido2 String
-  correo    String  @unique
-  contrasenna String
-  telefono String
-  estado String
-  createdAt DateTime
-  updatedAt DateTime
-
-  reservas Reserva[]
+  reservas    Reserva[]
   residencias Residencia[]
   incidencias Incidencia[]
+
+  nombre      String
+  apellido1   String
+  apellido2   String
+  correo      String   @unique
+  contrasenna String
+  telefono    String
+  estado      String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @default(now()) @updatedAt
+
+  
 }
 
-model Reserva{
-  id Int @id
-  usuario Usuario  @relation(fields: [idUsuario], references: [idCedula]) 
+///Reserva///
+model Reserva {
+  id        Int     @id @default(autoincrement())
+  usuario   Usuario @relation(fields: [idUsuario], references: [idCedula])
   idUsuario Int
 
-  areaComun AreaComun  @relation(fields: [idAreaComun], references: [id]) 
+  areaComun   AreaComun @relation(fields: [idAreaComun], references: [id])
   idAreaComun Int
-  
 
   diaReservacion DateTime
-  estado String
-  detalles String
-  createdAt DateTime
-  updatedAt DateTime
+  estado         String
+  detalles       String
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @default(now()) @updatedAt
 }
 
-model AreaComun{
-  id Int @id
-  descripcion String
-  capacidad Int
-  estado String
-  ubicacion String
-  createdAt DateTime
-  updatedAt DateTime
-
+///Area Comun///
+model AreaComun {
+  id          Int      @id @default(autoincrement())
   reservas Reserva[]
+
+  descripcion String
+  capacidad   Int
+  estado      String
+  ubicacion   String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @default(now()) @updatedAt
+
+  
 }
 
-model Residencia{
-  id   Int     @id
-
-  usuario Usuario  @relation(fields: [idUsuario], references: [idCedula])  
+///Incidencias///
+model Incidencia {
+  id Int @id @default(autoincrement())
+  usuario   Usuario @relation(fields: [idUsuario], references: [idCedula])
   idUsuario Int
+
+  descripcion String
+  estado      String
+  fecha       DateTime
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @default(now()) @updatedAt
+}
+
+///----------------------------------------------------------------------------------------------------------///
+
+model Rubro {
+  id          Int      @id @default(autoincrement())
+  planes      Plan[]
+
+  descripcion String
+  valor       Decimal @db.Decimal(10, 2)
+  estado      String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @default(now()) @updatedAt
+  
+}
+
+model Plan {
+  id          Int      @id @default(autoincrement())
+  asignacionPlanes AsignacionPlan @relation(fields: [idAsignacionPlan], references: [id])
+  idAsignacionPlan Int
+
+  descripcion String
+  totalPlan   Decimal @db.Decimal(10, 2)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @default(now()) @updatedAt
+  rubros      Rubro[]
+
+}
+
+model AsignacionPlan {
+  id Int @id @default(autoincrement())
+  residencias Residencia @relation(fields: [idResidencia], references: [id])
+  idResidencia Int
+  planes Plan []
+
+  mes    String
+  estado String
+  iva    Decimal @db.Decimal(10, 2)
+  total  Decimal @db.Decimal(10, 2)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now()) @updatedAt
+
+  
+}
+
+model Residencia {
+  id Int @id @default(autoincrement())
+  usuario   Usuario @relation(fields: [idUsuario], references: [idCedula])
+  idUsuario Int
+  asignacionPlanes AsignacionPlan []
 
   cantidadPersonas Int
-  estado String
-  annoInicio DateTime
-  cantidadCarros Int
-  createdAt DateTime
-  updatedAt DateTime
+  estado           String
+  annoInicio       DateTime
+  cantidadCarros   Int
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @default(now()) @updatedAt
+
+  
 }
 
-model Incidencia{
-  id   Int     @id
-
-  usuario Usuario  @relation(fields: [idUsuario], references: [idCedula])  
-  idUsuario Int
-
-  descripcion String
+model Informacion {
+  id Int @id @default(autoincrement())
+  titulo String
+  mensaje String
   estado String
-  fecha DateTime
-  createdAt DateTime
-  updatedAt DateTime
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now()) @updatedAt
 }
-
