@@ -3,10 +3,10 @@ export const usuarios = [
   {
     idCedula: 1,
     perfilUsuarioId: 1,
-    nombre: "usuarioAdmin1",
-    apellido1: "Adm",
-    apellido2: "ap2",
-    correo: "usuario-admin1@prueba.com",
+    nombre: "Pedro Admin",
+    apellido1: "Quintero",
+    apellido2: "Artavia",
+    correo: "pedro-admin@prueba.com",
     contrasenna: "123456",
     telefono: "2444-1",
     estado: "Activo"
@@ -16,10 +16,10 @@ export const usuarios = [
   {
     idCedula: 2,
     perfilUsuarioId: 1,
-    nombre: "usuarioAdmin2",
-    apellido1: "Adm2",
-    apellido2: "ap2",
-    correo: "usuario-admin2@prueba.com",
+    nombre: "Joseph Admin",
+    apellido1: "Corella",
+    apellido2: "Mejia",
+    correo: "joseph-admin@prueba.com",
     contrasenna: "123456",
     telefono: "2444-2",
     estado: "Activo"
@@ -30,10 +30,10 @@ export const usuarios = [
   {
     idCedula: 3,
     perfilUsuarioId: 2,
-    nombre: "usuarioResidente1",
-    apellido1: "Res1",
-    apellido2: "ap2",
-    correo: "usuario-resi1@prueba.com",
+    nombre: "Pedro Residente",
+    apellido1: "Quintero",
+    apellido2: "Artavia",
+    correo: "pedro-residente@prueba.com",
     contrasenna: "123456",
     telefono: "2444-3",
     estado: "Activo"
@@ -43,10 +43,10 @@ export const usuarios = [
   {
     idCedula: 4,
     perfilUsuarioId: 2,
-    nombre: "usuarioRes2",
-    apellido1: "Res2",
-    apellido2: "ap2",
-    correo: "usuario-res2@prueba.com",
+    nombre: "Joseph Residente",
+    apellido1: "Corella",
+    apellido2: "Mejia",
+    correo: "joseph-residente@prueba.com",
     contrasenna: "123456",
     telefono: "2444-4",
     estado: "Activo"

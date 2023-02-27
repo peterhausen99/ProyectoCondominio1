@@ -5,7 +5,7 @@ export const residencias = [
         idUsuario: 1,
         cantidadPersonas: 3,
         estado: "Activo",
-        //annoInicio: ("2019-01-16 09:00:00"),
+        annoInicio: new Date("2019-01-05"),
         cantidadCarros: 2,
         
     }, 
@@ -15,7 +15,7 @@ export const residencias = [
         idUsuario: 2,
         cantidadPersonas: 5,
         estado: "Activo",
-        //annoInicio: 2022-10-27 ,
+        annoInicio: new Date("2020-05-10"),
         cantidadCarros: 2,
        
     },
@@ -25,7 +25,7 @@ export const residencias = [
         idUsuario: 3,
         cantidadPersonas: 4,
         estado: "Activo",
-        //annoInicio: 2022-10-27,
+        annoInicio: new Date("2021-10-15"),
         cantidadCarros: 1,
         
     },
@@ -35,7 +35,7 @@ export const residencias = [
         idUsuario: 4,
         cantidadPersonas: 1,
         estado: "Activo",
-        //annoInicio: 2022-10-27,
+        annoInicio: new Date("2022-12-20"),
         cantidadCarros: 1,
         
     },
