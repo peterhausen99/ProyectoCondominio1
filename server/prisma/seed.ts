@@ -2,6 +2,8 @@ import { PrismaClient } from "@prisma/client";
 import { residencias } from "./seeds/residencia";
 import { usuarios } from "./seeds/usuario";
 import { perfilUsuarios } from "./seeds/perfilUsuario";
+import { rubros } from "./seeds/rubro";
+//import { planes } from "./seeds/plan";
 
 const prisma=new PrismaClient();
 
@@ -20,7 +22,12 @@ async function main() {
     await prisma.residencia.createMany({
         data: residencias
     });
-   
+    await prisma.rubro.createMany({
+        data: rubros
+    });
+    /*await prisma.plan.createMany({
+        data: planes
+    });*/
 }
 
 

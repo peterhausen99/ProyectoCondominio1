@@ -6,8 +6,11 @@ const cors = require('cors');
 const logger = require('morgan');
 const app = express();
 const prism = new PrismaClient();
-//---Archivos de rutas---//
 
+
+//---Archivos de rutas---//
+const rubroRouter = require("./routes/rubroRoutes");
+const planRouter = require("./routes/planRoutes");
 //const residenciaRouter = require("./routes/residenciaRoutes");
 
 
@@ -29,7 +32,8 @@ app.use(
 );
 
 //---- Definir rutas ----
-
+app.use("/rubro/", rubroRouter);
+app.use("/plan/", rubroRouter);
 
 //app.use("/residencia/", residenciaRouter);
 

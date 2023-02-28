@@ -103,8 +103,9 @@ model Rubro {
 
 model Plan {
   id          Int     @id @default(autoincrement())
-  asignacionPlanes AsignacionPlan @relation(fields: [idAsignacionPlan], references: [id])
-  idAsignacionPlan Int
+  //ver por tema de llave foranea
+  //asignacionPlanes AsignacionPlan @relation(fields: [idAsignacionPlan], references: [id])
+  //idAsignacionPlan Int
 
   descripcion String
   totalPlan   Decimal @db.Decimal(10, 2)
@@ -118,7 +119,7 @@ model AsignacionPlan {
   id Int @id @default(autoincrement())
   residencias Residencia @relation(fields: [idResidencia], references: [id])
   idResidencia Int
-  planes Plan []
+  //planes Plan []
 
   mes    String
   estado String
