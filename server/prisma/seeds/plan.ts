@@ -6,7 +6,7 @@ export const planes = [
     totalPlan:10000,
     rubro:{
         connect:[{id:1}]
-    }
+    },
 },
 //plan 2
 {
@@ -14,8 +14,8 @@ export const planes = [
     descripcion:"Plan 2",
     totalPlan:25000,
     rubro:{
-        connect:[{id:1}, {id:2}]
-    }
+        connect:[{id:1}]
+    },
 },
 //plan 3
 {
@@ -23,8 +23,8 @@ export const planes = [
     descripcion:"Plan 3",
     totalPlan:30000,
     rubro:{
-        connect:[{id:1}, {id:2}, {id:3}]
-    }
+        connect:[{id:1}]
+    },
 },
 //plan 4
 {
@@ -32,7 +32,7 @@ export const planes = [
     descripcion:"Plan 4",
     totalPlan:50000,
     rubro:{
-        connect:[{id:1}, {id:2}, {id:3}, {id:4}]
-    }
-},
+        connect:[{id:1}]
+    },
+}
 ]
