@@ -6,12 +6,11 @@ const cors = require('cors');
 const logger = require('morgan');
 const app = express();
 const prism = new PrismaClient();
-
-
 //---Archivos de rutas---//
+const residenciaRouter = require("./routes/residenciaRoutes");
 const rubroRouter = require("./routes/rubroRoutes");
 const planRouter = require("./routes/planRoutes");
-//const residenciaRouter = require("./routes/residenciaRoutes");
+
 
 
 
@@ -32,10 +31,10 @@ app.use(
 );
 
 //---- Definir rutas ----
+app.use("/residencia/", residenciaRouter);
 app.use("/rubro/", rubroRouter);
-app.use("/plan/", rubroRouter);
+app.use("/plan/", planRouter);
 
-//app.use("/residencia/", residenciaRouter);
 
 
 // Servidor

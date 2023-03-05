@@ -18,3 +18,10 @@ module.exports.get = async (request, response, next) => {
     });
     response.json(residencia);
   };
+
+
+module.exports.create = async (request, response, next) => {
+};
+
+module.exports.update = async (request, response, next) => {
+};

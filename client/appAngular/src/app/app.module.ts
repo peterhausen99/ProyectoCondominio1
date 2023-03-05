@@ -10,6 +10,7 @@ import { HomeModule } from './home/home.module';
 import { UserModule } from './user/user.module';
 import { ResidenciaModule } from './residencia/residencia.module';
 import { HttpClientModule } from '@angular/common/http';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [ AppComponent  ],
