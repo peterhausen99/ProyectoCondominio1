@@ -19,6 +19,7 @@ import { ToastrModule } from 'ngx-toastr';
     HttpClientModule,
     
     BrowserAnimationsModule,
+    ToastrModule.forRoot(),//importante sin esto no aparece
     CoreModule,
     ShareModule,
     HomeModule,
