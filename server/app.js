@@ -8,6 +8,7 @@ const app = express();
 const prism = new PrismaClient();
 //---Archivos de rutas---//
 const residenciaRouter = require("./routes/residenciaRoutes");
+const usuarioRouter = require("./routes/usuarioRoutes");
 const rubroRouter = require("./routes/rubroRoutes");
 const planRouter = require("./routes/planRoutes");
 
@@ -32,6 +33,7 @@ app.use(
 
 //---- Definir rutas ----
 app.use("/residencia/", residenciaRouter);
+app.use("/usuario/", usuarioRouter);
 app.use("/rubro/", rubroRouter);
 app.use("/plan/", planRouter);
 

@@ -12,9 +12,10 @@ module.exports.get = async (request, response, next) => {
   module.exports.getById = async (request, response, next) => {
     let id = parseInt(request.params.id);
     const residencia = await prisma.residencia.findUnique({
-      where: {
-        id: id,
-      }
+      where: {id: id,},
+      include: {
+        usuario: true,
+      },
     });
     response.json(residencia);
   };
