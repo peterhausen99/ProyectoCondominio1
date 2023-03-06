@@ -8,8 +8,10 @@ const residenciaController = require("../controllers/residenciaController");
 //Definición de rutas para residencia
 router.get("/", residenciaController.get);
 
+router.post('/', residenciaController.create); 
+
 router.get("/:id", residenciaController.getById);
 
-
+router.put('/:id', residenciaController.update);
 
 module.exports = router;

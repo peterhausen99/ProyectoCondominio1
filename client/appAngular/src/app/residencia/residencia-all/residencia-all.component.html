@@ -1,1 +1,74 @@
-<p>residencia-all works!</p>
+<mat-card class="full-width">
+    <!-- Titulo del Card -->
+    <mat-card-title>
+      Videojuegos (guia all component)
+      <a
+        mat-fab
+        matTooltip="Crear Residencia"
+        aria-label="Crear Residencia"
+        color="primary"
+        (click)="crearResidencia()"
+      >
+        <mat-icon>add</mat-icon>
+      </a>
+    </mat-card-title>
+    <mat-card-content>
+      <div class="mat-elevation-z8" *ngIf="dataSource">
+          <!-- Table -->
+        <table mat-table 
+        class="full-width-table" [dataSource]="dataSource"  matSort
+        matSortStart="desc" aria-label="Elements">
+         <!-- Columna nombre -->
+         <ng-container matColumnDef="id">
+           <th mat-header-cell *matHeaderCellDef mat-sort-header>Residencia #</th>
+           <td mat-cell *matCellDef="let row">{{row.id}}</td>
+         </ng-container>
+  
+         <!-- Columna precio -->
+         <ng-container matColumnDef="cantidadPersonas">
+           <th mat-header-cell *matHeaderCellDef mat-sort-header>Cantidad Personas</th>
+           <td mat-cell *matCellDef="let row">{{row.cantidadPersonas}}</td>
+         </ng-container>
+         
+         <ng-container matColumnDef="acciones">
+           <th mat-header-cell *matHeaderCellDef>Acciones</th>
+           <td mat-cell *matCellDef="let row">
+             <button
+               mat-mini-fab
+               matTooltip="Actualizar Residencia"
+               aria-label="Actualizar Residencia"
+               color="primary"
+               (click)="actualizarResidencia(row.id)"
+             >
+               <mat-icon class="mat-18">edit</mat-icon>
+             </button>
+             <button
+               mat-mini-fab
+               matTooltip="Detalle Residencia"
+               aria-label="Detalle Residencia"
+               color="primary"
+               (click)="detalleResidencia(row.id)"
+             >
+               <mat-icon class="mat-18">info</mat-icon>
+             </button>
+           </td>
+         </ng-container>
+  
+         <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+         <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+       </table>
+  
+       <mat-paginator
+         #paginator
+         [length]="dataSource?.data?.length"
+         [pageIndex]="0"
+         [pageSize]="5"
+         [pageSizeOptions]="[3, 5, 10]"
+         aria-label="Seleccione una pagina"
+       >
+       </mat-paginator>
+        <!-- Table -->
+      </div>
+    </mat-card-content>
+  </mat-card>
+  
