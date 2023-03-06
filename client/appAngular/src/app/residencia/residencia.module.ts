@@ -19,13 +19,17 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatRadioModule } from '@angular/material/radio';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ResidenciaDetailComponent } from './residencia-detail/residencia-detail.component';
+import { ResidenciaDiagComponent } from './residencia-diag/residencia-diag.component';
 
 
 @NgModule({
   declarations: [
     ResidenciaIndexComponent,
 
-    ResidenciaAllComponent
+    ResidenciaAllComponent,
+     ResidenciaDetailComponent,
+     ResidenciaDiagComponent
   ],
   imports: [
     CommonModule,
