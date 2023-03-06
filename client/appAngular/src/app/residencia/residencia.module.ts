@@ -11,11 +11,13 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { ResidenciaIndexComponent } from './residencia-index/residencia-index.component';
 import {MatDividerModule} from '@angular/material/divider';
+import { ResidenciaAllComponent } from './residencia-all/residencia-all.component';
 
 
 @NgModule({
   declarations: [
-    ResidenciaIndexComponent
+    ResidenciaIndexComponent,
+    ResidenciaAllComponent
   ],
   imports: [
     CommonModule,

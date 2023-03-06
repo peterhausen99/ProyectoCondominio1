@@ -12,11 +12,13 @@ import { NotificacionService, TipoMessage } from 'src/app/share/notification.ser
 })
 export class ResidenciaIndexComponent implements OnInit{
   datos:any;
+
   destroy$: Subject <boolean>= new Subject<boolean>();
 
   constructor(private gService:GenericService,
     private notificacion:NotificacionService) {
     this.listaResidencias();
+
    }
 
    ngOnInit(): void {
@@ -31,6 +33,8 @@ export class ResidenciaIndexComponent implements OnInit{
       this.datos=data;
     });
   }
+
+  
 
 
   detalleResidencia(id:number){

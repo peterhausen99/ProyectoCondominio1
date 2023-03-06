@@ -10,4 +10,6 @@ router.get("/", usuarioController.get);
 
 router.get("/:id", usuarioController.getById);
 
+
+
 module.exports = router;

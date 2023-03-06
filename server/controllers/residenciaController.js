@@ -5,6 +5,8 @@ module.exports.get = async (request, response, next) => {
     const residencias = await prisma.residencia.findMany({
       orderBy: {
         id: "asc",
+      }, include: {
+        usuario: true
       },
     });
     response.json(residencias);
@@ -14,11 +16,13 @@ module.exports.get = async (request, response, next) => {
     const residencia = await prisma.residencia.findUnique({
       where: {id: id,},
       include: {
-        usuario: true,
+        usuario: true
       },
     });
     response.json(residencia);
   };
+
+  
 
 
 module.exports.create = async (request, response, next) => {

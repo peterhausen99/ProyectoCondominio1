@@ -10,4 +10,6 @@ router.get("/", residenciaController.get);
 
 router.get("/:id", residenciaController.getById);
 
+
+
 module.exports = router;

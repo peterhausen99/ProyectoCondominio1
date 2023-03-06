@@ -20,3 +20,4 @@ module.exports.get = async (request, response, next) => {
     });
     response.json(usuario);
   };
+  
