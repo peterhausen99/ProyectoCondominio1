@@ -2,7 +2,7 @@
 const express = require("express");
 const router = express.Router();
 
-//Videojuego controller para los métodos definidos
+//Residencia controller para los métodos definidos
 const usuarioController = require("../controllers/usuarioController");
 
 //Definición de rutas para generos

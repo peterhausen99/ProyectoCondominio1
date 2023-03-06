@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Subject, takeUntil } from 'rxjs';
 import { GenericService } from 'src/app/share/generic.service';
 import { NotificacionService, TipoMessage } from 'src/app/share/notification.service';
+import { ResidenciaDiagComponent } from '../residencia-diag/residencia-diag.component';
 
 @Component({
   selector: 'app-residencia-index',
@@ -12,14 +13,16 @@ import { NotificacionService, TipoMessage } from 'src/app/share/notification.ser
 })
 export class ResidenciaIndexComponent implements OnInit{
   datos:any;
-
   destroy$: Subject <boolean>= new Subject<boolean>();
 
   constructor(private gService:GenericService,
-    private notificacion:NotificacionService) {
+    private notificacion:NotificacionService,
+    private router:Router,
+    private route:ActivatedRoute,
+    private dialog:MatDialog
+    ) { 
     this.listaResidencias();
-
-   }
+  }
 
    ngOnInit(): void {
   }
@@ -34,11 +37,13 @@ export class ResidenciaIndexComponent implements OnInit{
     });
   }
 
-  
-
-
   detalleResidencia(id:number){
-
+    const dialogConfig=new MatDialogConfig();
+    dialogConfig.disableClose=false;
+    dialogConfig.data={
+      id:id
+    }
+    this.dialog.open(ResidenciaDiagComponent,dialogConfig)
   }
 
   ngOnDestroy(){

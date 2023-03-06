@@ -20,7 +20,7 @@ export class ResidenciaAllComponent implements AfterViewInit {
   dataSource=new MatTableDataSource<any>();
 
   //Columnas que se muestran
-  displayedColumns=['id','cantidadPersonas','cantidadCarros','estado','annoInicio','acciones'];
+  displayedColumns=['id','usuario','cantidadPersonas','cantidadCarros','estado','annoInicio','acciones'];
 
   constructor(private router:Router,
     private route:ActivatedRoute, private gService:GenericService

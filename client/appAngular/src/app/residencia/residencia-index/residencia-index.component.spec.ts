@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ResidenciaIndexComponent } from './residencia-index.component';
 
-describe('VideojuegoIndexComponent', () => {
+describe('ResidenciaIndexComponent', () => {
   let component: ResidenciaIndexComponent;
   let fixture: ComponentFixture<ResidenciaIndexComponent>;
 

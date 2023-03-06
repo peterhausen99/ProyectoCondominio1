@@ -7,29 +7,31 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { ResidenciaIndexComponent } from './residencia-index/residencia-index.component';
-import {MatDividerModule} from '@angular/material/divider';
-
+import { MatDividerModule } from '@angular/material/divider';
+import { ResidenciaDetailComponent } from './residencia-detail/residencia-detail.component';
+import { ResidenciaDiagComponent } from './residencia-diag/residencia-diag.component';
 import { ResidenciaAllComponent } from './residencia-all/residencia-all.component';
-import {LayoutModule} from '@angular/cdk/layout';
-import {MatTableModule} from '@angular/material/table';
-import {MatPaginatorModule} from '@angular/material/paginator';
-import {MatSortModule} from '@angular/material/sort';
-import {MatDialogModule} from '@angular/material/dialog';
+import { LayoutModule} from '@angular/cdk/layout';
+import { MatTableModule} from '@angular/material/table';
+import { MatPaginatorModule} from '@angular/material/paginator';
+import { MatSortModule} from '@angular/material/sort';
+import { MatDialogModule} from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatRadioModule } from '@angular/material/radio';
 import { ReactiveFormsModule } from '@angular/forms';
-import { ResidenciaDetailComponent } from './residencia-detail/residencia-detail.component';
-import { ResidenciaDiagComponent } from './residencia-diag/residencia-diag.component';
+
+
 
 
 @NgModule({
   declarations: [
-    ResidenciaIndexComponent,
-
-    ResidenciaAllComponent,
-     ResidenciaDetailComponent,
-     ResidenciaDiagComponent
+      ResidenciaIndexComponent,
+      
+      ResidenciaDetailComponent,
+      ResidenciaDiagComponent,
+      ResidenciaAllComponent
+      
   ],
   imports: [
     CommonModule,
@@ -45,7 +47,9 @@ import { ResidenciaDiagComponent } from './residencia-diag/residencia-diag.compo
     MatPaginatorModule,
     MatSortModule,
     MatDialogModule,
-    MatInputModule,MatSelectModule,MatRadioModule,
+    MatInputModule,
+    MatSelectModule,
+    MatRadioModule,
     ReactiveFormsModule
   ]
 })
