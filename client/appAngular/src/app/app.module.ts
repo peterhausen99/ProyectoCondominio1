@@ -9,8 +9,10 @@ import { ShareModule } from './share/share.module';
 import { HomeModule } from './home/home.module';
 import { UserModule } from './user/user.module';
 import { ResidenciaModule } from './residencia/residencia.module';
+import { RubroModule } from './rubro/rubro.module';
 import { HttpClientModule } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
+
 
 @NgModule({
   declarations: [ AppComponent  ],
@@ -25,8 +27,9 @@ import { ToastrModule } from 'ngx-toastr';
     HomeModule,
     UserModule,
     ResidenciaModule,
-    
+    RubroModule,
     AppRoutingModule,
+          
   ],
   providers: [],
   bootstrap: [AppComponent]
