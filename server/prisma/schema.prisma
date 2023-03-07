@@ -112,14 +112,14 @@ model Plan {
   createdAt   DateTime @default(now())
   updatedAt   DateTime @default(now()) @updatedAt
   rubros      Rubro[]
-
+  asingnacionPlanes AsignacionPlan[]
 }
 
 model AsignacionPlan {
   id Int @id @default(autoincrement())
   residencias Residencia @relation(fields: [idResidencia], references: [id])
   idResidencia Int
-  //planes Plan []
+  planes Plan []
 
   mes    String
   estado String

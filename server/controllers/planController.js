@@ -3,7 +3,11 @@ const prisma = new PrismaClient();
 
 //Obtener listado
 module.exports.get = async (request, response, next) => {
-    const plans=await prisma.plan.findMany();
+    const plans=await prisma.plan.findMany({
+        include:{
+            rubros:true,
+        }
+    });
     response.json(plans);
 };
 //Obtener por Id
@@ -13,7 +17,7 @@ module.exports.getById = async (request, response, next) => {
     const plan= await prisma.plan.findUnique({
         where: {id: id },
         include:{
-            rubro:true,
+            rubros:true,
         }
     });
     response.json(plan);
