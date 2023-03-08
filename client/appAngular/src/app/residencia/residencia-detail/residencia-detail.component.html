@@ -1,11 +1,11 @@
 <mat-card class="dashboard-card" *ngIf="datos">
     <mat-card-header>
-      <mat-card-title>Residencia # {{datos.id}} <b></b></mat-card-title>
+      <mat-card-title>Residencia # {{datos.id}} DETAIL<b></b></mat-card-title>
     </mat-card-header>
     <mat-card-content class="dashboard-card-content">
       
       <p><b>Id: </b>{{datos.id}}</p>
-      <p><b>Usuario residente: </b>{{datos.usuario.nombre}}</p>
+      <p><b>Usuario residente: </b>{{datos.usuario.nombre}} {{datos.usuario.apellido1}} {{datos.usuario.apellido2}}</p>
       <p><b>Cédula usuario: </b>{{datos.usuario.idCedula}}</p>
       <p><b>Cantidad de personas: </b>{{datos.cantidadPersonas}}</p>
       <p><b>Cantidad de carros: </b>{{datos.cantidadCarros}}</p>

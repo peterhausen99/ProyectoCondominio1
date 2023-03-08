@@ -13,16 +13,20 @@ import { RubroModule } from './rubro/rubro.module';
 import { HttpClientModule } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
 import { PlanModule } from './plan/plan.module';
-import { AsignacionModule } from './asignacion/asignacion.module';
+import { AsignacionplanModule } from './asignacionplan/asignacionplan.module';
+
+
+
+
+
 
 
 
 @NgModule({
-  declarations: [ AppComponent, ],
+  declarations: [ AppComponent ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    
     BrowserAnimationsModule,
     ToastrModule.forRoot(),//importante sin esto no aparece
     CoreModule,
@@ -32,7 +36,7 @@ import { AsignacionModule } from './asignacion/asignacion.module';
     ResidenciaModule,
     RubroModule,
     PlanModule,
-    AsignacionModule,
+    AsignacionplanModule,
     AppRoutingModule,//TIENE QUE IR DE ULTIMO
           
   ],
