@@ -68,6 +68,9 @@ async function main() {
         },
     });
 
+ //creacion asignacion plan(estado cuenta)
+ 
+
 }
 
 
