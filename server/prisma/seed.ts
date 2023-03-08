@@ -70,18 +70,57 @@ async function main() {
 
  //creacion asignacion plan(estado cuenta)
  
-await 
 
- await prisma.plan.create({
+
+ await prisma.asignacionPlan.create({
     data:{
-        id:4,
-        descripcion:"Plan 4",
-        totalPlan:50000,
-        rubros:{
-            connect: [{id: 1},{id:2},{id:3},{id:4}],
-        },
-    },
+        residencia: {connect: {id: 1}},
+        plan: {connect: {id: 1}},
+        mes:"Enero",
+        estado:"Pago",
+        iva: 1950,
+        total: 15000, 
+    }
 });
+
+await prisma.asignacionPlan.create({
+    data:{
+        residencia: {connect: {id: 1}},
+        plan: {connect: {id: 1}},
+        mes:"Febrero",
+        estado:"Pendiente",
+        iva: 1950,
+        total: 15000, 
+    }
+});
+
+await prisma.asignacionPlan.create({
+    data:{
+        residencia: {connect: {id: 2}},
+        plan: {connect: {id: 1}},
+        mes:"Enero",
+        estado:"Pendiente",
+        iva: 1950,
+        total: 15000, 
+    }
+});
+
+await prisma.asignacionPlan.create({
+    data:{
+        residencia: {connect: {id: 2}},
+        plan: {connect: {id: 1}},
+        mes:"Febrero",
+        estado:"Pendiente",
+        iva: 1950,
+        total: 15000, 
+    }
+});
+
+
+
+
+
+
 
 
 

@@ -108,11 +108,10 @@ model Plan {
 }
 model AsignacionPlan {
   
-  residencias Residencia @relation(fields: [idResidencia], references: [id])
+  residencia Residencia @relation(fields: [idResidencia], references: [id])
   idResidencia Int
-
-  plan Plan @relation(fields: [idPlan], references: [id])
-  idPlan Int
+  plan        Plan       @relation(fields: [idPlan],       references: [id])
+  idPlan       Int
 
   mes    String
   estado String
@@ -121,7 +120,7 @@ model AsignacionPlan {
   createdAt DateTime @default(now())
   updatedAt DateTime @default(now()) @updatedAt 
 
-  @@id([idResidencia, idPlan])
+  @@id([idResidencia, idPlan, mes])
 }
 
 model Residencia {
