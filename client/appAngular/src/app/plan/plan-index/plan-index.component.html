@@ -1,17 +1,17 @@
 <div class="grid-container">
-    <h1 class="mat-h1">Plans</h1>
+    <h1 class="mat-h1">Planes Disponibles</h1>
     <mat-grid-list [cols]="3" rowHeight="12em" gutterSize="10px" *ngIf="datos" >
       <mat-grid-tile  *ngFor="let item of datos">
         <mat-card class="dashboard-card">
           <mat-card-header>
             <mat-card-title>
-             {{item.nombre}}
+             {{item.descripcion}}
              
             </mat-card-title>
           </mat-card-header>
           <mat-card-content class="dashboard-card-content">
             <div> 
-                {{item.precio | currency:"USD"}}
+               <h3>Monto Total: {{item.totalPlan}}</h3>
             </div>
           </mat-card-content>
           <mat-divider inset></mat-divider>

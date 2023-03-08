@@ -29,8 +29,9 @@ import { PlanModule } from './plan/plan.module';
     UserModule,
     ResidenciaModule,
     RubroModule,
-    AppRoutingModule,
     PlanModule,
+    AppRoutingModule,
+   
           
   ],
   providers: [],
