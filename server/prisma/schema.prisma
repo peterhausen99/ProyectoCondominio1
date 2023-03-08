@@ -14,7 +14,6 @@ datasource db {
 model PerfilUsuario {
   id          Int       @id @default(autoincrement())
   usuarios    Usuario[]
-
   descripcion String
   
 }
@@ -92,59 +91,50 @@ model Incidencia {
 model Rubro {
   id          Int      @id @default(autoincrement()) 
   planes      Plan[]
-
   descripcion String
   valor       Decimal @db.Decimal(10, 2)
   estado      String
   createdAt   DateTime @default(now())
-  updatedAt   DateTime @default(now()) @updatedAt
-  
+  updatedAt   DateTime @default(now()) @updatedAt  
 }
-
 model Plan {
   id          Int     @id @default(autoincrement())
-  //ver por tema de llave foranea
-  //asignacionPlanes AsignacionPlan @relation(fields: [idAsignacionPlan], references: [id])
-  //idAsignacionPlan Int
-
   descripcion String
   totalPlan   Decimal @db.Decimal(10, 2)
   createdAt   DateTime @default(now())
   updatedAt   DateTime @default(now()) @updatedAt
   rubros      Rubro[]
-  asingnacionPlanes AsignacionPlan[]
+  residencia AsignacionPlan[]
 }
-
 model AsignacionPlan {
-  id Int @id @default(autoincrement())
+  
   residencias Residencia @relation(fields: [idResidencia], references: [id])
   idResidencia Int
-  planes Plan []
+
+  plan Plan @relation(fields: [idPlan], references: [id])
+  idPlan Int
 
   mes    String
   estado String
   iva    Decimal @db.Decimal(10, 2)
   total  Decimal @db.Decimal(10, 2)
   createdAt DateTime @default(now())
-  updatedAt DateTime @default(now()) @updatedAt
+  updatedAt DateTime @default(now()) @updatedAt 
 
-  
+  @@id([idResidencia, idPlan])
 }
 
 model Residencia {
   id Int @id @default(autoincrement())
   usuario   Usuario @relation(fields: [idUsuario], references: [idCedula])
   idUsuario Int
-  asignacionPlanes AsignacionPlan []
-
   cantidadPersonas Int
   estado           String
   annoInicio       DateTime @default(now())
   cantidadCarros   Int
   createdAt        DateTime @default(now())
   updatedAt        DateTime @default(now()) @updatedAt
-
-  
+  plan AsignacionPlan []
 }
 
 model Informacion {

@@ -89,8 +89,8 @@ CREATE TABLE `Plan` (
 
 -- CreateTable
 CREATE TABLE `AsignacionPlan` (
-    `id` INTEGER NOT NULL AUTO_INCREMENT,
     `idResidencia` INTEGER NOT NULL,
+    `idPlan` INTEGER NOT NULL,
     `mes` VARCHAR(191) NOT NULL,
     `estado` VARCHAR(191) NOT NULL,
     `iva` DECIMAL(10, 2) NOT NULL,
@@ -98,7 +98,7 @@ CREATE TABLE `AsignacionPlan` (
     `createdAt` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
     `updatedAt` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
 
-    PRIMARY KEY (`id`)
+    PRIMARY KEY (`idResidencia`, `idPlan`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 -- CreateTable
@@ -136,15 +136,6 @@ CREATE TABLE `_PlanToRubro` (
     INDEX `_PlanToRubro_B_index`(`B`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
--- CreateTable
-CREATE TABLE `_AsignacionPlanToPlan` (
-    `A` INTEGER NOT NULL,
-    `B` INTEGER NOT NULL,
-
-    UNIQUE INDEX `_AsignacionPlanToPlan_AB_unique`(`A`, `B`),
-    INDEX `_AsignacionPlanToPlan_B_index`(`B`)
-) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-
 -- AddForeignKey
 ALTER TABLE `Usuario` ADD CONSTRAINT `Usuario_perfilUsuarioId_fkey` FOREIGN KEY (`perfilUsuarioId`) REFERENCES `PerfilUsuario`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
 
@@ -161,6 +152,9 @@ ALTER TABLE `Incidencia` ADD CONSTRAINT `Incidencia_idUsuario_fkey` FOREIGN KEY 
 ALTER TABLE `AsignacionPlan` ADD CONSTRAINT `AsignacionPlan_idResidencia_fkey` FOREIGN KEY (`idResidencia`) REFERENCES `Residencia`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
+ALTER TABLE `AsignacionPlan` ADD CONSTRAINT `AsignacionPlan_idPlan_fkey` FOREIGN KEY (`idPlan`) REFERENCES `Plan`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
 ALTER TABLE `Residencia` ADD CONSTRAINT `Residencia_idUsuario_fkey` FOREIGN KEY (`idUsuario`) REFERENCES `Usuario`(`idCedula`) ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
@@ -168,9 +162,3 @@ ALTER TABLE `_PlanToRubro` ADD CONSTRAINT `_PlanToRubro_A_fkey` FOREIGN KEY (`A`
 
 -- AddForeignKey
 ALTER TABLE `_PlanToRubro` ADD CONSTRAINT `_PlanToRubro_B_fkey` FOREIGN KEY (`B`) REFERENCES `Rubro`(`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
--- AddForeignKey
-ALTER TABLE `_AsignacionPlanToPlan` ADD CONSTRAINT `_AsignacionPlanToPlan_A_fkey` FOREIGN KEY (`A`) REFERENCES `AsignacionPlan`(`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
--- AddForeignKey
-ALTER TABLE `_AsignacionPlanToPlan` ADD CONSTRAINT `_AsignacionPlanToPlan_B_fkey` FOREIGN KEY (`B`) REFERENCES `Plan`(`id`) ON DELETE CASCADE ON UPDATE CASCADE;

@@ -70,8 +70,23 @@ async function main() {
 
  //creacion asignacion plan(estado cuenta)
  
+await 
 
-}
+ await prisma.plan.create({
+    data:{
+        id:4,
+        descripcion:"Plan 4",
+        totalPlan:50000,
+        rubros:{
+            connect: [{id: 1},{id:2},{id:3},{id:4}],
+        },
+    },
+});
+
+
+
+
+}//cierra main
 
 
 
