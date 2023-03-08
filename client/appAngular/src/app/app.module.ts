@@ -12,6 +12,7 @@ import { ResidenciaModule } from './residencia/residencia.module';
 import { RubroModule } from './rubro/rubro.module';
 import { HttpClientModule } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
+import { PlanModule } from './plan/plan.module';
 
 
 @NgModule({
@@ -29,6 +30,7 @@ import { ToastrModule } from 'ngx-toastr';
     ResidenciaModule,
     RubroModule,
     AppRoutingModule,
+    PlanModule,
           
   ],
   providers: [],
