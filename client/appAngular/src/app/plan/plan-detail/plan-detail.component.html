@@ -4,11 +4,12 @@
     </mat-card-header>
     <mat-card-content class="dashboard-card-content">
       <p><b>Descripción: </b>{{datos.descripcion}}</p>
-      <p><b>Precio Total del Plan: </b>{{datos.precio| currency:'USD'}}</p>
+      <p><b>Precio Total del Plan: </b>{{datos.totalPlan}}</p>
       <p><b>Rubros del Plan: </b></p>
       <ul *ngIf="datos.rubros">
         <li *ngFor="let item of datos.rubros">{{item.descripcion}} | Valor: {{item.valor}}</li>
       </ul>
+      <p><b>Última Modificación: </b>{{datos.updatedAt}}</p>
     </mat-card-content>
   </mat-card>
   
