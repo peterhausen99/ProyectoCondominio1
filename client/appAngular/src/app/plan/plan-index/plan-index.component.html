@@ -10,9 +10,11 @@
             </mat-card-title>
           </mat-card-header>
           <mat-card-content class="dashboard-card-content">
-            <div> 
-               <h3>Monto Total: {{item.totalPlan}}</h3>
-            </div>
+            <ul>
+              <li style="text-align: left;">Plan para Residencias</li> 
+              <li style="text-align: left;">Monto Total: {{item.totalPlan}}</li>           
+     </ul>
+            
           </mat-card-content>
           <mat-divider inset></mat-divider>
           <mat-card-actions>
@@ -24,16 +26,6 @@
             (click)="detallePlan(item.id)"
           > 
           <mat-icon class="mat-18">info</mat-icon>
-          </button>
-          <button
-            mat-mini-fab color="accent"
-            matTooltip="Comprar"
-            aria-label="Comprar"
-            color="primary"
-            (click)="comprar(item.id)"
-          >
-          
-          <mat-icon class="mat-18">add_shopping_cart</mat-icon>
           </button>
           </mat-card-actions>
         </mat-card>
