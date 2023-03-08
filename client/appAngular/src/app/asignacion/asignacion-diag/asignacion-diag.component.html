@@ -4,10 +4,8 @@
   <div *ngIf="datos">
     <h2 mat-dialog-title>{{datos.descripcion}}</h2>
     <mat-dialog-content>
-      <p>Plan para residencias</p>
-      <hr>
-      <br>
-      <h4>Monto total del plan: {{datos.totalPlan}}</h4>
+      <p>{{datos.descripcion}}</p>
+      <h4>Monto total del asignacion: {{datos.totalAsignacion}}</h4>
       <ul *ngIf="datos.rubros">
         <li *ngFor="let item of datos.rubros">{{item.descripcion}} | Precio: {{item.valor}}</li>
       </ul>

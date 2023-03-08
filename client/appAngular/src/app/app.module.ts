@@ -13,10 +13,12 @@ import { RubroModule } from './rubro/rubro.module';
 import { HttpClientModule } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
 import { PlanModule } from './plan/plan.module';
+import { AsignacionModule } from './asignacion/asignacion.module';
+
 
 
 @NgModule({
-  declarations: [ AppComponent  ],
+  declarations: [ AppComponent, ],
   imports: [
     BrowserModule,
     HttpClientModule,
@@ -31,6 +33,7 @@ import { PlanModule } from './plan/plan.module';
     RubroModule,
     PlanModule,
     AppRoutingModule,
+    AsignacionModule,
    
           
   ],

@@ -1,0 +1,14 @@
+<mat-card class="dashboard-card" *ngIf="datos">
+    <mat-card-header>
+      <mat-card-title>{{datos.nombre}} </mat-card-title>
+    </mat-card-header>
+    <mat-card-content class="dashboard-card-content">
+      <p><b>Descripción: </b>{{datos.descripcion}}</p>
+      <p><b>Precio Total del Asignacion: </b>{{datos.precio| currency:'USD'}}</p>
+      <p><b>Rubros del Asignacion: </b></p>
+      <ul *ngIf="datos.rubros">
+        <li *ngFor="let item of datos.rubros">{{item.descripcion}} | Valor: {{item.valor}}</li>
+      </ul>
+    </mat-card-content>
+  </mat-card>
+  

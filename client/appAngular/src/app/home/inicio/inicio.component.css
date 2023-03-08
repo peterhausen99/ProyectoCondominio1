@@ -1,5 +1,5 @@
 mat-card {
-  max-width: 400px;
+  max-width: 500px;
   margin: 2em auto;
   text-align: center;
   background: #4682b4;
@@ -15,7 +15,7 @@ mat-card-content{
 }
 
 mat-card-header{
-    max-width: 400px;
+    max-width: 500px;
     margin: 2em auto;
     text-align: center;
 }

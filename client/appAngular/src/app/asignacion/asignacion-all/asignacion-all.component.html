@@ -1,22 +1,18 @@
-<mat-card class="full-width" >
+<mat-card class="full-width">
     <!-- Titulo del Card -->
     <mat-card-title>
-      Planes Disponibles
+      Asignaciones Disponibles
       <a
         mat-fab
-        matTooltip="Crear Plan"
-        aria-label="Crear Plan"
+        matTooltip="Crear Asignacion"
+        aria-label="Crear Asignacion"
         color="primary"
-        (click)="crearPlan()"
+        (click)="crearAsignacion()"
       >
         <mat-icon>add</mat-icon>
       </a>
-      <br>
     </mat-card-title>
- 
-  
     <mat-card-content>
-      <br>
       <div class="mat-elevation-z8" *ngIf="dataSource">
           <!-- Table -->
         <table mat-table 
@@ -29,9 +25,9 @@
          </ng-container>
   
          <!-- Columna precio -->
-         <ng-container matColumnDef="totalPlan">
-           <th mat-header-cell *matHeaderCellDef mat-sort-header>Precio Total del Plan</th>
-           <td mat-cell *matCellDef="let row">{{row.totalPlan}}</td>
+         <ng-container matColumnDef="totalAsignacion">
+           <th mat-header-cell *matHeaderCellDef mat-sort-header>Precio Total del Asignacion</th>
+           <td mat-cell *matCellDef="let row">{{row.totalAsignacion}}</td>
          </ng-container>
          
          <ng-container matColumnDef="acciones">
@@ -39,19 +35,19 @@
            <td mat-cell *matCellDef="let row">
              <button
                mat-mini-fab
-               matTooltip="Actualizar Plan"
-               aria-label="Actualizar Plan"
+               matTooltip="Actualizar Asignacion"
+               aria-label="Actualizar Asignacion"
                color="primary"  
-               (click)="actualizarPlan(row.id)"
+               (click)="actualizarAsignacion(row.id)"
              >
                <mat-icon class="mat-18">edit</mat-icon>
              </button>
              <button
                mat-mini-fab
-               matTooltip="Detalle Plan"
-               aria-label="Detalle Plan"
+               matTooltip="Detalle Asignacion"
+               aria-label="Detalle Asignacion"
                color="primary"
-               (click)="detallePlan(row.id)"
+               (click)="detalleAsignacion(row.id)"
              >
                <mat-icon class="mat-18">info</mat-icon>
              </button>
