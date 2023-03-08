@@ -1,36 +1,28 @@
-
 <div class="grid-container">
-  <h1 class="mat-h1">Residencias (ayuda index component)</h1>
+  <h1 class="mat-h1">Residencias</h1>
   <mat-grid-list [cols]="3" rowHeight="12em" gutterSize="10px" *ngIf="datos">
     <mat-grid-tile *ngFor="let item of datos">
       <mat-card class="dashboard-card">
         <mat-card-header>
-          <mat-card-title>
-
-           Residencia # {{ item.id }}
-           
-          </mat-card-title>
+          <mat-card-title> Residencia # {{ item.id }} </mat-card-title>
         </mat-card-header>
-        <mat-card-content class="dashboard-card-content" >
-
-    
-           Usuario residente: {{item.usuario.nombre}}
-     
-        
+        <mat-card-content class="dashboard-card-content">
+<ul>
+         <li>Usuario residente: {{ item.usuario.nombre }}</li> 
+          <li>Cantidad de personas: {{item.cantidadPersonas}}</li>
+</ul>
         </mat-card-content>
         <mat-divider inset></mat-divider>
         <mat-card-actions>
           <button
-            mat-mini-fab color="primary"
-            
+            mat-mini-fab
+            color="primary"
             matTooltip="Detalle Residencia"
             aria-label="Detalle Residencia"
-            
             (click)="detalleResidencia(item.id)"
           >
             <mat-icon class="mat-18">info</mat-icon>
           </button>
-          
         </mat-card-actions>
       </mat-card>
     </mat-grid-tile>
