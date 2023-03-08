@@ -32,9 +32,8 @@ import { AsignacionModule } from './asignacion/asignacion.module';
     ResidenciaModule,
     RubroModule,
     PlanModule,
-    AppRoutingModule,
     AsignacionModule,
-   
+    AppRoutingModule,//TIENE QUE IR DE ULTIMO
           
   ],
   providers: [],

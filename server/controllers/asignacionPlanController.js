@@ -4,7 +4,7 @@ const prisma = new PrismaClient();
 module.exports.get = async (request, response, next) => {
     const asignacionPlanes = await prisma.asignacionPlan.findMany({
        include: {
-        residencia: true,
+        residencia: {include: {usuario:true}},
         plan: true
       },
     });
@@ -23,7 +23,7 @@ module.exports.get = async (request, response, next) => {
         estado:"Pago"
     },
       include: {
-        residencia: true,
+        residencia: {include: {usuario:true}},
         plan: true
       },
     });
@@ -39,7 +39,7 @@ module.exports.get = async (request, response, next) => {
         estado:"Pendiente"
     },
       include: {
-        residencia: true,
+        residencia: {include: {usuario:true}},
         plan: true
       },
     });

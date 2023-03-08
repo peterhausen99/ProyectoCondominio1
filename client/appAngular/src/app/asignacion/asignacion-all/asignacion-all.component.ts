@@ -21,7 +21,7 @@ export class AsignacionAllComponent implements AfterViewInit {
   dataSource=new MatTableDataSource<any>();
 
   //Columnas que se muestran
-  displayedColumns=['descripcion','totalAsignacion','acciones'];
+  displayedColumns=['id','usuario','acciones'];
 
   constructor(private router:Router,
     private route:ActivatedRoute, private gService:GenericService
@@ -31,9 +31,10 @@ export class AsignacionAllComponent implements AfterViewInit {
     this.listaAsignacions();
   }
 
+
   listaAsignacions(){
     //Llamar al API, nombre de ruta
-    this.gService.list('asignacion/')
+    this.gService.list('asignacionPlan/')
     .pipe(takeUntil(this.destroy$))
     .subscribe((data:any)=>{
         console.log(data);
@@ -48,6 +49,8 @@ export class AsignacionAllComponent implements AfterViewInit {
       relativeTo:this.route
     });
   }
+
+  
 
   crearAsignacion(){
     this.router.navigate(['/asignacion/create'], {relativeTo:this.route})
