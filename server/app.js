@@ -11,6 +11,8 @@ const residenciaRouter = require("./routes/residenciaRoutes");
 const usuarioRouter = require("./routes/usuarioRoutes");
 const rubroRouter = require("./routes/rubroRoutes");
 const planRouter = require("./routes/planRoutes");
+const asignacionPlanRouter = require("./routes/asignacionPlanRoutes");
+
 
 
 
@@ -36,6 +38,7 @@ app.use("/residencia/", residenciaRouter);
 app.use("/usuario/", usuarioRouter);
 app.use("/rubro/", rubroRouter);
 app.use("/plan/", planRouter);
+app.use("/asignacionPlan/", asignacionPlanRouter);
 
 
 
