@@ -46,6 +46,22 @@ module.exports.get = async (request, response, next) => {
     response.json(asignacionPlanes);
   };
 
+  module.exports.getById = async (request, response, next) => {
+
+    let idRes = parseInt(request.params.id);
+    const asignacionPlanes = await prisma.asignacionPlan.findMany({
+      where: {
+        idResidencia: idRes,
+        
+    },
+      include: {
+        residencia: {include: {usuario:true}},
+        plan: true
+      },
+    });
+    response.json(asignacionPlanes);
+  };
+
   
 
 

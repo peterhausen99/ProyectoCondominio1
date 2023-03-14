@@ -44,6 +44,12 @@ export class AsignacionplanAllComponent implements AfterViewInit{
       });
     }
 
+    detalleAsignacionID(id:number){
+      this.router.navigate(['/asignacionplan',id],{
+        relativeTo:this.route
+      });
+    }
+
     
 
     detallePago(id:number){

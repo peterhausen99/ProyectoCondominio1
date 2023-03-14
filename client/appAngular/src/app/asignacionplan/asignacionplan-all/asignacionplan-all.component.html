@@ -29,28 +29,16 @@
            <th mat-header-cell *matHeaderCellDef>Acciones</th>
            <td mat-cell *matCellDef="let row">
              
-            
-            
-
-             <button
-          
+            <button
+            mat-mini-fab
                matTooltip="Detalle Pago"
                aria-label="Detalle Pago"
                color="primary"
-               (click)="detallePago(row.id)"
-             >PA
+               (click)="detalleAsignacionID(row.idResidencia)"
+             >
                <mat-icon class="mat-18">info</mat-icon>
              </button>
 
-             <button
-            
-               matTooltip="Detalle Pendiente"
-               aria-label="Detalle Pendiente"
-               color="primary"
-               (click)="detallePendiente(row.id)"
-             > PE
-               <mat-icon class="mat-18">info</mat-icon>
-             </button>
            </td>
          </ng-container>
   

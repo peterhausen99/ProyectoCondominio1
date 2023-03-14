@@ -6,7 +6,6 @@ export enum TipoMessage{
   success,
   warning,
 }
-
 @Injectable({
   providedIn: 'root'
 })

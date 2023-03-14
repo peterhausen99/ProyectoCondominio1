@@ -19,6 +19,7 @@ export class ResidenciaDetailComponent implements OnInit {
   }
 
   ngOnInit(): void {}
+  
   obtenerResidencia(id: any) {
     this.gService
       .get('residencia', id)

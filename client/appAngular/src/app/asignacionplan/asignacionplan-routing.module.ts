@@ -7,7 +7,7 @@ import { AsignacionplanDetailComponent } from './asignacionplan-detail/asignacio
 const routes: Routes = [
 
   {path:'asignacionplan',component:AsignacionplanAllComponent},
-  {path:'asignacionplan/pago/:id',component:AsignacionplanDetailComponent},
+  {path:'asignacionplan/:id',component:AsignacionplanDetailComponent},
 ];
 
 @NgModule({

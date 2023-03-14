@@ -22,7 +22,7 @@ export class AsignacionplanDetailComponent implements OnInit{
   ngOnInit(): void {}
   obtenerAsignaciones(id: any) {
     this.gService
-      .get('/asignacionplan/pago/', id)
+      .get('asignacionplan', id)
       .pipe(takeUntil(this.destroy$))
       .subscribe((data: any) => {
         console.log(data);
