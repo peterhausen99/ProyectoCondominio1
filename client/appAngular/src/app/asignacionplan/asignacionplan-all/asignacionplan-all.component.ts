@@ -12,63 +12,61 @@ import { GenericService } from 'src/app/share/generic.service';
   styleUrls: ['./asignacionplan-all.component.css']
 })
 export class AsignacionplanAllComponent implements AfterViewInit{
-
   datos:any;
   destroy$:Subject<boolean>=new Subject<boolean>();
   @ViewChild(MatPaginator) paginator!:MatPaginator;
   @ViewChild(MatSort) sort!:MatSort;
 
   dataSource=new MatTableDataSource<any>();
+  
+//Columnas que se muestran
+displayedColumns=['id','usuario','acciones'];
 
-  //Columnas que se muestran
-  displayedColumns=['id','usuario','acciones'];
+constructor(private router:Router,
+  private route:ActivatedRoute, private gService:GenericService
+  ) { }
 
-  constructor(private router:Router,
-    private route:ActivatedRoute, private gService:GenericService
-    ) { }
+  ngAfterViewInit(): void {
+    this.listaResidencia();
+  }
 
-    ngAfterViewInit(): void {
-      this.listaAsignacionplan();
-    }
+  listaResidencia(){
+    //Llamar al API, nombre de ruta
+    this.gService.list('residencia/')
+    .pipe(takeUntil(this.destroy$))
+    .subscribe((data:any)=>{
+        console.log(data);
+        this.datos=data;
+        this.dataSource=new MatTableDataSource(this.datos);
+        this.dataSource.sort=this.sort;
+        this.dataSource.paginator=this.paginator;
+    });
+  }
 
-    listaAsignacionplan(){
-      //Llamar al API, nombre de ruta
-      this.gService.list('asignacionplan/')
-      .pipe(takeUntil(this.destroy$))
-      .subscribe((data:any)=>{
-          console.log(data);
-          this.datos=data;
-          this.dataSource=new MatTableDataSource(this.datos);
-          this.dataSource.sort=this.sort;
-          this.dataSource.paginator=this.paginator;
-      });
-    }
+  detalleAsignacionID(id:number){
+    this.router.navigate(['/asignacionplan',id],{
+      relativeTo:this.route
+    });
+  }
 
-    detalleAsignacionID(id:number){
-      this.router.navigate(['/asignacionplan',id],{
-        relativeTo:this.route
-      });
-    }
 
-    
+  detallePago(id:number){
+    this.router.navigate(['/asignacionplan/pago',id],{
+      relativeTo:this.route
+    });
+  }
 
-    detallePago(id:number){
-      this.router.navigate(['asignacionplan/pago/',id],{
-        relativeTo:this.route
-      });
-    }
+  detallePendiente(id:number){
+    this.router.navigate(['/asignacionplan/pendiente/',id],{
+      relativeTo:this.route
+    });
+  }
 
-    detallePendiente(id:number){
-      this.router.navigate(['asignacionplan/pendiente',id],{
-        relativeTo:this.route
-      });
-    }
+  
 
-    
+  ngOnDestroy(){
+    this.destroy$.next(true);
+    this.destroy$.unsubscribe();
+  }
 
-    ngOnDestroy(){
-      this.destroy$.next(true);
-      this.destroy$.unsubscribe();
-    }
-
-}
+}//cierra export class AsignacionplanAllComponent

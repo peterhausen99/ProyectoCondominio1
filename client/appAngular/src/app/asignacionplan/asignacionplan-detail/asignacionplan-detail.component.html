@@ -1,13 +1,111 @@
-<mat-card class="dashboard-card" *ngIf="datos">
-    <mat-card-header>
-      <mat-card-title>Residencia # {{datos.idResidencia}} DETAIL<b></b></mat-card-title>
-    </mat-card-header>
-    <mat-card-content class="dashboard-card-content">
-      
-      <p><b>Id: </b>{{datos.idResidencia}}</p>
-   
-      
-      
-    </mat-card-content>
-  </mat-card>
+<mat-card class="full-width">
+  <!-- Titulo del Card -->
+  <mat-card-title>
+    <h1>Estados de cuenta - Pendientes</h1>
+  </mat-card-title>
+  <mat-card-content>
+    <div class="mat-elevation-z8" *ngIf="dataSourcePendiente">
+        <!-- Table -->
+      <table mat-table 
+      class="full-width-table" [dataSource]="dataSourcePendiente"  matSort
+      matSortStart="desc" aria-label="Elements">
 
+      <!-- Columna nombre -->
+      <ng-container matColumnDef="Mes">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Mes</th>
+        <td mat-cell *matCellDef="let row">{{row.mes}}</td>
+      </ng-container>
+
+      <!-- Columna nombre -->
+      <ng-container matColumnDef="Plan">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Plan</th>
+        <td mat-cell *matCellDef="let row">{{row.plan.descripcion}}</td>
+      </ng-container>
+
+       <!-- Columna nombre -->
+       <ng-container matColumnDef="Monto">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Monto</th>
+        <td mat-cell *matCellDef="let row">{{row.total}}</td>
+      </ng-container>
+
+        <!-- Columna nombre -->
+        <ng-container matColumnDef="Estado">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Estado</th>
+          <td mat-cell *matCellDef="let row">{{row.estado}}</td>
+        </ng-container>
+
+
+       <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+       <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+     </table>
+
+     <mat-paginator
+       #paginator
+       [length]="dataSourcePendiente?.data?.length"
+       [pageIndex]="0"
+       [pageSize]="5"
+       [pageSizeOptions]="[3, 5, 10]"
+       aria-label="Seleccione una pagina"
+     >
+     </mat-paginator>
+      <!-- Table -->
+    </div>
+  </mat-card-content>
+</mat-card>
+
+<br><br>
+
+<mat-card class="full-width">
+  <!-- Titulo del Card -->
+  <mat-card-title>
+    <h1>Historial - Pagos</h1>
+  </mat-card-title>
+  <mat-card-content>
+    <div class="mat-elevation-z8" *ngIf="dataSourcePago">
+        <!-- Table -->
+      <table mat-table 
+      class="full-width-table" [dataSource]="dataSourcePago"  matSort
+      matSortStart="desc" aria-label="Elements">
+
+      <!-- Columna nombre -->
+      <ng-container matColumnDef="Mes">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Mes</th>
+        <td mat-cell *matCellDef="let row">{{row.mes}}</td>
+      </ng-container>
+
+      <!-- Columna nombre -->
+      <ng-container matColumnDef="Plan">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Plan</th>
+        <td mat-cell *matCellDef="let row">{{row.plan.descripcion}}</td>
+      </ng-container>
+
+       <!-- Columna nombre -->
+       <ng-container matColumnDef="Monto">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Monto</th>
+        <td mat-cell *matCellDef="let row">{{row.total}}</td>
+      </ng-container>
+
+        <!-- Columna nombre -->
+        <ng-container matColumnDef="Estado">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Estado</th>
+          <td mat-cell *matCellDef="let row">{{row.estado}}</td>
+        </ng-container>
+
+
+       <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+       <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+     </table>
+
+     <mat-paginator
+       #paginator
+       [length]="dataSourcePago?.data?.length"
+       [pageIndex]="0"
+       [pageSize]="5"
+       [pageSizeOptions]="[3, 5, 10]"
+       aria-label="Seleccione una pagina"
+     >
+     </mat-paginator>
+      <!-- Table -->
+    </div>
+  </mat-card-content>
+</mat-card>

@@ -4,10 +4,11 @@ const router=express.Router();
 const asignacionPlanController=require("../controllers/asignacionPlanController");
 //Rutas de plans
 
-//localhost:3000/plan/
+
 router.get("/",asignacionPlanController.get);
-//localhost:3000/plan/1
+
 router.get("/:id",asignacionPlanController.getById);
+
 
 router.get("/pago/:id",asignacionPlanController.getByIdPago);
 

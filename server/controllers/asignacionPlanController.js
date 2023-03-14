@@ -13,7 +13,7 @@ module.exports.get = async (request, response, next) => {
 
 
 
-  
+
   module.exports.getByIdPago = async (request, response, next) => {
 
     let idRes = parseInt(request.params.id);
@@ -29,6 +29,8 @@ module.exports.get = async (request, response, next) => {
     });
     response.json(asignacionPlanes);
   };
+
+
 
   module.exports.getByIdPendiente = async (request, response, next) => {
 
