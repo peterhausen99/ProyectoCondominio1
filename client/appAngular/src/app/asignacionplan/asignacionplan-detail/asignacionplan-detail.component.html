@@ -1,7 +1,21 @@
+<mat-card class="dashboard-card" *ngIf="datosResidencia">
+  <mat-card-header>
+    <mat-card-title>Residencia: {{datosResidencia.id}} - 
+      Dueño: {{datosResidencia.usuario.nombre}}
+       {{datosResidencia.usuario.apellido1}} 
+       {{datosResidencia.usuario.apellido2}}<b></b></mat-card-title>
+  </mat-card-header>
+  <mat-card-content class="dashboard-card-content">
+    
+  </mat-card-content>
+</mat-card>
+
+<br>
+
 <mat-card class="full-width">
   <!-- Titulo del Card -->
   <mat-card-title>
-    <h1>Estados de cuenta - Pendientes</h1>
+    <h1>Deudas vigentes - Pendientes</h1>
   </mat-card-title>
   <mat-card-content>
     <div class="mat-elevation-z8" *ngIf="dataSourcePendiente">
@@ -11,29 +25,46 @@
       matSortStart="desc" aria-label="Elements">
 
       <!-- Columna nombre -->
-      <ng-container matColumnDef="Mes">
+      <ng-container matColumnDef="mes">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Mes</th>
         <td mat-cell *matCellDef="let row">{{row.mes}}</td>
       </ng-container>
 
-      <!-- Columna nombre -->
-      <ng-container matColumnDef="Plan">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Plan</th>
-        <td mat-cell *matCellDef="let row">{{row.plan.descripcion}}</td>
-      </ng-container>
+     
 
        <!-- Columna nombre -->
-       <ng-container matColumnDef="Monto">
+       <ng-container matColumnDef="monto">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Monto</th>
         <td mat-cell *matCellDef="let row">{{row.total}}</td>
       </ng-container>
 
         <!-- Columna nombre -->
-        <ng-container matColumnDef="Estado">
+        <ng-container matColumnDef="estado">
           <th mat-header-cell *matHeaderCellDef mat-sort-header>Estado</th>
           <td mat-cell *matCellDef="let row">{{row.estado}}</td>
         </ng-container>
 
+         <!-- Columna nombre -->
+      <ng-container matColumnDef="plan">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Plan</th>
+        <td mat-cell *matCellDef="let row">{{row.plan.descripcion}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="Detalle Plan">
+        <th mat-header-cell *matHeaderCellDef>Detalle Plan</th>
+        <td mat-cell *matCellDef="let row">
+         
+          <button
+            mat-mini-fab
+            matTooltip="Detalle Plan"
+            aria-label="Detalle Plan"
+            color="primary"
+            (click)="detallePlan(row.idPlan)"
+          >
+            <mat-icon class="mat-18">info</mat-icon>
+          </button>
+        </td>
+      </ng-container>
 
        <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
@@ -68,29 +99,47 @@
       matSortStart="desc" aria-label="Elements">
 
       <!-- Columna nombre -->
-      <ng-container matColumnDef="Mes">
+      <ng-container matColumnDef="mes">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Mes</th>
         <td mat-cell *matCellDef="let row">{{row.mes}}</td>
       </ng-container>
 
-      <!-- Columna nombre -->
-      <ng-container matColumnDef="Plan">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Plan</th>
-        <td mat-cell *matCellDef="let row">{{row.plan.descripcion}}</td>
-      </ng-container>
+      
 
        <!-- Columna nombre -->
-       <ng-container matColumnDef="Monto">
+       <ng-container matColumnDef="monto">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Monto</th>
         <td mat-cell *matCellDef="let row">{{row.total}}</td>
       </ng-container>
 
         <!-- Columna nombre -->
-        <ng-container matColumnDef="Estado">
+        <ng-container matColumnDef="estado">
           <th mat-header-cell *matHeaderCellDef mat-sort-header>Estado</th>
           <td mat-cell *matCellDef="let row">{{row.estado}}</td>
         </ng-container>
 
+        <!-- Columna nombre -->
+      <ng-container matColumnDef="plan">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Plan</th>
+        <td mat-cell *matCellDef="let row">{{row.plan.descripcion}}</td>
+      </ng-container>
+
+        <ng-container matColumnDef="Detalle Plan">
+          <th mat-header-cell *matHeaderCellDef>Detalle Plan</th>
+          <td mat-cell *matCellDef="let row">
+           
+            <button
+              mat-mini-fab
+              matTooltip="Detalle Plan"
+              aria-label="Detalle Plan"
+              color="primary"
+              (click)="detallePlan(row.idPlan)"
+            >
+              <mat-icon class="mat-18">info</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+      
 
        <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>

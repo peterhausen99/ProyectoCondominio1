@@ -18,6 +18,8 @@ export class AsignacionplanDetailComponent implements OnInit{
 
   datosPendiente:any;
   datosPago:any;
+  datosResidencia:any;
+
   destroy$:Subject<boolean>=new Subject<boolean>();
   @ViewChild(MatPaginator) paginator!:MatPaginator;
   @ViewChild(MatSort) sort!:MatSort;
@@ -26,13 +28,14 @@ export class AsignacionplanDetailComponent implements OnInit{
   dataSourcePago=new MatTableDataSource<any>();
 
   //Columnas que se muestran
-  displayedColumns=['Mes','Plan','Monto','Estado'];
+  displayedColumns=['mes','estado','monto','plan','Detalle Plan'];
 
   constructor(private router:Router, private route:ActivatedRoute, private gService:GenericService) {
     let id = route.snapshot.paramMap.get('id');
     if (!isNaN(Number(id))) {
       this.obtenerPendientes(Number(id));
       this.obtenerPagos(Number(id));
+      this.obtenerResidencia(Number(id));
     }
 
    }
@@ -69,6 +72,22 @@ export class AsignacionplanDetailComponent implements OnInit{
     }
 
 
+    obtenerResidencia(id: any) {
+      this.gService
+        .get('residencia', id)
+        .pipe(takeUntil(this.destroy$))
+        .subscribe((data: any) => {
+          console.log(data);
+          this.datosResidencia = data;
+        });
+    }
+
+
+    detallePlan(id:any){
+      this.router.navigate(['/plan',id],{
+        relativeTo:this.route
+      });
+    }
     
 
 
