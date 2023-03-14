@@ -1,7 +1,7 @@
 export const usuarios = [
   //1
   {
-    idCedula: 104560123,
+    idUsuario: 104560123,
     perfilUsuarioId: 1,
     nombre: "Pedro",
     apellido1: "Quintero",
@@ -14,7 +14,7 @@ export const usuarios = [
   },
   //2
   {
-    idCedula: 206990320,
+    idUsuario: 206990320,
     perfilUsuarioId: 1,
     nombre: "Joseph",
     apellido1: "Corella",
@@ -28,7 +28,7 @@ export const usuarios = [
 
   //3
   {
-    idCedula: 302360215,
+    idUsuario: 302360215,
     perfilUsuarioId: 2,
     nombre: "Carlos",
     apellido1: "Pérez",
@@ -41,7 +41,7 @@ export const usuarios = [
 
   //4
   {
-    idCedula: 405660125,
+    idUsuario: 405660125,
     perfilUsuarioId: 2,
     nombre: "Maria",
     apellido1: "Rojas",

@@ -20,7 +20,7 @@ model PerfilUsuario {
 
 /// Usuario///
 model Usuario {
-  idCedula Int @id
+  idUsuario Int @id
 
   perfilUsuario   PerfilUsuario @relation(fields: [perfilUsuarioId], references: [id])
   perfilUsuarioId Int
@@ -45,7 +45,7 @@ model Usuario {
 ///Reserva///
 model Reserva {
   id        Int     @id @default(autoincrement()) 
-  usuario   Usuario @relation(fields: [idUsuario], references: [idCedula])
+  usuario   Usuario @relation(fields: [idUsuario], references: [idUsuario])
   idUsuario Int
 
   areaComun   AreaComun @relation(fields: [idAreaComun], references: [id])
@@ -76,7 +76,7 @@ model AreaComun {
 ///Incidencias///
 model Incidencia {
   id Int @id @default(autoincrement())
-  usuario   Usuario @relation(fields: [idUsuario], references: [idCedula])
+  usuario   Usuario @relation(fields: [idUsuario], references: [idUsuario])
   idUsuario Int
 
   descripcion String
@@ -125,7 +125,7 @@ model AsignacionPlan {
 
 model Residencia {
   id Int @id @default(autoincrement())
-  usuario   Usuario @relation(fields: [idUsuario], references: [idCedula])
+  usuario   Usuario @relation(fields: [idUsuario], references: [idUsuario])
   idUsuario Int
   cantidadPersonas Int
   estado           String

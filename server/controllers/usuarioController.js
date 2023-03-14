@@ -15,7 +15,7 @@ module.exports.get = async (request, response, next) => {
     let id = parseInt(request.params.id);
     const usuario = await prisma.usuario.findUnique({
       where: {
-        idCedula: id,
+        idUsuario: id,
       }
     });
     response.json(usuario);
