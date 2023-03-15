@@ -78,7 +78,7 @@ model Incidencia {
   id Int @id @default(autoincrement())
   usuario   Usuario @relation(fields: [idUsuario], references: [idUsuario])
   idUsuario Int
-
+  titulo String
   descripcion String
   estado      String
   fecha       DateTime

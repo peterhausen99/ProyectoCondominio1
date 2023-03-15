@@ -14,6 +14,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
 import { PlanModule } from './plan/plan.module';
 import { AsignacionplanModule } from './asignacionplan/asignacionplan.module';
+import { IncidenciaModule } from './incidencia/incidencia.module';
 
 
 
@@ -37,7 +38,8 @@ import { AsignacionplanModule } from './asignacionplan/asignacionplan.module';
     RubroModule,
     PlanModule,
     AsignacionplanModule,
-    AppRoutingModule,//TIENE QUE IR DE ULTIMO
+    IncidenciaModule,
+    AppRoutingModule, //TIENE QUE IR DE ULTIMO AppRoutingModule
           
   ],
   providers: [],

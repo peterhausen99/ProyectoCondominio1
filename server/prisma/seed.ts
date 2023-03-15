@@ -1,5 +1,6 @@
 import { PrismaClient } from "@prisma/client";
 import { residencias } from "./seeds/residencia";
+import { incidencia } from "./seeds/incidencia";
 import { usuarios } from "./seeds/usuario";
 import { perfilUsuarios } from "./seeds/perfilUsuario";
 import { rubros } from "./seeds/rubro";
@@ -116,7 +117,10 @@ await prisma.asignacionPlan.create({
     }
 });
 
-
+//Incidencias
+await prisma.incidencia.createMany({
+    data: incidencia
+});
 
 
 

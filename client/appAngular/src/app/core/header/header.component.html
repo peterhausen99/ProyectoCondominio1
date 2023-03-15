@@ -16,21 +16,33 @@
       [routerLink]="'/'"
       routerLinkActive="mat-raised-button">Inicio</button>
     
+
+      <button
+      mat-menu-item
+      [routerLink]="'/incidencia/all'"
+      [routerLinkActive]="'mat-raised-button'">Incidencias</button>
+
+     
+      <button
+      mat-menu-item
+      [routerLink]="'/plan'"
+      [routerLinkActive]="'mat-raised-button'">Planes de cobro</button>
+
+      
       <button
       mat-menu-item
       [routerLink]="'/residencia'"
       [routerLinkActive]="'mat-raised-button'">Residencias</button>
-      <button
-      mat-menu-item
-      [routerLink]="'/plan'"
-      [routerLinkActive]="'mat-raised-button'">Planes de Cobro</button>
+
     
+      <button mat-menu-item [matMenuTriggerFor]="menu2">Mantenimientos</button>
+
       <button
       mat-menu-item
       [routerLink]="'/home/acerca-de'"
       routerLinkActive="mat-raised-button">Acerca de</button>
 
-    <button mat-menu-item [matMenuTriggerFor]="menu2">Mantenimientos</button>
+    
   </mat-menu>
 <!-- Menu #2 -->
 <mat-menu #menu2="matMenu">
@@ -53,11 +65,5 @@
       [routerLink]="'/asignacionplan'"
       [routerLinkActive]="'mat-raised-button'">Estados de cuenta</button>
   </mat-menu>
-  
-
-
     </mat-toolbar>
-
-
-
 </p>
