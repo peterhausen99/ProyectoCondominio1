@@ -1,1 +1,11 @@
-<p>informacion-detail works!</p>
+<mat-card class="dashboard-card" *ngIf="datos">
+    <mat-card-header>
+      <mat-card-title>Informacion # {{datos.id}}<b></b></mat-card-title>
+    </mat-card-header>
+    <mat-card-content class="dashboard-card-content">
+      <p><b>Titulo: </b>{{datos.titulo}}</p>
+      <p><b>Mensaje: </b>{{datos.mensaje}}</p>
+      <p><b>Estado: </b>{{datos.estado}}</p>
+
+    </mat-card-content>
+  </mat-card>

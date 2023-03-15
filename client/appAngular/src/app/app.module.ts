@@ -40,8 +40,9 @@ import { InformacionModule } from './informacion/informacion.module';
     PlanModule,
     AsignacionplanModule,
     IncidenciaModule,
-    AppRoutingModule,
-    InformacionModule, //TIENE QUE IR DE ULTIMO AppRoutingModule
+    
+    InformacionModule,
+    AppRoutingModule, //TIENE QUE IR DE ULTIMO AppRoutingModule
           
   ],
   providers: [],
