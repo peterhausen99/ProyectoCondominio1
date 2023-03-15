@@ -111,12 +111,10 @@ export class IncidenciaFormComponent implements OnInit {
 
   //Actualizar incidencia
   actualizarIncidencia(){
-    
     //Verificar validación
     if(this.incidenciaForm.invalid){
       return;
     }
-    
     //Obtener id Generos del Formulario y Crear arreglo con {id: value}
    // let gFormat:any=this.incidenciaForm.get('generos').value.map(x=>({['id']: x }));
     //Asignar valor al formulario 
