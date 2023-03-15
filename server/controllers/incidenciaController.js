@@ -32,7 +32,7 @@ module.exports.create = async (request, response, next) => {
       idUsuario: incidencia.idUsuario,
       titulo: incidencia.titulo,
       descripcion: incidencia.descripcion,
-      estado: incidencia.estado,
+      estado: "En proceso",
       fecha: incidencia.fecha,
       usuario: {
         //Generos [{id:valor}]

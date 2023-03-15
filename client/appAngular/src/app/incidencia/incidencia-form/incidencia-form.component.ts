@@ -66,7 +66,7 @@ export class IncidenciaFormComponent implements OnInit {
         Validators.maxLength(20),
       ])],
       descripcion: [null, Validators.required],
-      estado: [null, Validators.required],
+      estado: [null, null],
       fecha: [null, null],
     });
   }//cierra formulario
