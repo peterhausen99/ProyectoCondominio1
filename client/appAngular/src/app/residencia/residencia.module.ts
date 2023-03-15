@@ -27,7 +27,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
       ResidenciaIndexComponent,
-      
       ResidenciaDetailComponent,
       ResidenciaDiagComponent,
       ResidenciaAllComponent
