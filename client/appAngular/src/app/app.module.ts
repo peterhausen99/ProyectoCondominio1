@@ -15,6 +15,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { PlanModule } from './plan/plan.module';
 import { AsignacionplanModule } from './asignacionplan/asignacionplan.module';
 import { IncidenciaModule } from './incidencia/incidencia.module';
+import { InformacionModule } from './informacion/informacion.module';
 
 
 
@@ -39,7 +40,8 @@ import { IncidenciaModule } from './incidencia/incidencia.module';
     PlanModule,
     AsignacionplanModule,
     IncidenciaModule,
-    AppRoutingModule, //TIENE QUE IR DE ULTIMO AppRoutingModule
+    AppRoutingModule,
+    InformacionModule, //TIENE QUE IR DE ULTIMO AppRoutingModule
           
   ],
   providers: [],

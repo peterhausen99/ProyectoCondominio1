@@ -4,6 +4,7 @@ import { incidencia } from "./seeds/incidencia";
 import { usuarios } from "./seeds/usuario";
 import { perfilUsuarios } from "./seeds/perfilUsuario";
 import { rubros } from "./seeds/rubro";
+import { informacion } from "./seeds/informacion";
 
 
 const prisma=new PrismaClient();
@@ -120,6 +121,11 @@ await prisma.asignacionPlan.create({
 //Incidencias
 await prisma.incidencia.createMany({
     data: incidencia
+});
+
+//Informacion
+await prisma.informacion.createMany({
+    data: informacion
 });
 
 
