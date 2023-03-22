@@ -10,11 +10,12 @@ import { GenericService } from 'src/app/share/generic.service';
   styleUrls: ['./informacion-form.component.css']
 })
 export class InformacionFormComponent implements OnInit {
+  fecha = Date.now();
 
   informacionForm: FormGroup;
 
   destroy$: Subject<boolean> = new Subject<boolean>();
-  isCreate:boolean;
+  isCreate:boolean=true;
   idinformacion:number=0;
   titleForm:string='Crear';
   informacionInfo:any;
@@ -71,6 +72,7 @@ export class InformacionFormComponent implements OnInit {
       ])],
       mensaje: [null, Validators.required],
       estado: [null, null],
+      
 
     });
   }//cierra formulario
@@ -89,13 +91,7 @@ export class InformacionFormComponent implements OnInit {
     if (this.informacionForm.invalid) {
       return;
     }
-    //Obtener los generos del Formulario y crear el arreglo para el API
-    //[{id:value}]
-    //let gFormat: any = this.videojuegoForm
-     // .get('generos')
-     // .value.map((x) => ({ ['id']: x }));
-    //Asignar al valor del formulario
-   // this.incidenciaForm.patchValue({ generos: gFormat });
+   
     console.log(this.informacionForm.value);
     //Llamar al API y enviar la infomracion
     this.gService

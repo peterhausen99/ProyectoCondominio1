@@ -10,11 +10,11 @@ import { GenericService } from 'src/app/share/generic.service';
   styleUrls: ['./incidencia-form.component.css']
 })
 export class IncidenciaFormComponent implements OnInit {
-
+  fecha = Date.now();
   incidenciaForm: FormGroup;
 
   destroy$: Subject<boolean> = new Subject<boolean>();
-  isCreate:boolean;
+  isCreate:boolean=true;
   idIncidencia:number=0;
   titleForm:string='Crear';
   incidenciaInfo:any;
@@ -67,7 +67,7 @@ export class IncidenciaFormComponent implements OnInit {
       ])],
       descripcion: [null, Validators.required],
       estado: [null, null],
-      fecha: [null, null],
+      fecha: [new Date(this.fecha), null],
     });
   }//cierra formulario
 

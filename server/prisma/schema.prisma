@@ -141,6 +141,7 @@ model Informacion {
   titulo String
   mensaje String
   estado String
+  tipo String
   createdAt DateTime @default(now())
   updatedAt DateTime @default(now()) @updatedAt
 }

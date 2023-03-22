@@ -42,7 +42,7 @@ module.exports.get = async (request, response, next) => {
     let informacion = request.body;
     const newInformacion = await prisma.informacion.create({
       data: {
-        id: informacion.id,
+
         titulo: informacion.titulo,
         mensaje: informacion.mensaje,
         estado: informacion.estado,
@@ -70,7 +70,7 @@ module.exports.get = async (request, response, next) => {
     });
   
     const newInformacion = await prisma.informacion.update({
-      where: { id: idIncidencia },
+      where: { id: idInformacion },
       data: {
         id: informacion.id,
         titulo: informacion.titulo,
