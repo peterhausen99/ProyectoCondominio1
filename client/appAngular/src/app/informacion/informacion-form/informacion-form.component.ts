@@ -38,7 +38,7 @@ export class InformacionFormComponent implements OnInit {
         this.isCreate=false;
         this.titleForm="Actualizar";
          //Obtener videojuego a actualizar del API
-         this.gService.get('incidencia',this.idinformacion).pipe(takeUntil(this.destroy$))
+         this.gService.get('informacion',this.idinformacion).pipe(takeUntil(this.destroy$))
          .subscribe((data:any)=>{
           this.informacionInfo=data;
           this.informacionForm.setValue({
@@ -70,7 +70,7 @@ export class InformacionFormComponent implements OnInit {
         Validators.minLength(1),
         Validators.maxLength(20),
       ])],
-      mensaje: [null, Validators.required],
+      mensaje: [null, null],
       estado: [null, null],
       
 
@@ -122,10 +122,7 @@ export class InformacionFormComponent implements OnInit {
     if(this.informacionForm.invalid){
       return;
     }
-    //Obtener id Generos del Formulario y Crear arreglo con {id: value}
-   // let gFormat:any=this.incidenciaForm.get('generos').value.map(x=>({['id']: x }));
-    //Asignar valor al formulario 
-    //this.incidenciaForm.patchValue({ generos:gFormat});
+
     console.log(this.informacionForm.value);
     //Accion API create enviando toda la informacion del formulario
     this.gService.update('informacion',this.informacionForm.value)
