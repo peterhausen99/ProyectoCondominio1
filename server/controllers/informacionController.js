@@ -12,6 +12,42 @@ module.exports.get = async (request, response, next) => {
     response.json(informacion);
   };
 
+  //AVISOS
+  module.exports.getAviso = async (request, response, next) => {
+    const informacion = await prisma.informacion.findMany({
+      where:{
+        estado:"Activo",
+        tipo: "Aviso"
+      }
+
+    });
+    response.json(informacion);
+  };
+
+  //NOTICIA
+  module.exports.getNoticia = async (request, response, next) => {
+    const informacion = await prisma.informacion.findMany({
+      where:{
+        estado:"Activo",
+        tipo: "Noticia"
+      }
+
+    });
+    response.json(informacion);
+  };
+
+  //ARCHIVO
+  module.exports.getArchivo = async (request, response, next) => {
+    const informacion = await prisma.informacion.findMany({
+      where:{
+        estado:"Activo",
+        tipo: "Archivos"
+      }
+
+    });
+    response.json(informacion);
+  };
+
   
 
 
