@@ -8,3 +8,67 @@
     <p></p>
   </mat-card-content>
 </mat-card>
+
+<hr>
+
+                            <!--NOTICIAS-->
+<div class="grid-container">
+  <h1 class="mat-h1">Noticias</h1>
+  <mat-grid-list [cols]="3" rowHeight="20em" gutterSize="10px" *ngIf="datos">
+    <mat-grid-tile *ngFor="let item of datos">
+      <mat-card class="dashboard-card">
+        <mat-card-header>
+          <mat-card-title>{{ item.titulo }}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="dashboard-card-content">
+        {{item.mensaje}}
+        </mat-card-content>
+        <mat-divider inset></mat-divider>
+        <mat-card-actions>
+        </mat-card-actions>
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>
+
+<hr>
+                            <!--AVISOS-->
+<div class="grid-container">
+  <h1 class="mat-h1">Avisos</h1>
+  <mat-grid-list [cols]="3" rowHeight="20em" gutterSize="10px" *ngIf="datos">
+    <mat-grid-tile *ngFor="let item of datos">
+      <mat-card class="dashboard-card">
+        <mat-card-header>
+          <mat-card-title>{{ item.titulo }}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="dashboard-card-content">
+        {{item.mensaje}}
+        </mat-card-content>
+        <mat-divider inset></mat-divider>
+        <mat-card-actions>
+        </mat-card-actions>
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>
+
+<hr>
+                                <!--ARCHIVOS-->
+<div class="grid-container">
+  <h1 class="mat-h1">Archivos</h1>
+  <mat-grid-list [cols]="3" rowHeight="20em" gutterSize="10px" *ngIf="datos">
+    <mat-grid-tile *ngFor="let item of datos">
+      <mat-card class="dashboard-card">
+        <mat-card-header>
+          <mat-card-title>{{ item.titulo }}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="dashboard-card-content">
+        {{item.mensaje}}
+        </mat-card-content>
+        <mat-divider inset></mat-divider>
+        <mat-card-actions>
+        </mat-card-actions>
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>
