@@ -47,6 +47,13 @@ export class PlanIndexComponent implements OnInit {
     'Plan agregado',TipoMessage.success);
   }
 
+  crearPlan(){
+    this.router.navigate(['/plan/create'], {relativeTo:this.route})
+  }
+  actualizarPlan(id:number){
+    this.router.navigate(['/plan/update',id], {relativeTo:this.route})
+  }
+
 
   ngOnDestroy(){
     this.destroy$.next(true);

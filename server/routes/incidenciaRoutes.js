@@ -10,6 +10,9 @@ router.get("/", incidenciaController.get);
 
 router.post('/', incidenciaController.create); 
 
+router.post('/', incidenciaController.createByUser); 
+
+
 router.get("/:id", incidenciaController.getById);
 
 router.put('/:id', incidenciaController.update);

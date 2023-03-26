@@ -40,6 +40,24 @@ module.exports.create = async (request, response, next) => {
   response.json(newIncidencia);
 };
 
+
+module.exports.createByUser = async (request, response, next) => {
+ 
+  let incidencia = request.body;
+  const newIncidencia = await prisma.incidencia.create({
+    data: {
+      idUsuario: parseInt(incidencia.idUsuario),
+      titulo: incidencia.titulo,
+      descripcion: incidencia.descripcion,
+      estado: incidencia.estado,
+      fecha: incidencia.fecha
+    },
+  });
+  response.json(newIncidencia);
+};
+
+
+
 //Actualizar un 
 module.exports.update = async (request, response, next) => {
   let incidencia = request.body;

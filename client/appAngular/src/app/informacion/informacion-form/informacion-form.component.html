@@ -1,52 +1,77 @@
-<form [formGroup]="informacionForm" (ngSubmit)="isCreate ? crearInformacion(): actualizarInformacion()" novalidate >
-    <input type="hidden" formControlName="id" />
-    <mat-card class="shipping-card">
-      <mat-card-header>
-        <mat-card-title>{{titleForm}}  información</mat-card-title>
-      </mat-card-header>
-      <mat-card-content>
-
-        <div class="row">
-          <div class="col">
-            <mat-form-field class="full-width">
-              <input matInput #tituloIncidencia  maxlength="20" placeholder="Titulo" formControlName="titulo">
-              <mat-hint align="end">{{tituloIncidencia.value.length}}/ 20</mat-hint>
-              <mat-error *ngIf="informacionForm.controls['titulo'].hasError('required')">
-                Titulo es <strong>requerido</strong>
-              </mat-error>
-            </mat-form-field>
-          </div>
+<form
+  [formGroup]="informacionForm"
+  (ngSubmit)="isCreate ? crearInformacion() : actualizarInformacion()"
+  novalidate
+>
+  <input type="hidden" formControlName="id" />
+  <mat-card class="shipping-card">
+    <mat-card-header>
+      <mat-card-title>{{ titleForm }} información</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Título</mat-label>
+            <input
+              matInput
+              #tituloIncidencia
+              maxlength="20"
+              placeholder="Título"
+              formControlName="titulo"
+            />
+            <mat-hint align="end">{{ tituloIncidencia.value.length }}/ 40</mat-hint>
+            <mat-error *ngIf="informacionForm.controls['titulo'].hasError('required')">
+              Titulo es <strong>requerido</strong>
+            </mat-error>
+          </mat-form-field>
         </div>
+      </div>
 
-        <div class="row">
-            <div class="col">
-              <mat-form-field class="full-width">
-                <input matInput placeholder="mensaje" formControlName="mensaje">
-               <!--<mat-error *ngIf="informacionForm.controls['mensaje'].hasError('required')"> 
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Mensaje</mat-label>
+            <textarea
+              matInput
+              placeholder="Mensaje"
+              formControlName="mensaje"
+            ></textarea>
+            <!--<mat-error *ngIf="informacionForm.controls['mensaje'].hasError('required')"> 
                   Mensaje es <strong>requerido</strong>
                 </mat-error>-->
-              </mat-form-field>
-            </div>
-          </div>
+          </mat-form-field>
+        </div>
+      </div>
 
-          <div class="row">
-            <div class="col">
-              <mat-form-field class="full-width">
-                <input matInput placeholder="estado" formControlName="estado">
-                
-              </mat-form-field>
-            </div>
-          </div>
-
-          
-        
-       
-       
-        
-      </mat-card-content>
-      <mat-card-actions>
-        <button mat-raised-button color="primary" type="submit">Guardar</button>
-      </mat-card-actions>
-    </mat-card>
-  </form>
-  
+      <div class="row">
+        <div class="col">
+          <mat-label>Tipo de información</mat-label>
+          <mat-radio-group formControlName="tipo">
+            <mat-radio-button value="Aviso">Aviso</mat-radio-button>
+            <mat-radio-button value="Noticia">Noticia </mat-radio-button>
+            <mat-radio-button value="Archivos">Archivos </mat-radio-button>
+          </mat-radio-group>
+        </div>
+      </div>
+      <br>
+      <hr />
+      <br>
+      <div class="row">
+        <div class="col">
+          <mat-radio-group formControlName="estado">
+            <mat-label>Estado</mat-label>
+            <mat-radio-button value="Activo">Activo</mat-radio-button>
+            <mat-radio-button value="Inactivo">Inactivo </mat-radio-button>
+          </mat-radio-group>
+        </div>
+      </div>
+      <br>
+      <hr />
+      <br>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" type="submit">Guardar</button>
+    </mat-card-actions>
+  </mat-card>
+</form>

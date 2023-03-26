@@ -46,6 +46,7 @@ export class InformacionFormComponent implements OnInit {
             titulo:this.informacionInfo.titulo,
             mensaje:this.informacionInfo.mensaje,
             estado:this.informacionInfo.estado,
+            tipo:this.informacionInfo.tipo,
           })
          });
       }
@@ -67,11 +68,11 @@ export class InformacionFormComponent implements OnInit {
       id: [null, null],
       titulo: [null, Validators.compose([
         Validators.required,
-        Validators.minLength(1),
-        Validators.maxLength(20),
+        Validators.minLength(1)
       ])],
       mensaje: [null, null],
       estado: [null, null],
+      tipo: [null, null],
       
 
     });

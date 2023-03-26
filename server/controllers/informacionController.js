@@ -46,6 +46,7 @@ module.exports.get = async (request, response, next) => {
         titulo: informacion.titulo,
         mensaje: informacion.mensaje,
         estado: informacion.estado,
+        tipo: informacion.tipo,
       },
     });
     response.json(newInformacion);
@@ -76,6 +77,7 @@ module.exports.get = async (request, response, next) => {
         titulo: informacion.titulo,
         mensaje: informacion.mensaje,
         estado: informacion.estado,
+        tipo: informacion.tipo,
       },
     });
     response.json(newInformacion);

@@ -80,7 +80,7 @@ model Incidencia {
   idUsuario Int
   titulo String
   descripcion String
-  estado      String
+  estado      String //Abierto-Pendiente-Resuelto
   fecha       DateTime
   createdAt   DateTime @default(now())
   updatedAt   DateTime @default(now()) @updatedAt
@@ -140,8 +140,20 @@ model Informacion {
   id Int @id @default(autoincrement())
   titulo String
   mensaje String
-  estado String
-  tipo String
+  tipo String   //notica-aviso-archivos
+  estado String //activo-inactivo
   createdAt DateTime @default(now())
   updatedAt DateTime @default(now()) @updatedAt
+
+  //tipoInformacion   TipoInformacion @relation(fields: [tipoInformacionId], references: [id])
+  //tipoInformacionId Int
+
 }
+
+//model TipoInformacion{
+//id Int @id @default(autoincrement())
+//descripcion String
+//createdAt DateTime @default(now())
+//updatedAt DateTime @default(now()) @updatedAt
+//informacion    Informacion[]
+//}

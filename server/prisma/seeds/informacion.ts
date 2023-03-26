@@ -3,7 +3,7 @@ export const informacion = [
     {
         id:1,
         titulo: "Asamblea de condominos",
-        mensaje: "SSe le informa a los condominos que el dia sabado 15 de marzo del 2023 se llevara a cabo la primera asamblea ordinaria de condominos",
+        mensaje: "Se le informa a los condominos que el dia sabado 15 de marzo del 2023 se llevara a cabo la primera asamblea ordinaria de condominos",
         estado: "Inactivo",
         tipo:"Noticia"
     }, 
@@ -34,7 +34,7 @@ export const informacion = [
         titulo: "Cobro plan marzo",
         mensaje: "Se les informa que ya se encuentra al cobro la cuota del plan de marzo",
         estado: "Activo",
-        tipo:"Archivos"
+        tipo:"Archivo"
     }, 
 
 

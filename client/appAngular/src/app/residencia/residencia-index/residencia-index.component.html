@@ -14,15 +14,36 @@
         </mat-card-content>
         <mat-divider inset></mat-divider>
         <mat-card-actions>
+
           <button
             mat-mini-fab
             color="primary"
             matTooltip="Detalle Residencia"
             aria-label="Detalle Residencia"
-            (click)="detalleResidencia(item.id)"
-          >
+            (click)="detalleResidencia(item.id)">
             <mat-icon class="mat-18">info</mat-icon>
           </button>
+
+          <button
+            mat-mini-fab
+            color="primary"
+            matTooltip="Crear Residencia"
+            aria-label="Crear Residencia"
+            (click)="crearResidencia()">
+            <mat-icon class="mat-18">add</mat-icon>
+          </button>
+
+          <button
+            mat-mini-fab
+            color="primary"
+            matTooltip="Actualizar Residencia"
+            aria-label="Actualizar Residencia"
+            (click)="detalleResidencia(item.id)">
+            <mat-icon class="mat-18">edit</mat-icon>
+          </button>
+
+
+
         </mat-card-actions>
       </mat-card>
     </mat-grid-tile>

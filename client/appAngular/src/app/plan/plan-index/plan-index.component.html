@@ -20,13 +20,36 @@
           <mat-card-actions>
             <button
             mat-mini-fab color="accent"
-            matTooltip="Detalle Videjuego"
-            aria-label="Detalle Videjuego"
+            matTooltip="Detalle Plan"
+            aria-label="Detalle Plan"
             color="primary"
             (click)="detallePlan(item.id)"
           > 
           <mat-icon class="mat-18">info</mat-icon>
           </button>
+
+
+          <button
+            mat-mini-fab color="accent"
+            matTooltip="Crear Plan"
+            aria-label="Crear Plan"
+            color="primary"
+            (click)="crearPlan()"
+          > 
+          <mat-icon class="mat-18">add</mat-icon>
+          </button>
+
+          <button
+          mat-mini-fab color="accent"
+          matTooltip="Actualizar Plan"
+          aria-label="Actualizar Plan"
+          color="primary"
+          (click)="actualizarPlan(item.id)"
+        > 
+        <mat-icon class="mat-18">edit</mat-icon>
+        </button>
+
+
           </mat-card-actions>
         </mat-card>
       </mat-grid-tile>

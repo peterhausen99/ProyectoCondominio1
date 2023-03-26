@@ -5,11 +5,12 @@ import { Subject, takeUntil } from 'rxjs';
 import { GenericService } from 'src/app/share/generic.service';
 
 @Component({
-  selector: 'app-incidencia-form',
-  templateUrl: './incidencia-form.component.html',
-  styleUrls: ['./incidencia-form.component.css']
+  selector: 'app-incidencia-form-user',
+  templateUrl: './incidencia-form-user.component.html',
+  styleUrls: ['./incidencia-form-user.component.css']
 })
-export class IncidenciaFormComponent implements OnInit {
+export class IncidenciaFormUserComponent implements OnInit{
+
   fecha = Date.now();
   incidenciaForm: FormGroup;
 
@@ -28,6 +29,7 @@ export class IncidenciaFormComponent implements OnInit {
     this.formularioReactive();
     
   }
+
 
   ngOnInit(): void {
     //Verificar si se envio un id por parametro para crear formulario para actualizar
@@ -55,24 +57,21 @@ export class IncidenciaFormComponent implements OnInit {
     });
   }//cierra oninit
 
-  //Crear el formulario
-  formularioReactive() {
-    this.incidenciaForm = this.fb.group({
-      id: [null, null],
-      idUsuario: [null, Validators.required],
-      titulo: [null, Validators.compose([
-        Validators.required,
-        Validators.minLength(2)
-      ])],
-      descripcion: [null, Validators.required],
-      estado: [null, null],
-      fecha: [new Date(this.fecha), null],
-    });
-  }//cierra formulario
 
-
-
-
+ //Crear el formulario
+ formularioReactive() {
+  this.incidenciaForm = this.fb.group({
+    id: [null, null],
+    idUsuario: [null, Validators.required],
+    titulo: [null, Validators.compose([
+      Validators.required,
+      Validators.minLength(2)
+    ])],
+    descripcion: [null, Validators.required],
+    estado: [null, null],
+    fecha: [new Date(this.fecha), null],
+  });
+}//cierra formulario
 
 
 
@@ -97,16 +96,13 @@ export class IncidenciaFormComponent implements OnInit {
       .pipe(takeUntil(this.destroy$))
       .subscribe((data: any) => {
         console.log(data);
-        this.router.navigate(['/incidencia/all'], {
+        this.router.navigate(['/'], {
           queryParams: { create: 'true' },
         });
       });
   }//cierra crear incidencia
 
-
-
-
-
+  
 
   //Actualizar incidencia
   actualizarIncidencia(){
@@ -130,19 +126,12 @@ export class IncidenciaFormComponent implements OnInit {
     });
   }//cierra actualizar incidencia
 
-
-
-
-
+  
 
 
 ngOnDestroy() {
-    this.destroy$.next(true);
-    this.destroy$.unsubscribe();
-  }
+  this.destroy$.next(true);
+  this.destroy$.unsubscribe();
+}
 
-
-
-
-
-}//cierra class
+}
