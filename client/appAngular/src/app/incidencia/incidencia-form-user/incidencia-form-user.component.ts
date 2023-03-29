@@ -59,14 +59,20 @@ export class IncidenciaFormUserComponent implements OnInit {
     this.incidenciaForm = this.fb.group({
       id: [null, null],
       idUsuario: [null, Validators.required],
-      titulo: [null, Validators.compose(
-                                        [Validators.required, 
-                                         Validators.minLength(2)])],
-      descripcion: [null, Validators.required],
-      estado: ["Abierto", null],
+      titulo: [null, Validators.compose([
+                                        Validators.required,
+                                        Validators.minLength(5),
+                                        Validators.maxLength(40),
+      ])],
+      descripcion: [null, Validators.compose([
+                                              Validators.required,
+                                              Validators.minLength(5),
+                                              Validators.maxLength(200),
+])],
+      estado: [null, Validators.required],
       fecha: [new Date(this.fecha), null],
     });
-  } //cierra formulario
+  }//cierra formulario
 
   //Crear incidencia
   crearIncidencia() {

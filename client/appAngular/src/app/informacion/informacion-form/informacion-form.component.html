@@ -37,9 +37,9 @@
               placeholder="Mensaje"
               formControlName="mensaje"
             ></textarea>
-            <!--<mat-error *ngIf="informacionForm.controls['mensaje'].hasError('required')"> 
+            <mat-error *ngIf="informacionForm.controls['mensaje'].hasError('required')"> 
                   Mensaje es <strong>requerido</strong>
-                </mat-error>-->
+                </mat-error>
           </mat-form-field>
         </div>
       </div>
@@ -51,6 +51,9 @@
             <mat-radio-button value="Aviso">Aviso</mat-radio-button>
             <mat-radio-button value="Noticia">Noticia </mat-radio-button>
             <mat-radio-button value="Archivos">Archivos </mat-radio-button>
+            <mat-error *ngIf="informacionForm.controls['tipo'].hasError('required')">
+              Tipo de informacion es <strong>requerido</strong>
+            </mat-error>
           </mat-radio-group>
         </div>
       </div>
@@ -63,6 +66,9 @@
             <mat-label>Estado</mat-label>
             <mat-radio-button value="Activo">Activo</mat-radio-button>
             <mat-radio-button value="Inactivo">Inactivo </mat-radio-button>
+            <mat-error *ngIf="informacionForm.controls['estado'].hasError('required')">
+              Estado de informacion es <strong>requerido</strong>
+            </mat-error>
           </mat-radio-group>
         </div>
       </div>

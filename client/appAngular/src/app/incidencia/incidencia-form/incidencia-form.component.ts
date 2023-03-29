@@ -61,11 +61,16 @@ export class IncidenciaFormComponent implements OnInit {
       id: [null, null],
       idUsuario: [null, Validators.required],
       titulo: [null, Validators.compose([
-        Validators.required,
-        Validators.minLength(2)
+                                        Validators.required,
+                                        Validators.minLength(5),
+                                        Validators.maxLength(40),
       ])],
-      descripcion: [null, Validators.required],
-      estado: [null, null],
+      descripcion: [null, Validators.compose([
+                                              Validators.required,
+                                              Validators.minLength(5),
+                                              Validators.maxLength(200),
+])],
+      estado: [null, Validators.required],
       fecha: [new Date(this.fecha), null],
     });
   }//cierra formulario

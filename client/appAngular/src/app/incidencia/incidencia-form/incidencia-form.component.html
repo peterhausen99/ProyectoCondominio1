@@ -36,6 +36,9 @@
                 <mat-radio-button value="Abierto">Abierto</mat-radio-button>
                 <mat-radio-button value="Pendiente">Pendiente </mat-radio-button>
                 <mat-radio-button value="Resuelto">Resuelto </mat-radio-button>
+                <mat-error *ngIf="incidenciaForm.controls['estado'].hasError('required')">
+                  Estado es <strong>requerido</strong>
+                </mat-error>
               </mat-radio-group>
             </div>
           </div>
