@@ -12,8 +12,6 @@ module.exports.get = async (request, response, next) => {
     response.json(informacion);
   };
 
-<<<<<<< HEAD
-=======
   //AVISOS
   module.exports.getAviso = async (request, response, next) => {
     const informacion = await prisma.informacion.findMany({
@@ -57,7 +55,6 @@ module.exports.get = async (request, response, next) => {
 
 
 
->>>>>>> a954d25be225db0ed55e06c3cac354199604baf1
 
   module.exports.getById = async (request, response, next) => {
     let id = parseInt(request.params.id);
