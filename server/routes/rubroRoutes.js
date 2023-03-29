@@ -7,7 +7,8 @@ const rubroController = require("../controllers/rubroController");
 
 //Definición de rutas para rubro
 router.get("/", rubroController.get);
-
+router.post('/', rubroController.create); 
 router.get("/:id", rubroController.getById);
-
+router.put('/:id', rubroController.update);
 module.exports = router;
+

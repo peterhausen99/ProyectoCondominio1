@@ -6,8 +6,14 @@ const planController=require("../controllers/planController");
 
 //localhost:3000/plan/
 router.get("/",planController.get);
+router.post('/', planController.create); 
 //localhost:3000/plan/1
 router.get("/:id",planController.getById);
+router.put('/:id', planController.update);
+
+
+
+module.exports = router;
 
 
 

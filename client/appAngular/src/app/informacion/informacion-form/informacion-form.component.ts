@@ -27,7 +27,7 @@ export class InformacionFormComponent implements OnInit {
     private route: ActivatedRoute
   ) {
     this.formularioReactive();
-    
+   
   }
 
   ngOnInit(): void {
@@ -54,13 +54,6 @@ export class InformacionFormComponent implements OnInit {
   }//cierra oninit
 
 
-
-
-
-
-
-
-
    //Crear el formulario
    formularioReactive() {
     this.informacionForm = this.fb.group({
@@ -77,15 +70,7 @@ export class InformacionFormComponent implements OnInit {
     });
   }//cierra formulario
 
-
-
-
-
-
-
-
   
-
   //Crear incidencia
   crearInformacion() {
     if (this.informacionForm.invalid) {
@@ -104,15 +89,6 @@ export class InformacionFormComponent implements OnInit {
         });
       });
   }//cierra crear incidencia
-
-
-
-
-
-
-
-
-
 
 
 

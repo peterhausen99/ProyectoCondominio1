@@ -28,3 +28,46 @@ module.exports.create = async (request, response, next) => {
 //Actualizar un plan
 module.exports.update = async (request, response, next) => {
 };
+
+module.exports.create = async (request, response, next) => {
+    let plan = request.body;
+    const newPlan = await prisma.plan.create({
+      data: {
+        descripcion : plan.descripcion,
+        totalPlan : plan.totalPlan,
+        rubros: {
+            connect: plan.rubros,
+        },
+      },
+    });
+    response.json(newPlan);
+  };
+
+  module.exports.update = async (request, response, next) => {
+    let plan = request.body;
+    let idPlan = parseInt(request.params.id);
+    //Obtener el plan que esta registrado en la BD
+    const planExist = await prisma.plan.findUnique({
+      where: { id: idPlan }, 
+      include: {
+        rubros: {
+          select: { id: true },
+        },
+      },
+    });
+  
+    const newPlan = await prisma.plan.update({
+      where: { id: idPlan },
+      data: {
+        descripcion : plan.descripcion,
+        totalPlan : plan.totalPlan,
+        rubros: {
+          //Generos [{id:valor}]
+          //Orden  [{id:idPlan, cantidad: valorCantidad}]
+          disconnect:planExist.rubros,
+          connect: plan.rubros,
+        },
+      },
+    });
+    response.json(newPlan);
+  };

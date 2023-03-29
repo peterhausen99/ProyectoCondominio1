@@ -18,12 +18,6 @@ import { IncidenciaModule } from './incidencia/incidencia.module';
 import { InformacionModule } from './informacion/informacion.module';
 
 
-
-
-
-
-
-
 @NgModule({
   declarations: [ AppComponent ],
   imports: [

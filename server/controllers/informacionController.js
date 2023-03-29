@@ -12,13 +12,6 @@ module.exports.get = async (request, response, next) => {
     response.json(informacion);
   };
 
-  
-
-
-
-
-
-
 
   module.exports.getById = async (request, response, next) => {
     let id = parseInt(request.params.id);
@@ -28,14 +21,6 @@ module.exports.get = async (request, response, next) => {
     });
     response.json(informacion);
   };
-
-
-
-
-
-
-
-
 
 
   module.exports.create = async (request, response, next) => {
@@ -50,16 +35,6 @@ module.exports.get = async (request, response, next) => {
     });
     response.json(newInformacion);
   };
-
-
-
-
-
-
-
-
-
-
 
   module.exports.update = async (request, response, next) => {
     let informacion = request.body;
