@@ -9,7 +9,12 @@
       <mat-icon>menu</mat-icon>
     </button>
     <span>Menú</span>
+
+
+
     <!-- Menu #1 -->
+
+
     <mat-menu #menu1="matMenu">
       <button
         mat-menu-item
@@ -19,23 +24,11 @@
         Inicio
       </button>
 
-      <button
-        mat-menu-item
-        [routerLink]="'/plan'"
-        [routerLinkActive]="'mat-raised-button'"
-      >
-        Planes de cobro
-      </button>
-
-      <button
-        mat-menu-item
-        [routerLink]="'/residencia'"
-        [routerLinkActive]="'mat-raised-button'"
-      >
-        Residencias
-      </button>
-
       <button mat-menu-item [matMenuTriggerFor]="menu2">Mantenimientos</button>
+
+      <button mat-menu-item [matMenuTriggerFor]="menu3">Procesos</button>
+
+      <button mat-menu-item [matMenuTriggerFor]="menu4">COMO UN USUARIO  </button>
 
       <button
         mat-menu-item
@@ -45,17 +38,19 @@
         Acerca de
       </button>
     </mat-menu>
-    <!-- Menu #2 -->
+
+
+
+
+    <!--                  SUB MENU 2                  -->
     <mat-menu #menu2="matMenu">
-
       <button
-      mat-menu-item
-      [routerLink]="'/asignacionplan'"
-      [routerLinkActive]="'mat-raised-button'"
-    >
-      Estados de cuenta
-    </button>
-
+        mat-menu-item
+        [routerLink]="'/asignacionplan'"
+        [routerLinkActive]="'mat-raised-button'"
+      >
+        Estados de cuenta
+      </button>
 
       <button
         mat-menu-item
@@ -73,17 +68,32 @@
         Información
       </button>
 
-      <button
+       <button
         mat-menu-item
         [routerLink]="'/plan/all'"
         [routerLinkActive]="'mat-raised-button'"
       >
         Planes de Cobro
       </button>
-
+<!--
       <button
         mat-menu-item
+        [routerLink]="'/plan'"
+        [routerLinkActive]="'mat-raised-button'"
+      >
+        Planes de cobro
+      </button>-->
+
+      <!-- <button
+        mat-menu-item
         [routerLink]="'/residencia/all'"
+        [routerLinkActive]="'mat-raised-button'"
+      >
+        Residencias
+      </button>-->
+      <button
+        mat-menu-item
+        [routerLink]="'/residencia'"
         [routerLinkActive]="'mat-raised-button'"
       >
         Residencias
@@ -96,10 +106,35 @@
       >
         Rubros
       </button>
+    </mat-menu>
 
-      
 
-     
+
+    <!--                  SUB MENU 3                  -->
+    <mat-menu #menu3="matMenu">
+      <button
+        mat-menu-item
+        [routerLink]="'/asignacionplan'"
+        [routerLinkActive]="'mat-raised-button'"
+      >
+        Avance 5
+      </button>
+    </mat-menu>
+
+       <!--                 INGRESANDO COMO UN USUARIO                 -->
+    <mat-menu #menu4="matMenu">
+      <button
+        mat-menu-item
+        [routerLink]="'/incidencia/createByUser'"
+        [routerLinkActive]="'mat-raised-button'"
+      >
+      Crear incidencia 
+      </button>
+
+
+
+
+
     </mat-menu>
   </mat-toolbar>
 </p>

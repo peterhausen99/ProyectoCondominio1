@@ -12,6 +12,52 @@ module.exports.get = async (request, response, next) => {
     response.json(informacion);
   };
 
+<<<<<<< HEAD
+=======
+  //AVISOS
+  module.exports.getAviso = async (request, response, next) => {
+    const informacion = await prisma.informacion.findMany({
+      where:{
+        estado:"Activo",
+        tipo: "Aviso"
+      }
+
+    });
+    response.json(informacion);
+  };
+
+  //NOTICIA
+  module.exports.getNoticia = async (request, response, next) => {
+    const informacion = await prisma.informacion.findMany({
+      where:{
+        estado:"Activo",
+        tipo: "Noticia"
+      }
+
+    });
+    response.json(informacion);
+  };
+
+  //ARCHIVO
+  module.exports.getArchivo = async (request, response, next) => {
+    const informacion = await prisma.informacion.findMany({
+      where:{
+        estado:"Activo",
+        tipo: "Archivos"
+      }
+
+    });
+    response.json(informacion);
+  };
+
+  
+
+
+
+
+
+
+>>>>>>> a954d25be225db0ed55e06c3cac354199604baf1
 
   module.exports.getById = async (request, response, next) => {
     let id = parseInt(request.params.id);
@@ -31,6 +77,7 @@ module.exports.get = async (request, response, next) => {
         titulo: informacion.titulo,
         mensaje: informacion.mensaje,
         estado: informacion.estado,
+        tipo: informacion.tipo,
       },
     });
     response.json(newInformacion);
@@ -47,10 +94,11 @@ module.exports.get = async (request, response, next) => {
     const newInformacion = await prisma.informacion.update({
       where: { id: idInformacion },
       data: {
-        id: informacion.id,
+        //id: informacion.id,
         titulo: informacion.titulo,
         mensaje: informacion.mensaje,
         estado: informacion.estado,
+        tipo: informacion.tipo,
       },
     });
     response.json(newInformacion);

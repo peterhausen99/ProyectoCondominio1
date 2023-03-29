@@ -62,8 +62,7 @@ export class IncidenciaFormComponent implements OnInit {
       idUsuario: [null, Validators.required],
       titulo: [null, Validators.compose([
         Validators.required,
-        Validators.minLength(2),
-        Validators.maxLength(20),
+        Validators.minLength(2)
       ])],
       descripcion: [null, Validators.required],
       estado: [null, null],

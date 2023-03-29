@@ -23,13 +23,17 @@ import { IncidenciaRoutingModule } from './incidencia-routing.module';
 import { IncidenciaAllComponent } from './incidencia-all/incidencia-all.component';
 import { IncidenciaDetailComponent } from './incidencia-detail/incidencia-detail.component';
 import { IncidenciaFormComponent } from './incidencia-form/incidencia-form.component';
+import { IncidenciaFormUserComponent } from './incidencia-form-user/incidencia-form-user.component';
+
 
 
 @NgModule({
   declarations: [
     IncidenciaAllComponent,
     IncidenciaDetailComponent,
-    IncidenciaFormComponent
+    IncidenciaFormComponent,
+    IncidenciaFormUserComponent,
+
   ],
   imports: [
     CommonModule,

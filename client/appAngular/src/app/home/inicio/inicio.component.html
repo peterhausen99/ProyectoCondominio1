@@ -2,9 +2,69 @@
   <mat-card-header>
     <mat-card-title>Condominio Acequia Grande</mat-card-title>
   </mat-card-header>
-   <img mat-card-image src="./assets/images/condominioLogo.png" />
+  <img mat-card-image src="./assets/images/condominioLogo.png" />
   <mat-card-content>
     <p></p>
     <p></p>
   </mat-card-content>
 </mat-card>
+
+<hr />
+
+<!--AVISOS-->
+<div class="grid-container">
+  <h1 class="mat-h1">Avisos</h1>
+  <mat-grid-list [cols]="3" rowHeight="20em" gutterSize="10px" *ngIf="datos1">
+    <mat-grid-tile *ngFor="let item of datos1">
+      <mat-card class="dashboard-card">
+        <mat-card-header>
+          <mat-card-title>{{ item.titulo }}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="dashboard-card-content">
+          {{ item.mensaje }}
+        </mat-card-content>
+        <mat-divider inset></mat-divider>
+        <mat-card-actions> </mat-card-actions>
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>
+<hr />
+<!--NOTICIAS-->
+<div class="grid-container">
+  <h1 class="mat-h1">Noticias</h1>
+  <mat-grid-list [cols]="3" rowHeight="20em" gutterSize="10px" *ngIf="datos2">
+    <mat-grid-tile *ngFor="let item of datos2">
+      <mat-card class="dashboard-card">
+        <mat-card-header>
+          <mat-card-title>{{ item.titulo }}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="dashboard-card-content">
+          {{ item.mensaje }}
+        </mat-card-content>
+        <mat-divider inset></mat-divider>
+        <mat-card-actions> </mat-card-actions>
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>
+
+<hr />
+<!--ARCHIVOS-->
+<div class="grid-container">
+  <h1 class="mat-h1">Archivos</h1>
+  <mat-grid-list [cols]="3" rowHeight="20em" gutterSize="10px" *ngIf="datos3">
+    <mat-grid-tile *ngFor="let item of datos3">
+      <mat-card class="dashboard-card">
+        <mat-card-header>
+          <mat-card-title>{{ item.titulo }}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="dashboard-card-content">
+          {{ item.mensaje }}
+        </mat-card-content>
+        <mat-divider inset></mat-divider>
+        <mat-card-actions> </mat-card-actions>
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>

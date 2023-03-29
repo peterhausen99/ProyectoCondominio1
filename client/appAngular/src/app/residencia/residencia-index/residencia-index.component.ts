@@ -46,6 +46,17 @@ export class ResidenciaIndexComponent implements OnInit{
     this.dialog.open(ResidenciaDiagComponent,dialogConfig)
   }
 
+  crearResidencia(){
+    this.router.navigate(['/residencia/create'],{
+      relativeTo:this.route
+    })
+   }
+   actualizarResidencia(id: number){
+    this.router.navigate(['/residencia/update',id],{
+      relativeTo:this.route
+    })
+   }
+
   ngOnDestroy(){
     this.destroy$.next(true);
     this.destroy$.unsubscribe();

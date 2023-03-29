@@ -21,7 +21,7 @@ export class InformacionAllComponent implements AfterViewInit {
   dataSource=new MatTableDataSource<any>();
 
   //Columnas que se muestran
-  displayedColumns=['id','titulo','estado','acciones'];
+  displayedColumns=['id','titulo','tipo','estado','acciones'];
 
   constructor(private router:Router,
     private route:ActivatedRoute, private gService:GenericService

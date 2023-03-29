@@ -40,11 +40,29 @@ module.exports.create = async (request, response, next) => {
   response.json(newIncidencia);
 };
 
-//Actualizar un videojuego
+
+module.exports.createByUser = async (request, response, next) => {
+ 
+  let incidencia = request.body;
+  const newIncidencia = await prisma.incidencia.create({
+    data: {
+      idUsuario: parseInt(incidencia.idUsuario),
+      titulo: incidencia.titulo,
+      descripcion: incidencia.descripcion,
+      estado: incidencia.estado,
+      fecha: incidencia.fecha
+    },
+  });
+  response.json(newIncidencia);
+};
+
+
+
+//Actualizar un 
 module.exports.update = async (request, response, next) => {
   let incidencia = request.body;
   let idIncidencia = parseInt(request.params.id);
-  //Obtener el videojuego que esta registrado en la BD
+  //Obtener el que esta registrado en la BD
   const incidenciaExist = await prisma.incidencia.findUnique({
     where: { id: idIncidencia }, 
     

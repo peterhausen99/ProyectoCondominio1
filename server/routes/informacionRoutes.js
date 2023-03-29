@@ -10,7 +10,13 @@ router.get("/", informacionController.get);
 
 router.post('/', informacionController.create); 
 
+router.get("/aviso",informacionController.getAviso);
+router.get("/noticia",informacionController.getNoticia);
+router.get("/archivo",informacionController.getArchivo);
+
 router.get("/:id", informacionController.getById);
+
+
 
 router.put('/:id', informacionController.update);
 
