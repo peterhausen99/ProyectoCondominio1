@@ -22,12 +22,6 @@ module.exports.getById = async (request, response, next) => {
     });
     response.json(plan);
 };
-//Crear un plan
-module.exports.create = async (request, response, next) => {
-};
-//Actualizar un plan
-module.exports.update = async (request, response, next) => {
-};
 
 module.exports.create = async (request, response, next) => {
     let plan = request.body;
@@ -42,6 +36,28 @@ module.exports.create = async (request, response, next) => {
     });
     response.json(newPlan);
   };
+
+/*
+module.exports.create = async (request, response, next) => {
+    let plan = request.body;
+    const newPlan = await prisma.plan.create({
+      data: {
+        descripcion : plan.descripcion,
+        totalPlan :{
+            sum: {
+                valor: {
+                  in: plan.rubros.valor.map(rubro => rubro.valor)
+                }
+              }
+        },
+        rubros: {
+            connect: plan.rubros,
+        },
+      },
+    });
+    response.json(newPlan);
+  };
+  */
 
   module.exports.update = async (request, response, next) => {
     let plan = request.body;

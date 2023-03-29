@@ -18,6 +18,7 @@ export class PlanFormComponent implements OnInit {
   idPlan:number=0;
   titleForm:string='Crear';
   planInfo:any;
+  variable:number=21;
 
   constructor(
     private fb: FormBuilder,
