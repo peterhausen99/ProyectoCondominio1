@@ -11,6 +11,8 @@ module.exports.get = async (request, response, next) => {
     response.json(plans);
 };
 //Obtener por Id
+
+
 module.exports.getById = async (request, response, next) => {
     //const var let 
     let id= parseInt(request.params.id);
@@ -23,6 +25,37 @@ module.exports.getById = async (request, response, next) => {
     response.json(plan);
 };
 
+
+module.exports.getByIdRubro = async (id) => {
+  const rubro = await prisma.rubro.findUnique({
+    where: {
+      id: id,
+    },
+  });
+  return rubro;
+};
+
+module.exports.create = async (request, response, next) => {
+  let plan = request.body;
+  let suma = 0;
+  listaRubros= plan.rubros
+  for (let index = 0; index < plan.rubros.length; index++) {
+    let rubro = await module.exports.getByIdRubro(listaRubros[index].id);
+    suma += parseFloat(rubro.valor);
+  }
+  const newPlan = await prisma.plan.create({
+    data: {
+      descripcion: plan.descripcion,
+      totalPlan: suma,
+      rubros: {
+        connect: plan.rubros,
+      },
+    },
+  });
+  response.json(newPlan);
+};
+
+/*FUNCIONANDO
 module.exports.create = async (request, response, next) => {
     let plan = request.body;
     const newPlan = await prisma.plan.create({
@@ -36,6 +69,7 @@ module.exports.create = async (request, response, next) => {
     });
     response.json(newPlan);
   };
+  */
 
 /*
 module.exports.create = async (request, response, next) => {
@@ -71,12 +105,19 @@ module.exports.create = async (request, response, next) => {
         },
       },
     });
+
+    let suma = 0;
+    listaRubros= plan.rubros
+    for (let index = 0; index < plan.rubros.length; index++) {
+      let rubro = await module.exports.getByIdRubro(listaRubros[index].id);
+      suma += parseFloat(rubro.valor);
+    }
   
     const newPlan = await prisma.plan.update({
       where: { id: idPlan },
       data: {
         descripcion : plan.descripcion,
-        totalPlan : plan.totalPlan,
+        totalPlan : suma,
         rubros: {
           //Generos [{id:valor}]
           //Orden  [{id:idPlan, cantidad: valorCantidad}]
