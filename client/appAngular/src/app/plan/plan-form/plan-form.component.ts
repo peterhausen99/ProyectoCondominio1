@@ -1,24 +1,24 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Subject, takeUntil } from 'rxjs';
 import { GenericService } from 'src/app/share/generic.service';
 
-
 @Component({
   selector: 'app-plan-form',
   templateUrl: './plan-form.component.html',
-  styleUrls: ['./plan-form.component.css']
+  styleUrls: ['./plan-form.component.css'],
 })
 export class PlanFormComponent implements OnInit {
   planForm: FormGroup;
   rubrosList: any;
   destroy$: Subject<boolean> = new Subject<boolean>();
-  isCreate:boolean=true;
-  idPlan:number=0;
-  titleForm:string='Crear';
-  planInfo:any;
-  variable:number=21;
+  isCreate: boolean = true;
+  idPlan: number = 0;
+  titleForm: string = 'Crear';
+  planInfo: any;
+  variable: number = 21;
+  subTotalRubros: number = 20;
 
   constructor(
     private fb: FormBuilder,
@@ -28,29 +28,29 @@ export class PlanFormComponent implements OnInit {
   ) {
     this.formularioReactive();
     this.listaRubros();
-   
   }
 
   ngOnInit(): void {
     //Verificar si se envio un id por parametro para crear formulario para actualizar
-    this.route.params.subscribe((params:Params)=>{
-      this.idPlan=params['id'];
-      if(this.idPlan!=undefined){
-        this.isCreate=false;
-        this.titleForm="Actualizar";
-         //Obtener plan a actualizar del API
-         this.gService.get('plan',this.idPlan).pipe(takeUntil(this.destroy$))
-         .subscribe((data:any)=>{
-          this.planInfo=data;
-          this.planForm.setValue({
-            id:this.planInfo.id,
-            descripcion:this.planInfo.descripcion,
-            totalPlan:this.planInfo.totalPlan,
-            rubros:this.planInfo.rubros.map(({id}) => id)
-          })
-         });
+    this.route.params.subscribe((params: Params) => {
+      this.idPlan = params['id'];
+      if (this.idPlan != undefined) {
+        this.isCreate = false;
+        this.titleForm = 'Actualizar';
+        //Obtener plan a actualizar del API
+        this.gService
+          .get('plan', this.idPlan)
+          .pipe(takeUntil(this.destroy$))
+          .subscribe((data: any) => {
+            this.planInfo = data;
+            this.planForm.setValue({
+              id: this.planInfo.id,
+              descripcion: this.planInfo.descripcion,
+              totalPlan: this.planInfo.totalPlan,
+              rubros: this.planInfo.rubros.map(({ id }) => id),
+            });
+          });
       }
-
     });
   }
   //Crear el formulario
@@ -65,13 +65,8 @@ export class PlanFormComponent implements OnInit {
           Validators.maxLength(20),
         ]),
       ],
-      totalPlan: [
-        null,
-        Validators.compose([
-          Validators.required,
-          Validators.pattern('^[0-9]*(.[0-9]{0,2})?$'),
-        ]),
-      ],
+      //totalPlan: [null,Validators.compose([Validators.required,Validators.pattern('^[0-9]*(.[0-9]{0,2})?$'),])],
+      totalPlan: [null, null],
       rubros: [null, Validators.required],
     });
   }
@@ -98,6 +93,12 @@ export class PlanFormComponent implements OnInit {
     this.planForm.patchValue({ rubros: gFormat });
     console.log(this.planForm.value);
     //Llamar al API y enviar la infomracion
+    /////
+    //asignar el valor total del plan
+    console.log(this.calculoSubTotalRubros());
+    this.calculoSubTotalRubros();
+    this.planForm.patchValue({ totalPlan: this.subTotalRubros });
+    //////
     this.gService
       .create('plan', this.planForm.value)
       .pipe(takeUntil(this.destroy$))
@@ -109,28 +110,44 @@ export class PlanFormComponent implements OnInit {
       });
   }
 
+  calculoSubTotalRubros() {
+    let sum = 0;
+    let lista: any = this.planForm.get('rubros').value;
+
+    if (lista != null) {
+      lista.forEach((obj) => {
+        sum += obj.valor;
+      });
+    }
+
+    this.subTotalRubros = sum;
+  } //cierra calculoSubTotalRubros
+
   //Actualizar Plan
-  actualizarPlan(){
-    
+  actualizarPlan() {
     //Verificar validación
-    if(this.planForm.invalid){
+    if (this.planForm.invalid) {
       return;
     }
-    
+
     //Obtener id Generos del Formulario y Crear arreglo con {id: value}
-    let gFormat:any=this.planForm.get('rubros').value.map(x=>({['id']: x }));
-    //Asignar valor al formulario 
-    this.planForm.patchValue({ rubros:gFormat});
+    let gFormat: any = this.planForm
+      .get('rubros')
+      .value.map((x) => ({ ['id']: x }));
+    //Asignar valor al formulario
+    this.planForm.patchValue({ rubros: gFormat });
     console.log(this.planForm.value);
     //Accion API create enviando toda la informacion del formulario
-    this.gService.update('plan',this.planForm.value)
-    .pipe(takeUntil(this.destroy$)) .subscribe((data: any) => {
-      //Obtener respuesta
-      console.log(data);
-      this.router.navigate(['/plan/all'],{
-        queryParams: {update:'true'}
+    this.gService
+      .update('plan', this.planForm.value)
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((data: any) => {
+        //Obtener respuesta
+        console.log(data);
+        this.router.navigate(['/plan/all'], {
+          queryParams: { update: 'true' },
+        });
       });
-    });
   }
 
   ngOnDestroy() {
