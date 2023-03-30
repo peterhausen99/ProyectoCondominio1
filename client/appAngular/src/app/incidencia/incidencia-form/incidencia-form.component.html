@@ -2,7 +2,10 @@
     <input type="hidden" formControlName="id" />
     <mat-card class="shipping-card">
       <mat-card-header>
-        <mat-card-title>{{titleForm}}  incidencia</mat-card-title>
+        <mat-card-title>
+          <h1 style="color:white">{{titleForm}}  incidencia</h1>
+          
+        </mat-card-title>
       </mat-card-header>
       <mat-card-content>
 
@@ -32,7 +35,7 @@
           <div class="row">
             <div class="col">
               <mat-radio-group formControlName="estado">
-                <mat-label>Estado</mat-label>
+                <h3><mat-label style="color:darkgray">Estado</mat-label></h3>
                 <mat-radio-button value="Abierto">Abierto</mat-radio-button>
                 <mat-radio-button value="Pendiente">Pendiente </mat-radio-button>
                 <mat-radio-button value="Resuelto">Resuelto </mat-radio-button>
@@ -42,6 +45,8 @@
               </mat-radio-group>
             </div>
           </div>
+
+          <br><br>
 
           <div class="row">
             <div class="col">

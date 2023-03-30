@@ -1,5 +1,6 @@
 .full-width {
     width: 100%;
+  
   }
   
   .shipping-card {
@@ -25,3 +26,5 @@
   .col:last-child {
     margin-right: 0;
   }
+
+ 

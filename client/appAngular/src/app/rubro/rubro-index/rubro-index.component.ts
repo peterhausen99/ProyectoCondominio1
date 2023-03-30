@@ -20,7 +20,7 @@ export class RubroIndexComponent implements AfterViewInit {
   dataSource=new MatTableDataSource<any>();
 
   //Columnas que se muestran
-  displayedColumns=['descripcion','valor','acciones'];
+  displayedColumns=['descripcion','valor','estado','acciones'];
 
   constructor(private router:Router,
     private route:ActivatedRoute, private gService:GenericService

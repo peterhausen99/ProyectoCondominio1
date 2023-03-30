@@ -2,7 +2,9 @@
   <input type="hidden" formControlName="id" />
   <mat-card class="shipping-card">
     <mat-card-header>
-      <mat-card-title>{{titleForm}}  Rubros</mat-card-title>
+      <mat-card-title>
+        <h1 style="color:white"> {{titleForm}}  Rubros</h1>
+      </mat-card-title>
     </mat-card-header>
     <mat-card-content>
 
@@ -10,7 +12,7 @@
       <div class="row">
         <div class="col">
           <mat-form-field class="full-width">
-            <input matInput #tituloIncidencia  maxlength="20" placeholder="descripción" formControlName="descripcion">
+            <input matInput #tituloIncidencia  maxlength="20" placeholder="Descripción" formControlName="descripcion">
             <mat-hint align="end">{{tituloIncidencia.value.length}}/ 20</mat-hint>
             <mat-error *ngIf="rubroForm.controls['descripcion'].hasError('required')">
               La descripción del rubro es <strong>requerido</strong>
@@ -36,9 +38,14 @@
 
         <div class="row">
           <div class="col">
-            <mat-form-field class="full-width">
-              <input matInput placeholder="estado" formControlName="estado">
-            </mat-form-field>
+            <mat-radio-group formControlName="estado">
+              <h3><mat-label style="color:darkgray">Estado</mat-label></h3>
+              <mat-radio-button value="Activo">Activo</mat-radio-button>
+              <mat-radio-button value="Inactivo">Inactivo </mat-radio-button>
+              <mat-error *ngIf="rubroForm.controls['estado'].hasError('required')">
+                Estado de informacion es <strong>requerido</strong>
+              </mat-error>
+            </mat-radio-group>
           </div>
         </div>
 

@@ -67,7 +67,7 @@ export class InformacionFormComponent implements OnInit {
       mensaje: [null, Validators.compose([
         Validators.required,
         Validators.minLength(5),
-        Validators.maxLength(40)
+        Validators.maxLength(400)
       ])],
       estado: [null, Validators.required],
       tipo: [null, Validators.required],
