@@ -34,7 +34,7 @@ module.exports.get = async (request, response, next) => {
       data: {
         idUsuario: parseInt(reserva.idUsuario),
         idAreaComun: parseInt(reserva.idAreaComun),
-       //diaReservacion: reserva.diaReservacion,
+       diaReservacion: reserva.diaReservacion,
        estado: reserva.estado,
        detalles: reserva.detalles,
        horario: reserva.horario
@@ -59,7 +59,7 @@ module.exports.update = async (request, response, next) => {
       data: {
         idUsuario: parseInt(reserva.idUsuario),
         idAreaComun: parseInt(reserva.idAreaComun),
-       //diaReservacion: reserva.diaReservacion,
+       diaReservacion: reserva.diaReservacion,
       estado: reserva.estado,
       detalles: reserva.detalles,
       horario: reserva.horario

@@ -50,7 +50,7 @@ export class ReservaFormUserComponent implements OnInit {
               idAreaComun: this.reservaInfo.idAreaComun,
              detalles: this.reservaInfo.detalles,
              estado: this.reservaInfo.estado,
-             //diaReservacion: this.reservaInfo.diaReservacion,
+             diaReservacion: this.reservaInfo.diaReservacion,
              horario: this.reservaInfo.horario,
             });
           });
@@ -70,7 +70,7 @@ export class ReservaFormUserComponent implements OnInit {
       horario: [null, null],
      detalles: ["No indica", null],
      estado: ["Pendiente", null],
-     //diaReservacion: [null, null],
+     diaReservacion: [null, null],
     });
   }//cierra formulario
 

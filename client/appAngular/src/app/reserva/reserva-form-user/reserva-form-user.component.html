@@ -21,7 +21,6 @@
             </div>
           </div>
 
-          <br>
 
           <div class="row">
             <div class="col" *ngIf="areaComunList">
@@ -38,9 +37,7 @@
             </div>
           </div>
 
-          <br>
 
-          <br>
 
           <div class="row">
             <div class="col">
@@ -64,26 +61,21 @@
           </div>
 
 
-     
+          <div class="row">
+            <div class="col">
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Día a reservar</mat-label>
+            <input matInput [matDatepicker]="picker" formControlName="diaReservacion">
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            <mat-error *ngIf="reservaForm.controls['diaReservacion'].hasError('required')">
+                El día a reserva es <strong>requerido</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+    </div>
 
-
-
-
-
-
-
-
-
-
-
-          
-
-
-        
-        
-       
-       
-        
       </mat-card-content>
       <mat-card-actions>
         <button mat-raised-button color="primary" type="submit">Guardar</button>

@@ -51,7 +51,7 @@ model Reserva {
   areaComun   AreaComun @relation(fields: [idAreaComun], references: [id])
   idAreaComun Int
   
-  //diaReservacion DateTime
+  diaReservacion DateTime
   estado         String
   detalles       String
   horario        String
