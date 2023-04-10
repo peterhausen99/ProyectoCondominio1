@@ -5,6 +5,7 @@ import { usuarios } from "./seeds/usuario";
 import { perfilUsuarios } from "./seeds/perfilUsuario";
 import { rubros } from "./seeds/rubro";
 import { informacion } from "./seeds/informacion";
+import { areaComun } from "./seeds/areaComun";
 
 
 const prisma=new PrismaClient();
@@ -126,6 +127,56 @@ await prisma.incidencia.createMany({
 //Informacion
 await prisma.informacion.createMany({
     data: informacion
+});
+
+//Area Comun
+await prisma.areaComun.createMany({
+    data: areaComun
+});
+
+
+//Reservas
+//Estado: Pendiente-Aprobado
+//Horario: Mañana-Tarde-Noche
+await prisma.reserva.create({
+    data:{
+        areaComun: {connect: {id: 1}},
+        usuario:{connect:{idUsuario:206990320}},
+        diaReservacion: new Date("2023-04-12"),
+        estado: "Pendiente",
+        detalles: "no hay",
+        horario: "Mañana"
+    }
+});
+await prisma.reserva.create({
+    data:{
+        areaComun: {connect: {id: 2}},
+        usuario:{connect:{idUsuario:206990320}},
+        diaReservacion: new Date("2023-04-13"),
+        estado: "Pendiente",
+        detalles: "no hay",
+        horario: "Mañana"
+    }
+});
+await prisma.reserva.create({
+    data:{
+        areaComun: {connect: {id: 3}},
+        usuario:{connect:{idUsuario:206990320}},
+        diaReservacion: new Date("2023-04-14"),
+        estado: "Pendiente",
+        detalles: "no hay",
+        horario: "Noche"
+    }
+});
+await prisma.reserva.create({
+    data:{
+        areaComun: {connect: {id: 4}},
+        usuario:{connect:{idUsuario:206990320}},
+        diaReservacion: new Date("2023-04-15"),
+        estado: "Pendiente",
+        detalles: "no hay",
+        horario: "Tarde"
+    }
 });
 
 

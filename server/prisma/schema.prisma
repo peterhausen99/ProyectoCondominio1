@@ -50,10 +50,12 @@ model Reserva {
 
   areaComun   AreaComun @relation(fields: [idAreaComun], references: [id])
   idAreaComun Int
-
+  
   diaReservacion DateTime
   estado         String
   detalles       String
+  horario        String
+
   createdAt      DateTime @default(now())
   updatedAt      DateTime @default(now()) @updatedAt
 }
@@ -61,16 +63,12 @@ model Reserva {
 ///Area Comun///
 model AreaComun {
   id          Int      @id @default(autoincrement()) 
-  reservas Reserva[]
-
   descripcion String
-  capacidad   Int
   estado      String
-  ubicacion   String
+
   createdAt   DateTime @default(now())
   updatedAt   DateTime @default(now()) @updatedAt
-
-  
+  reservas Reserva[]
 }
 
 ///Incidencias///
