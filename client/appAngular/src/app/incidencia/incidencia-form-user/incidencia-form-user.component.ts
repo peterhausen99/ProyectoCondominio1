@@ -69,7 +69,7 @@ export class IncidenciaFormUserComponent implements OnInit {
                                               Validators.minLength(5),
                                               Validators.maxLength(200),
 ])],
-      estado: [null, Validators.required],
+      estado: ["Abierto", Validators.required],
       fecha: [new Date(this.fecha), null],
     });
   }//cierra formulario

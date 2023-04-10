@@ -1,1 +1,14 @@
-<p>reserva-detail works!</p>
+<mat-card class="dashboard-card" *ngIf="datos">
+    <mat-card-header>
+      <mat-card-title>Reserva # {{datos.id}}<b></b></mat-card-title>
+    </mat-card-header>
+    <mat-card-content class="dashboard-card-content">
+      <p><b>Usuario: </b>{{datos.usuario.nombre}} {{datos.usuario.apellido1}} {{datos.usuario.apellido2}}</p>
+      <p><b>Área común: </b>{{datos.areaComun.descripcion}}</p>
+      <p><b>Detalles: </b>{{datos.detalles}}</p>
+      <p><b>Estado: </b>{{datos.estado}}</p>
+      <p><b>Fecha: </b>{{datos.diaReservacion}}</p>
+      <p><b>Horario: </b>{{datos.horario}}</p>
+    </mat-card-content>
+  </mat-card>
+

@@ -40,7 +40,7 @@
     </mat-menu>
 
 
-
+<!--MANTENIMIENTO-->
 
     <!--                  SUB MENU 2                  -->
     <mat-menu #menu2="matMenu">
@@ -117,7 +117,7 @@
     </mat-menu>
 
 
-
+<!--PROCESOS-->
     <!--                  SUB MENU 3                  -->
     <mat-menu #menu3="matMenu">
       <button
@@ -129,7 +129,11 @@
       </button>
     </mat-menu>
 
-       <!--                 INGRESANDO COMO UN USUARIO                 -->
+
+       
+    
+<!--                 INGRESANDO COMO UN USUARIO                 -->
+    <!--                  SUB MENU 4                  -->
     <mat-menu #menu4="matMenu">
       <button
         mat-menu-item
@@ -140,7 +144,13 @@
       </button>
 
 
-
+      <button
+        mat-menu-item
+        [routerLink]="'/reserva/createByUser'"
+        [routerLinkActive]="'mat-raised-button'"
+      >
+      Crear reserva 
+      </button>
 
 
     </mat-menu>

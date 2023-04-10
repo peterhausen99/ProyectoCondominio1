@@ -8,9 +8,9 @@ const reservaController = require("../controllers/reservaController");
 //Definición de rutas para incidencia
 router.get("/", reservaController.get);
 
-router.post('/', reservaController.create); 
+//router.post('/', reservaController.create); 
 
-//router.post('/', reservaController.createByUser); 
+router.post('/', reservaController.createByUser); 
 
 router.get("/:id", reservaController.getById);
 

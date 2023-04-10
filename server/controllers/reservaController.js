@@ -15,7 +15,7 @@ module.exports.get = async (request, response, next) => {
   module.exports.getById = async (request, response, next) => {
 
     let id = parseInt(request.params.id);
-    const reserva = await prisma.reserva.findMany({
+    const reserva = await prisma.reserva.findUnique({
       where: {
         id: id
     },
@@ -27,17 +27,17 @@ module.exports.get = async (request, response, next) => {
   };
 
 
-  module.exports.create = async (request, response, next) => {
+  module.exports.createByUser = async (request, response, next) => {
  
     let reserva = request.body;
     const newReserva = await prisma.reserva.create({
       data: {
         idUsuario: parseInt(reserva.idUsuario),
         idAreaComun: parseInt(reserva.idAreaComun),
-        diaReservacion: reserva.diaReservacion,
-        estado: reserva.estado,
-        detalles: reserva.detalles,
-        horario: reserva.horario
+       //diaReservacion: reserva.diaReservacion,
+       estado: reserva.estado,
+       detalles: reserva.detalles,
+       horario: reserva.horario
       },
     });
     response.json(newReserva);
@@ -59,10 +59,10 @@ module.exports.update = async (request, response, next) => {
       data: {
         idUsuario: parseInt(reserva.idUsuario),
         idAreaComun: parseInt(reserva.idAreaComun),
-        diaReservacion: reserva.diaReservacion,
-        estado: reserva.estado,
-        detalles: reserva.detalles,
-        horario: reserva.horario
+       //diaReservacion: reserva.diaReservacion,
+      estado: reserva.estado,
+      detalles: reserva.detalles,
+      horario: reserva.horario
       },
     });
     response.json(newReserva);

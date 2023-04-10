@@ -7,7 +7,7 @@ import { ReservaFormAdminComponent } from './reserva-form-admin/reserva-form-adm
 
 const routes: Routes = [
   {path:'reserva/all',component:ReservaAllComponent},
-  {path:'reserva/create',component:ReservaFormUserComponent},
+  {path:'reserva/createByUser',component:ReservaFormUserComponent},
   {path:'reserva/:id',component:ReservaDetailComponent},
   {path:'reserva/update/:id',component:ReservaFormAdminComponent},
 ];

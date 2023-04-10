@@ -1,1 +1,93 @@
-<p>reserva-form-user works!</p>
+<form [formGroup]="reservaForm" (ngSubmit)="isCreate ? crearReserva(): actualizarReserva()" novalidate >
+    <input type="hidden" formControlName="id" />
+    <mat-card class="shipping-card">
+      <mat-card-header>
+        <mat-card-title>
+          <h1 style="color:white">  {{titleForm}}  reserva</h1>
+        </mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+
+
+        <div class="row">
+            <div class="col">
+              <mat-form-field class="full-width" appearance="outline">
+                <input matInput placeholder="ID Usuario" formControlName="idUsuario">
+                <mat-error *ngIf="reservaForm.controls['idUsuario'].hasError('required')">
+                    ID Usuario es <strong>requerido</strong>
+                </mat-error>
+               
+              </mat-form-field>
+            </div>
+          </div>
+
+          <br>
+
+          <div class="row">
+            <div class="col" *ngIf="areaComunList">
+              <mat-form-field class="full-width">
+                <mat-select placeholder="Área común" formControlName="idAreaComun">
+                  <mat-option *ngFor="let item of areaComunList" [value]="item.id">
+                   {{ item.descripcion }}
+                  </mat-option>
+                </mat-select>
+                <mat-error *ngIf="reservaForm.controls['idAreaComun'].hasError('required')">
+                  Descripcion es <strong>requerido</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+
+          <br>
+
+          <br>
+
+          <div class="row">
+            <div class="col">
+              <mat-radio-group formControlName="horario">
+                <mat-label>horario</mat-label>
+                <mat-radio-button value="Mañana">Mañana</mat-radio-button>
+                <mat-radio-button value="Tarde">Tarde </mat-radio-button>
+                <mat-radio-button value="Noche">Noche </mat-radio-button>
+              </mat-radio-group>
+            </div>
+          </div>
+             
+             
+            
+          <div class="row">
+            <div class="col">
+              <mat-form-field class="full-width" appearance="outline">
+                <input matInput placeholder="Detalles" formControlName="detalles">
+              </mat-form-field>
+            </div>
+          </div>
+
+
+     
+
+
+
+
+
+
+
+
+
+
+
+          
+
+
+        
+        
+       
+       
+        
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button color="primary" type="submit">Guardar</button>
+      </mat-card-actions>
+    </mat-card>
+  </form>
+  

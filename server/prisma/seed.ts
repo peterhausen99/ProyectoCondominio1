@@ -142,9 +142,9 @@ await prisma.reserva.create({
     data:{
         areaComun: {connect: {id: 1}},
         usuario:{connect:{idUsuario:206990320}},
-        diaReservacion: new Date("2023-04-12"),
+        //diaReservacion: new Date("2023-04-12"),
         estado: "Pendiente",
-        detalles: "no hay",
+        detalles: "no indica",
         horario: "Mañana"
     }
 });
@@ -152,30 +152,30 @@ await prisma.reserva.create({
     data:{
         areaComun: {connect: {id: 2}},
         usuario:{connect:{idUsuario:206990320}},
-        diaReservacion: new Date("2023-04-13"),
-        estado: "Pendiente",
-        detalles: "no hay",
-        horario: "Mañana"
+       //diaReservacion: new Date("2023-04-13"),
+       estado: "Pendiente",
+       detalles: "no indica",
+       horario: "Mañana"
     }
 });
 await prisma.reserva.create({
     data:{
         areaComun: {connect: {id: 3}},
         usuario:{connect:{idUsuario:206990320}},
-        diaReservacion: new Date("2023-04-14"),
-        estado: "Pendiente",
-        detalles: "no hay",
-        horario: "Noche"
+       //diaReservacion: new Date("2023-04-14"),
+       estado: "Pendiente",
+       detalles: "no indica",
+       horario: "Noche"
     }
 });
 await prisma.reserva.create({
     data:{
         areaComun: {connect: {id: 4}},
         usuario:{connect:{idUsuario:206990320}},
-        diaReservacion: new Date("2023-04-15"),
-        estado: "Pendiente",
-        detalles: "no hay",
-        horario: "Tarde"
+       //diaReservacion: new Date("2023-04-15"),
+    estado: "Pendiente",
+       detalles: "no indica",
+       horario: "Tarde"
     }
 });
 

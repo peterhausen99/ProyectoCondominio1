@@ -18,12 +18,14 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatRadioModule } from '@angular/material/radio';
 import { ReactiveFormsModule } from '@angular/forms';
+import {MatDatepickerModule} from '@angular/material/datepicker';
 
 import { ReservaRoutingModule } from './reserva-routing.module';
 import { ReservaDetailComponent } from './reserva-detail/reserva-detail.component';
 import { ReservaAllComponent } from './reserva-all/reserva-all.component';
 import { ReservaFormAdminComponent } from './reserva-form-admin/reserva-form-admin.component';
 import { ReservaFormUserComponent } from './reserva-form-user/reserva-form-user.component';
+import { MatNativeDateModule } from '@angular/material/core';
 
 
 @NgModule({
@@ -35,8 +37,7 @@ import { ReservaFormUserComponent } from './reserva-form-user/reserva-form-user.
   ],
   imports: [
     CommonModule,
-    ReservaRoutingModule
-    ,
+    ReservaRoutingModule,
     MatGridListModule,
     MatCardModule,
     MatMenuModule,
@@ -51,7 +52,9 @@ import { ReservaFormUserComponent } from './reserva-form-user/reserva-form-user.
     MatInputModule,
     MatSelectModule,
     MatRadioModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatDatepickerModule, 
+    MatNativeDateModule
   ]
 })
 export class ReservaModule { }
