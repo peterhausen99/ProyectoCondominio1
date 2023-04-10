@@ -14,6 +14,8 @@ const planRouter = require("./routes/planRoutes");
 const asignacionPlanRouter = require("./routes/asignacionPlanRoutes");
 const incidenciaRouter = require("./routes/incidenciaRoutes");
 const informacionRouter = require("./routes/informacionRoutes");
+const areaComunRouter = require("./routes/areaComunRoutes");
+const reservaRouter = require("./routes/reservaRoutes");
 
 
 
@@ -43,6 +45,8 @@ app.use("/plan/", planRouter);
 app.use("/asignacionPlan/", asignacionPlanRouter);
 app.use("/incidencia/", incidenciaRouter);
 app.use("/informacion/", informacionRouter);
+app.use("/areaComun/", areaComunRouter);
+app.use("/reserva/", reservaRouter);
 
 
 

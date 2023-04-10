@@ -16,6 +16,8 @@ import { PlanModule } from './plan/plan.module';
 import { AsignacionplanModule } from './asignacionplan/asignacionplan.module';
 import { IncidenciaModule } from './incidencia/incidencia.module';
 import { InformacionModule } from './informacion/informacion.module';
+import { ReservaModule } from './reserva/reserva.module';
+
 
 
 @NgModule({
@@ -34,9 +36,10 @@ import { InformacionModule } from './informacion/informacion.module';
     PlanModule,
     AsignacionplanModule,
     IncidenciaModule,
-    
+    ReservaModule,
     InformacionModule,
-    AppRoutingModule, //TIENE QUE IR DE ULTIMO AppRoutingModule
+    AppRoutingModule,
+     //TIENE QUE IR DE ULTIMO AppRoutingModule
           
   ],
   providers: [],
