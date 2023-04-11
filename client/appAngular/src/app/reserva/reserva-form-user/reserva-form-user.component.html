@@ -1,4 +1,4 @@
-<form [formGroup]="reservaForm" (ngSubmit)="isCreate ? crearReserva(): actualizarReserva()" novalidate >
+<form [formGroup]="reservaForm" > <!--(ngSubmit)="isCreate ? crearReserva(): actualizarReserva()" novalidate -->
     <input type="hidden" formControlName="id" />
     <mat-card class="shipping-card">
       <mat-card-header>
@@ -75,11 +75,18 @@
           </mat-form-field>
         </div>
     </div>
+</mat-card-content>
 
-      </mat-card-content>
+
       <mat-card-actions>
         <button mat-raised-button color="primary" type="submit">Guardar</button>
       </mat-card-actions>
+
+      <mat-card-actions>
+        <button mat-raised-button color="primary" (click)="buscarReserva()">Validar reserva</button>
+      </mat-card-actions>
+
+
     </mat-card>
   </form>
   
