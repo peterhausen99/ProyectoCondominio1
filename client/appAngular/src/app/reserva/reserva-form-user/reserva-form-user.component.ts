@@ -100,9 +100,8 @@ export class ReservaFormUserComponent implements OnInit {
       });
   }
 
-  buscarReserva() {
-    let valor: any;
-    let mensaje:any;
+  buscarReserva():boolean {
+    let valor: boolean;
     let areaComunForm:any = this.reservaForm.get('idAreaComun').value;
     let horarioForm:any = this.reservaForm.get('horario').value;
     let diaReservacionForm:Date = this.reservaForm.get('diaReservacion').value;
@@ -112,29 +111,38 @@ export class ReservaFormUserComponent implements OnInit {
         let diaReservacionB:any = item.diaReservacion;
         let fechaB= new Date(diaReservacionB);
         fechaB.setHours(0,0,0,0)
-        let dia= fechaB.getDate()+1;
-        fechaB.setDate(dia);
-        if (
-          (item.idAreaComun == areaComunForm) && (item.horario === horarioForm) && (diaReservacionForm.getTime()==fechaB.getTime()) ) {
-          mensaje="existe"; return false;
+        //let dia= fechaB.getDate()+1;
+        //fechaB.setDate(dia);
+        if ( (item.idAreaComun == areaComunForm) && (item.horario === horarioForm) && (diaReservacionForm.getTime()==fechaB.getTime()) ) {
+          valor=true;
+          return false;
         } 
-        else {mensaje="no existe"; return true;}
+        else {
+        valor=false;
+        return true;}
       });
     }
-    //Notificar al usuario
-    this.notificacion.mensaje('Reserva',`La reserva ${mensaje}`,TipoMessage.success);//aqui van las comillas al reves
+    
     return valor;
   }//cierra buscar
 
 
   //Crear reserva
   crearReserva() {
+
+
+    if (this.buscarReserva()==true){
+
+      this.notificacion.mensaje('Reserva',`El Área común elegida ya se encuentra ocupada para ese día y horario`,TipoMessage.success);
+      return;
+    }
+    else{
+      
     if (this.reservaForm.invalid) {
       return;
     }
-
     console.log(this.reservaForm.value);
-    //Llamar al API y enviar la infomracion
+    //Llamar al API y enviar la informacion
     this.gService
       .create('reserva', this.reservaForm.value)
       .pipe(takeUntil(this.destroy$))
@@ -144,7 +152,13 @@ export class ReservaFormUserComponent implements OnInit {
           queryParams: { create: 'true' },
         });
       });
+      this.notificacion.mensaje('Reserva',`La reserva se encuentra en tramite`,TipoMessage.success);
+    }
   } //cierra crear reserva
+
+
+
+
 
   //Actualizar reserva
   actualizarReserva() {
