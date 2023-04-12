@@ -26,6 +26,8 @@ import { ReservaAllComponent } from './reserva-all/reserva-all.component';
 import { ReservaFormAdminComponent } from './reserva-form-admin/reserva-form-admin.component';
 import { ReservaFormUserComponent } from './reserva-form-user/reserva-form-user.component';
 import { MatNativeDateModule } from '@angular/material/core';
+import { ReservaHistorialComponent } from './reserva-historial/reserva-historial.component';
+
 
 
 @NgModule({
@@ -33,7 +35,8 @@ import { MatNativeDateModule } from '@angular/material/core';
     ReservaDetailComponent,
     ReservaAllComponent,
     ReservaFormAdminComponent,
-    ReservaFormUserComponent
+    ReservaFormUserComponent,
+    ReservaHistorialComponent
   ],
   imports: [
     CommonModule,

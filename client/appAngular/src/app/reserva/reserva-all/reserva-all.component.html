@@ -2,9 +2,14 @@
     <!-- Titulo del Card -->
     <mat-card-title>
       <h1>Reservas</h1>
-      
     </mat-card-title>
     <mat-card-content>
+
+      <mat-form-field>
+        <mat-label>Filtrar estado</mat-label>
+        <input matInput (keyup)="filtrar($event)" placeholder="buscar">
+      </mat-form-field>
+
       <div class="mat-elevation-z8" *ngIf="dataSource">
           <!-- Table -->
         <table mat-table 

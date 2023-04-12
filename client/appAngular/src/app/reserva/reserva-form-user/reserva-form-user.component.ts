@@ -67,12 +67,12 @@ export class ReservaFormUserComponent implements OnInit {
   formularioReactive() {
     this.reservaForm = this.fb.group({
       id: [null, null],
-      idUsuario: [null, null],
-      idAreaComun: [null, null],
-      horario: [null, null],
+      idUsuario: [null, Validators.required],
+      idAreaComun: [null, Validators.required],
+      horario: [null, Validators.required],
       detalles: ['No indica', null],
       estado: ['Pendiente', null],
-      diaReservacion: [null, null],
+      diaReservacion: [null, Validators.required],
     });
   } //cierra formulario
 

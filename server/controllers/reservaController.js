@@ -10,6 +10,9 @@ module.exports.get = async (request, response, next) => {
     response.json(reserva);
   };
 
+  
+  
+
 
 
   module.exports.getById = async (request, response, next) => {
@@ -27,10 +30,28 @@ module.exports.get = async (request, response, next) => {
   };
 
 
+  module.exports.getByUser = async (request, response, next) => {
+
+    let id = parseInt(request.params.id);
+    const reserva = await prisma.reserva.findMany({
+      where: {
+        idUsuario: id
+    },
+      include: {
+        areaComun: true, usuario:true
+      },
+    });
+    response.json(reserva);
+  };
+
+
+  
+
+
+
+
+
   module.exports.createByUser = async (request, response, next) => {
- 
-
-
     let reserva = request.body;
     const newReserva = await prisma.reserva.create({
       data: {

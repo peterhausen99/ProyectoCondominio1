@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild, Output,EventEmitter } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
@@ -9,11 +9,13 @@ import { NotificacionService, TipoMessage } from 'src/app/share/notification.ser
 import { MatInputModule } from '@angular/material/input'
 
 @Component({
-  selector: 'app-reserva-all',
-  templateUrl: './reserva-all.component.html',
-  styleUrls: ['./reserva-all.component.css']
+  selector: 'app-reserva-historial',
+  templateUrl: './reserva-historial.component.html',
+  styleUrls: ['./reserva-historial.component.css']
 })
-export class ReservaAllComponent implements AfterViewInit {
+export class ReservaHistorialComponent implements AfterViewInit{
+ 
+  id:any=104560123;
 
   reservaInfo:any=null;
   datos:any;
@@ -24,7 +26,7 @@ export class ReservaAllComponent implements AfterViewInit {
   dataSource=new MatTableDataSource<any>();
 
 //Columnas que se muestran
-displayedColumns=['id','usuario','areaComun','diaReservacion','estado','acciones'];
+displayedColumns=['id','areaComun','diaReservacion','estado','acciones'];
 
 constructor(
   private notificacion:NotificacionService,
@@ -34,20 +36,16 @@ constructor(
   ) { }
 
   ngAfterViewInit(): void {
-    this.listaReservas();
+    this.listaReservas(this.id);
   }
 
 
-  filtrar(event: Event) {
-    const filtro = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filtro.trim().toLowerCase();
-  }  
 
 
 
-  listaReservas(){
+  listaReservas(id:number){
     //Llamar al API, nombre de ruta
-    this.gService.list('reserva/')
+    this.gService.get('reserva/historial',id)
     .pipe(takeUntil(this.destroy$))
     .subscribe((data:any)=>{
         console.log(data);
@@ -67,24 +65,7 @@ constructor(
     });
   }
 
-  actualizarReserva(id: number){
 
-    this.gService.get('reserva', id).pipe(takeUntil(this.destroy$))
-    .subscribe((data:any)=>{
-      this.reservaInfo=data;
-    });
-
-    if(this.reservaInfo.estado=="Pendiente"){
-      this.router.navigate(['/reserva/update',id],{
-        relativeTo:this.route
-      })
-    }
-    else{
-      this.notificacion.mensaje('Reserva',`La reserva elegida ya fue "${this.reservaInfo.estado}" y no se puede modificar`,TipoMessage.success);
-      return;
-    }
-
-   }//cierra actualizarReserva
 
 
    ngOnDestroy(){

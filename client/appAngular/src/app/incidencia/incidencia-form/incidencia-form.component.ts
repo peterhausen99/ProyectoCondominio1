@@ -59,13 +59,13 @@ export class IncidenciaFormComponent implements OnInit {
   formularioReactive() {
     this.incidenciaForm = this.fb.group({
       id: [null, null],
-      idUsuario: [null, Validators.required],
-      titulo: [null, Validators.compose([
+      idUsuario: [{value:'', disabled: true}, Validators.required],
+      titulo: [{value:'', disabled: true}, Validators.compose([
                                         Validators.required,
                                         Validators.minLength(5),
                                         Validators.maxLength(40),
       ])],
-      descripcion: [null, Validators.compose([
+      descripcion: [{value:'', disabled: true}, Validators.compose([
                                               Validators.required,
                                               Validators.minLength(5),
                                               Validators.maxLength(200),
