@@ -15,7 +15,7 @@ import { MatInputModule } from '@angular/material/input'
 })
 export class ReservaHistorialComponent implements AfterViewInit{
  
-  id:any=104560123;
+  id:any=206990320;
 
   reservaInfo:any=null;
   datos:any;
