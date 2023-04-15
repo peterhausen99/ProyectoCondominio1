@@ -18,6 +18,9 @@ import { IncidenciaModule } from './incidencia/incidencia.module';
 import { InformacionModule } from './informacion/informacion.module';
 import { ReservaModule } from './reserva/reserva.module';
 
+import {HTTP_INTERCEPTORS} from '@angular/common/http'
+import { HttpErrorInterceptorService } from './share/http-error-interceptor.service';
+
 
 
 @NgModule({
@@ -42,7 +45,8 @@ import { ReservaModule } from './reserva/reserva.module';
      //TIENE QUE IR DE ULTIMO AppRoutingModule
           
   ],
-  providers: [],
+  providers: [{ provide: HTTP_INTERCEPTORS, 
+    useClass: HttpErrorInterceptorService, multi: true },],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

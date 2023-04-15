@@ -10,6 +10,10 @@ router.get("/", usuarioController.get);
 
 router.get("/:id", usuarioController.getById);
 
+router.post("/login", usuarioController.login);
+
+router.post("/registrar", usuarioController.register);
+
 
 
 module.exports = router;

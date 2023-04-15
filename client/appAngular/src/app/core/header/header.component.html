@@ -52,13 +52,7 @@
         Estados de cuenta
       </button>
 
-      <button
-        mat-menu-item
-        [routerLink]="'/incidencia/all'"
-        [routerLinkActive]="'mat-raised-button'"
-      >
-        Incidencias
-      </button>
+     
 
       <button
         mat-menu-item
@@ -91,13 +85,7 @@
       >
         Residencias
       </button>-->
-      <button
-        mat-menu-item
-        [routerLink]="'/reserva/all'"
-        [routerLinkActive]="'mat-raised-button'"
-      >
-        Reservas áreas comunes
-      </button>
+      
 
       <button
         mat-menu-item
@@ -122,11 +110,19 @@
     <mat-menu #menu3="matMenu">
       <button
         mat-menu-item
-        [routerLink]="'/asignacionplan'"
+        [routerLink]="'/reserva/all'"
         [routerLinkActive]="'mat-raised-button'"
       >
-        Avance 5
+        Reservas áreas comunes
       </button>
+
+      <button
+      mat-menu-item
+      [routerLink]="'/incidencia/all'"
+      [routerLinkActive]="'mat-raised-button'"
+    >
+      Incidencias
+    </button>
     </mat-menu>
 
 
