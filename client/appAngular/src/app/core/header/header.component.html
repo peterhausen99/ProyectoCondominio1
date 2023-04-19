@@ -110,6 +110,14 @@
     <mat-menu #menu3="matMenu">
       <button
         mat-menu-item
+        [routerLink]="'/asignacionplan'"
+        [routerLinkActive]="'mat-raised-button'"
+      >
+        Asignación Planes de Cobro
+      </button>
+
+      <button
+        mat-menu-item
         [routerLink]="'/reserva/all'"
         [routerLinkActive]="'mat-raised-button'"
       >

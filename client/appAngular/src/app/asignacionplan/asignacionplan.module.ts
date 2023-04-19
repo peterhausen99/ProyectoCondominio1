@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AsignacionplanRoutingModule } from './asignacionplan-routing.module';
+import { AsignacionplanAdminComponent } from './asignacionplan-admin/asignacionplan-admin.component';
 import { AsignacionplanDetailComponent } from './asignacionplan-detail/asignacionplan-detail.component';
 import { AsignacionplanAllComponent } from './asignacionplan-all/asignacionplan-all.component';
 import { MatGridListModule } from '@angular/material/grid-list';
@@ -22,13 +23,16 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 
 
+
 @NgModule({
   declarations: [
 
       
+    
+    AsignacionplanAdminComponent,
     AsignacionplanDetailComponent,
-
     AsignacionplanAllComponent
+      
       
   ],
   imports: [
