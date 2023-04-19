@@ -16,7 +16,7 @@
 
         <!-- Columna nombre -->
         <ng-container matColumnDef="id">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header>Residencia #</th>
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Lista de Residencias #</th>
           <td mat-cell *matCellDef="let row">{{row.id}}</td>
         </ng-container>
  
@@ -44,8 +44,16 @@
              >
                <mat-icon class="mat-18">info</mat-icon>
              </button>
-
-           </td>
+             <button
+             mat-mini-fab
+                matTooltip="Detalle"
+                aria-label="Detalle"
+                color="primary"
+                (click)="agregarPlan(row.id)"
+              >
+                <mat-icon class="mat-18">add</mat-icon>
+              </button>
+           </td> 
          </ng-container>
   
          <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>

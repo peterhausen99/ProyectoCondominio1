@@ -68,8 +68,42 @@ module.exports.get = async (request, response, next) => {
 
 
 module.exports.create = async (request, response, next) => {
-  
+  let plan = request.body;
+  const newPlan = await prisma.plan.create({
+    data: {
+      idResidencia: parseInt(plan.idResidencia),
+      idPlan: parseInt(plan.idPlan),
+      mes: plan.diaPlancion,
+      estado: plan.estado,
+      iva: plan.detalles,
+     total: plan.horario
+    },
+  });
+  response.json(newPlan);
 };
 
+
 module.exports.update = async (request, response, next) => {
+  let asignacion = request.body;
+  let idResidencia = parseInt(request.params.idResidencia);
+  let idPlan = parseInt(request.params.idPlan);
+  let mes = request.params.mes;
+  
+  // Obtener la asignación que está registrada en la BD
+  const asignacionExistente = await prisma.asignacionPlan.findUnique({
+    where: { idResidencia_idPlan_mes: { idResidencia, idPlan, mes } },
+  });
+
+  // Realizar la actualización de la asignación
+  const nuevaAsignacion = await prisma.asignacionPlan.update({
+    where: { idResidencia_idPlan_mes: { idResidencia, idPlan, mes } },
+    data: {
+      estado: asignacion.estado,
+      iva: asignacion.iva,
+      total: asignacion.total,
+    },
+  });
+
+  // Responder con la asignación actualizada
+  response.json(nuevaAsignacion);
 };

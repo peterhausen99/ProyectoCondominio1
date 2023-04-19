@@ -48,7 +48,11 @@ constructor(private router:Router,
       relativeTo:this.route
     });
   }
-
+  agregarPlan(id:number){
+    this.router.navigate(['/asignacionplan/admin',id],{
+      relativeTo:this.route
+    });
+  }
 
   detallePago(id:number){
     this.router.navigate(['/asignacionplan/pago',id],{
