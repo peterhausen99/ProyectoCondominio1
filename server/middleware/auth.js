@@ -23,7 +23,7 @@ module.exports.verifyToken = async (req, res, next) => {
     next();
   }
 };
-exports.grantRole = function (roles) {
+exports.grantRole = function (perfilUsuario) {
   return async (req, res, next) => {
     try {
       const bearerHeader = req.headers["authorization"];
@@ -39,8 +39,8 @@ exports.grantRole = function (roles) {
       if (token) {
         const verify = jwt.verify(token, process.env.SECRET_KEY);
        //!==
-        if (roles.length && roles.indexOf(verify.role)===-1) {
-          // user's role is not authorized
+        if (perfilUsuario.length && perfilUsuario.indexOf(verify.role)===-1) {
+          // user's perfilUsuario is not authorized
           return res.status(401).json({ message: "No autorizado" });
         }
         next();
