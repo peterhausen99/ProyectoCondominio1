@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { map } from 'rxjs/operators';
-import { CartService } from './cart.service';
+//import { CartService } from './cart.service';
 
 @Injectable({
   providedIn: 'root',
@@ -21,7 +21,7 @@ export class AuthenticationService {
   //Inyectar cliente HTTP para las solicitudes al API
 
 
-  constructor(private http: HttpClient, private cartService:CartService) {
+  constructor(private http: HttpClient, /*private cartService:CartService*/) {
     //Obtener los datos del usuario en localStorage, si existe
     this.currentUserSubject = new BehaviorSubject<any>(
       JSON.parse(localStorage.getItem('currentUser'))
@@ -76,7 +76,7 @@ export class AuthenticationService {
       //Eliminarlo del observable del boleano si esta autenticado
       this.authenticated.next(false);
       //Eliminar carrito
-      this.cartService.deleteCart();
+      /*this.cartService.deleteCart();*/
       return true;
     }
     return false;
