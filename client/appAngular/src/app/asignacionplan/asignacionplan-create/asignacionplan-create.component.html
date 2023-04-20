@@ -12,6 +12,18 @@
     <mat-card-content>
       <hr />
       <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width" appearance="outline">
+            <input matInput placeholder="ID Residencia" formControlName="idResidencia">
+            <mat-error *ngIf="asignacionPlanForm.controls['idResidencia'].hasError('required')">
+                ID idResidencia es <strong>requerido</strong>
+            </mat-error>
+           
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
         <div class="col" *ngIf="planList">
           <mat-form-field class="full-width">
             <mat-select placeholder="Plan" formControlName="idPlan">
@@ -55,9 +67,6 @@
               <mat-option [value]="'Julio'">
                 Julio
               </mat-option>
-              <mat-option [value]="'Marzo'">
-                Marzo
-              </mat-option>
               <mat-option [value]="'Agosto'">
                 Agosto
               </mat-option>
@@ -78,6 +87,15 @@
         </div>
       </div>
 
+      <div class="row">
+        <div class="col">
+          <mat-radio-group formControlName="estado">
+            <mat-label>Estado</mat-label>
+            <mat-radio-button value="Aprobado">Pendiente</mat-radio-button>
+            <mat-radio-button value="Rechazado">Pagado </mat-radio-button>
+          </mat-radio-group>
+        </div>
+      </div>
       <hr />
       <br />
     </mat-card-content>

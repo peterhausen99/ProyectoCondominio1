@@ -67,7 +67,7 @@ module.exports.get = async (request, response, next) => {
   
 
 
-module.exports.create = async (request, response, next) => {
+module.exports.create = async (request, response, next,) => {
   let plan = request.body;
   const newPlan = await prisma.plan.create({
     data: {
@@ -81,6 +81,7 @@ module.exports.create = async (request, response, next) => {
   });
   response.json(newPlan);
 };
+
 
 
 module.exports.update = async (request, response, next) => {

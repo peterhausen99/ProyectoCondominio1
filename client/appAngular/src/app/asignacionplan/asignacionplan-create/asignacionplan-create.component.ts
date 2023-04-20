@@ -54,8 +54,8 @@ export class AsignacionplanCreateComponent implements OnInit{
               idPlan: this.reservaInfo.idPlan,
               mes: this.reservaInfo.mes,
               estado: "Pendiente",
-              iva: this.reservaInfo.iva,
-              total: this.reservaInfo.total,
+              iva: 10,
+              total: 10000,
             });
           });
       }
