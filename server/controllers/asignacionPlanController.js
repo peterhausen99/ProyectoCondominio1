@@ -73,7 +73,7 @@ module.exports.create = async (request, response, next) => {
     data: {
       idResidencia: parseInt(plan.idResidencia),
       idPlan: parseInt(plan.idPlan),
-      mes: plan.diaPlancion,
+      mes: plan.mes,
       estado: plan.estado,
       iva: plan.detalles,
      total: plan.horario

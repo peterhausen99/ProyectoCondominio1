@@ -9,7 +9,7 @@ router.get("/",asignacionPlanController.get);
 
 router.get("/:id",asignacionPlanController.getById);
 
-router.post('/', asignacionPlanController.create); 
+router.post('/create/:id', asignacionPlanController.create); 
 
 
 router.get("/pago/:id",asignacionPlanController.getByIdPago);
