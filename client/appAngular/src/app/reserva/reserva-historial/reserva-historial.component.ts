@@ -16,7 +16,6 @@ import { MatInputModule } from '@angular/material/input'
 export class ReservaHistorialComponent implements AfterViewInit{
  
   id:any=206990320;
-
   reservaInfo:any=null;
   datos:any;
   destroy$:Subject<boolean>=new Subject<boolean>();
@@ -39,7 +38,7 @@ constructor(
     this.listaReservas(this.id);
   }
 
-
+ 
 
 
 
