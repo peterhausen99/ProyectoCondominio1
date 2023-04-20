@@ -30,7 +30,7 @@ module.exports.get = async (request, response, next) => {
     // salt es un valor aleatorio y debe ser diferente para cada cálculo, por lo que el resultado casi nunca debe ser el mismo, incluso para contraseñas iguales
     let salt = bcrypt.genSaltSync(10);
     // Hash password
-    let hash = bcrypt.hashSync(userData.password, salt);
+    let hash = bcrypt.hashSync(userData.contrasenna, salt);
    /*  const salt = await bcrypt.genSalt(10)
     const hash = await bcrypt.hash(password, salt) */
     const user = await prisma.usuario.create({
@@ -58,20 +58,20 @@ module.exports.get = async (request, response, next) => {
 module.exports.login = async (request, response, next) => {
   let userReq = request.body;
   //Buscar el usuario según el email dado
-  const user = await prisma.Usuario.findUnique({
+  const usuario = await prisma.usuario.findUnique({
     where: {
       correo: userReq.correo,
     },
   });
   //Sino lo encuentra según su email
-  if (!user) {
+  if (!usuario) {
     response.status(401).send({
       success: false,
       message: "Usuario no registrado",
     });
   }
   //Verifica la contraseña
-  const checkPassword = await bcrypt.compare(userReq.contrasenna, user.contrasenna);
+  const checkPassword = await bcrypt.compare(userReq.contrasenna, usuario.contrasenna);
   if (checkPassword === false) {
 		response.status(401).send({
       success: false, 
@@ -81,9 +81,9 @@ module.exports.login = async (request, response, next) => {
     //Si el usuario es correcto: email y password
     //Crear el token
     const payload = {
-      correo: user.correo,
-      perfilUsuarioId: user.perfilUsuarioId,
-      idUsuario:user.idUsuario
+      correo: usuario.correo,
+      perfilUsuarioId: usuario.perfilUsuarioId,
+      idUsuario:usuario.idUsuario
     };
     //Crea el token con el payload, llave secreta
     // y el tiempo de expiración
@@ -94,12 +94,13 @@ module.exports.login = async (request, response, next) => {
       success: true,
       message: "Usuario registrado",
       data: {
-        user,
+        usuario,
         token,
       },
     });
   }
 };
+
 
 
 
