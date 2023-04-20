@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthenticationService } from 'src/app/share/authentication.service';
+import { CartService } from 'src/app/share/cart.service';
 
 @Component({
   selector: 'app-header',
@@ -8,24 +11,39 @@ import { Component, OnInit } from '@angular/core';
 export class HeaderComponent implements OnInit {
   isAutenticated: boolean;
   currentUser: any;
-  constructor() {}
+  qtyItems:Number = 0;
+  constructor(private cartService: CartService,
+    private router: Router,
+    private authService: AuthenticationService) {
 
-  ngOnInit(): void {
+   }
+
+   ngOnInit(): void {
+    //Suscribirse al observable que gestiona la cantidad de items del carrito
+    this.cartService.countItems.subscribe((value)=>{
+      this.qtyItems=value;
+    });
+    //Subscripción a la información del usuario actual
+    this.authService.currentUser.subscribe((x) => (this.currentUser = x));
+    
+    //Subscripción al booleano que indica si esta autenticado
+    this.authService.isAuthenticated.subscribe(
+      (valor) => (this.isAutenticated = valor)
+    );
     //Valores de prueba
-    this.isAutenticated = false;
-    let user = {
-      name: 'Tom',
-      email: 'tHanks@gmail.com',
-    };
-
-    this.currentUser = user;
+    /* this.isAutenticated=true;
+    let user={
+      name:"Tom",
+      email:"tHanks@prueba.com"
+    }
+    this.currentUser=user; */
   }
-  login() {
-    console.log('Login');
+  login(){
+    this.router.navigate(['usuario/login']);
   }
-
-  logout() {
-    console.log('Logout');
+  logout(){
+    this.authService.logout();
+    this.router.navigate(['usuario/login']);
   }
 }
 

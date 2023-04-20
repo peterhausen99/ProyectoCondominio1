@@ -1,13 +1,13 @@
 <form [formGroup]="formulario"  novalidate>
-    <mat-card class="shipping-card">
+    <mat-card class="shipping-card" style="background-color: #4682b4;">
       <mat-card-header>
-        <mat-card-title>Login Usuario </mat-card-title>
+        <mat-card-title style="color: white;">Login Usuario </mat-card-title>
       </mat-card-header> 
-      <mat-card-content>
-        <div class="row">
-          <div class="col">
-            <mat-form-field class="full-width">
-              <mat-label>Correo</mat-label>
+      <mat-card-content >
+        <div class="row" >
+          <div class="col" >
+            <mat-form-field class="full-width" >
+              <mat-label >Correo</mat-label>
               <input matInput type="text" placeholder="Correo usuario" formControlName="correo" />
              <mat-error *ngIf="errorHandling('correo', 'required')">
                 Correo es <strong>requerido</strong>
@@ -34,8 +34,8 @@
         </div>
       </mat-card-content>
       <mat-card-actions>
-        <button mat-raised-button color="primary" (click)="submitForm()">Login</button>
-        <button mat-raised-button color="accent" type="reset" (click)="onReset()">Cancelar</button>
+        <button mat-raised-button color="primary" (click)="submitForm()" style="background-color: #515151;">Login</button>
+        <button mat-raised-button color="primary" type="reset" (click)="onReset()" style="background-color: #515151;">Cancelar</button>
       </mat-card-actions>
     </mat-card>
     </form>

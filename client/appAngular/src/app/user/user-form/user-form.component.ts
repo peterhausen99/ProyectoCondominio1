@@ -16,7 +16,7 @@ import { AuthenticationService } from 'src/app/share/authentication.service';
 export class UserFormComponent implements OnInit{
   hide = true;
   usuario: any;
-  roles: any;
+  perfilUsuario: any;
   formCreate: FormGroup;
   makeSubmit: boolean = false;
   destroy$: Subject<boolean> = new Subject<boolean>();
@@ -35,9 +35,9 @@ export class UserFormComponent implements OnInit{
       nombre: ['', [Validators.required]],
       correo: ['', [Validators.required]],
       contrasenna: ['', [Validators.required]],
-      role: ['', [Validators.required]],
+      perfilUsuario: ['', [Validators.required]],
     });
-    this.getRoles();
+    this.getPerfiles();
   }
 
   ngOnInit(): void {}
@@ -60,13 +60,13 @@ export class UserFormComponent implements OnInit{
   onReset() {
     this.formCreate.reset();
   }
-  getRoles() {
+  getPerfiles() {
     this.gService
-      .list('rol')
+      .list('perfilUsuario')
       .pipe(takeUntil(this.destroy$))
       .subscribe((data: any) => {
-        this.roles = data;
-        console.log( this.roles);
+        this.perfilUsuario = data;
+        console.log( this.perfilUsuario);
       });
   }
   public errorHandling = (control: string, error: string) => {
