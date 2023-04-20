@@ -6,34 +6,17 @@
   <mat-card class="shipping-card">
     <mat-card-header>
       <mat-card-title>
-        <h1 style="color: white">{{ titleForm }} asignacionPlan</h1>
+        <h1 style="color: white">Agregar Nuevo Plan</h1>
       </mat-card-title>
     </mat-card-header>
     <mat-card-content>
-      <div class="row">
-        <div class="col" *ngIf="residenciaList">
-          <mat-form-field class="full-width">
-            <mat-select placeholder="Residencia" formControlName="idResidencia">
-              <mat-option *ngFor="let item of residenciaList" [value]="item.id">
-                {{ item.id }} 
-              </mat-option>
-            </mat-select>
-            <mat-error
-              *ngIf="asignacionPlanForm.controls['idResidencia'].hasError('required')"
-            >
-              Descripcion es <strong>requerido</strong>
-            </mat-error>
-          </mat-form-field>
-        </div>
-      </div>
-
       <hr />
       <div class="row">
         <div class="col" *ngIf="planList">
           <mat-form-field class="full-width">
             <mat-select placeholder="Plan" formControlName="idPlan">
               <mat-option *ngFor="let item of planList" [value]="item.id">
-                {{ item.descripcion }} | {{ item.total }}
+                {{ item.descripcion }} | ₡ {{ item.totalPlan }}
               </mat-option>
             </mat-select>
             <mat-error
@@ -60,14 +43,41 @@
               <mat-option [value]="'Marzo'">
                 Marzo
               </mat-option>
+              <mat-option [value]="'Abril'">
+                Abril
+              </mat-option>
+              <mat-option [value]="'Mayo'">
+                Mayo
+              </mat-option>
+              <mat-option [value]="'Junio'">
+                Junio
+              </mat-option>
+              <mat-option [value]="'Julio'">
+                Julio
+              </mat-option>
+              <mat-option [value]="'Marzo'">
+                Marzo
+              </mat-option>
+              <mat-option [value]="'Agosto'">
+                Agosto
+              </mat-option>
+              <mat-option [value]="'Septiembre'">
+                Septiembre
+              </mat-option>
+              <mat-option [value]="'Octubre'">
+                Octubre
+              </mat-option>
+              <mat-option [value]="'Noviembre'">
+                Noviembre
+              </mat-option>
+              <mat-option [value]="'Diciembre'">
+                Diciembre
+              </mat-option>
             </mat-select>
           </mat-form-field>
         </div>
       </div>
 
-      <hr />
-
-      
       <hr />
       <br />
     </mat-card-content>

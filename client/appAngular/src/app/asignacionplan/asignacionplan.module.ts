@@ -19,6 +19,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatRadioModule } from '@angular/material/radio';
 import { ReactiveFormsModule } from '@angular/forms';
+import { AsignacionplanCreateComponent } from './asignacionplan-create/asignacionplan-create.component';
 
 
 
@@ -27,13 +28,11 @@ import { ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
 
-      
-    
     AsignacionplanAdminComponent,
+    AsignacionplanCreateComponent,
     AsignacionplanDetailComponent,
-    AsignacionplanAllComponent
-      
-      
+    AsignacionplanAllComponent,
+       
   ],
   imports: [
     CommonModule,

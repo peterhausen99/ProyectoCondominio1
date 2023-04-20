@@ -49,7 +49,7 @@ constructor(private router:Router,
     });
   }
   agregarPlan(id:number){
-    this.router.navigate(['/asignacionplan/admin',id],{
+    this.router.navigate(['/asignacionplan/create',id],{
       relativeTo:this.route
     });
   }
