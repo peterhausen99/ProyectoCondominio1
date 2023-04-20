@@ -7,6 +7,7 @@ import { Subject, takeUntil } from 'rxjs';
 import { GenericService } from 'src/app/share/generic.service';
 import { NotificacionService, TipoMessage } from 'src/app/share/notification.service';
 import { MatInputModule } from '@angular/material/input'
+import { AuthenticationService } from 'src/app/share/authentication.service';
 
 @Component({
   selector: 'app-reserva-historial',
@@ -15,7 +16,8 @@ import { MatInputModule } from '@angular/material/input'
 })
 export class ReservaHistorialComponent implements AfterViewInit{
  
-  id:any=206990320;
+  id:any;
+  currentUser: any;
   reservaInfo:any=null;
   datos:any;
   destroy$:Subject<boolean>=new Subject<boolean>();
@@ -31,10 +33,13 @@ constructor(
   private notificacion:NotificacionService,
   private router:Router,
   private route:ActivatedRoute, 
-  private gService:GenericService
+  private gService:GenericService,
+  private authService: AuthenticationService
   ) { }
 
   ngAfterViewInit(): void {
+    this.authService.currentUser.subscribe((x) => (this.currentUser = x));
+    this.id=this.currentUser.usuario.idUsuario;
     this.listaReservas(this.id);
   }
 

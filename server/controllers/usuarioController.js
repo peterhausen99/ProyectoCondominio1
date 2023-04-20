@@ -8,6 +8,9 @@ module.exports.get = async (request, response, next) => {
       orderBy: {
         nombre: "asc",
       },
+      include: {
+        perfilUsuario: true
+      },
     });
     response.json(usuarios);
   };
@@ -17,7 +20,10 @@ module.exports.get = async (request, response, next) => {
     const usuario = await prisma.usuario.findUnique({
       where: {
         idUsuario: id,
-      }
+      },
+      include: {
+        perfilUsuario: true
+      },
     });
     response.json(usuario);
   };
@@ -62,6 +68,9 @@ module.exports.login = async (request, response, next) => {
     where: {
       correo: userReq.correo,
     },
+    include: {
+      perfilUsuario: true
+    },
   });
   //Sino lo encuentra según su email
   if (!usuario) {
@@ -83,7 +92,8 @@ module.exports.login = async (request, response, next) => {
     const payload = {
       correo: usuario.correo,
       perfilUsuarioId: usuario.perfilUsuarioId,
-      idUsuario:usuario.idUsuario
+      idUsuario:usuario.idUsuario,
+      perfilUsuario: usuario.perfilUsuario
     };
     //Crea el token con el payload, llave secreta
     // y el tiempo de expiración
