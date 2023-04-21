@@ -37,6 +37,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatSelectModule,
     MatRadioModule,
     ReactiveFormsModule
+  ],
+  exports: [
+    UserIndexComponent,
   ]
 })
 export class UserModule { }

@@ -75,7 +75,7 @@ export class UserLoginComponent implements OnInit{
    this.authService.loginUser(this.formulario.value)
    .subscribe((respuesta:any)=>{
     if(respuesta!=false){
-      this.router.navigate(['/']);
+      this.router.navigate(['/home/inicio']);
     }else{
       this.notificacion.mensaje("Login","Credenciales incorrectas",TipoMessage.error);
     }

@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {AfterViewInit, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Observable ,Subject } from 'rxjs';
 import { AuthenticationService } from 'src/app/share/authentication.service';
 import { CartService } from 'src/app/share/cart.service';
 
@@ -8,17 +9,25 @@ import { CartService } from 'src/app/share/cart.service';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent implements OnInit {
-  isAutenticated: boolean;
+export class HeaderComponent implements OnInit  {
+  isAutenticatedAdmin: boolean;
+  isAutenticatedRes: boolean;
   currentUser: any;
   qtyItems:Number = 0;
-  constructor(private cartService: CartService,
+  destroy$:Subject<boolean>=new Subject<boolean>();
+
+
+
+
+  constructor(
+    private cartService: CartService,
     private router: Router,
     private authService: AuthenticationService) {
 
    }
 
-   ngOnInit(): void {
+    ngOnInit(): void {
+    
     //Suscribirse al observable que gestiona la cantidad de items del carrito
     this.cartService.countItems.subscribe((value)=>{
       this.qtyItems=value;
@@ -27,23 +36,33 @@ export class HeaderComponent implements OnInit {
     this.authService.currentUser.subscribe((x) => (this.currentUser = x));
     
     //Subscripción al booleano que indica si esta autenticado
-    this.authService.isAuthenticated.subscribe(
-      (valor) => (this.isAutenticated = valor)
-    );
-    //Valores de prueba
-    /* this.isAutenticated=true;
-    let user={
-      name:"Tom",
-      email:"tHanks@prueba.com"
+    if(this.currentUser.usuario.perfilUsuarioId==1){
+      this.authService.isAuthenticated.subscribe(
+        (valor) => (this.isAutenticatedAdmin = valor));
+        this.isAutenticatedRes=false;
     }
-    this.currentUser=user; */
-  }
+    else{
+      this.authService.isAuthenticated.subscribe(
+        (valor) => (this.isAutenticatedRes = valor));
+        this.isAutenticatedAdmin=false;
+    }
+    }
+
   login(){
+
     this.router.navigate(['usuario/login']);
   }
   logout(){
     this.authService.logout();
     this.router.navigate(['usuario/login']);
   }
+
+  ngOnDestroy(){
+    this.destroy$.next(true);
+    this.destroy$.unsubscribe();
+  }
+
+
+
 }
 
