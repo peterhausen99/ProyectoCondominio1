@@ -141,7 +141,7 @@ await prisma.areaComun.createMany({
 await prisma.reserva.create({
     data:{
         areaComun: {connect: {id: 1}},
-        usuario:{connect:{idUsuario:206990320}},
+        usuario:{connect:{idUsuario:302360215}},
         diaReservacion: new Date("2023-04-12"),
         estado: "Pendiente",
         detalles: "no indica",
@@ -151,7 +151,7 @@ await prisma.reserva.create({
 await prisma.reserva.create({
     data:{
         areaComun: {connect: {id: 2}},
-        usuario:{connect:{idUsuario:206990320}},
+        usuario:{connect:{idUsuario:302360215}},
        diaReservacion: new Date("2023-04-13"),
        estado: "Pendiente",
        detalles: "no indica",
@@ -161,7 +161,7 @@ await prisma.reserva.create({
 await prisma.reserva.create({
     data:{
         areaComun: {connect: {id: 3}},
-        usuario:{connect:{idUsuario:206990320}},
+        usuario:{connect:{idUsuario:405660125}},
        diaReservacion: new Date("2023-04-14"),
        estado: "Pendiente",
        detalles: "no indica",
@@ -171,7 +171,7 @@ await prisma.reserva.create({
 await prisma.reserva.create({
     data:{
         areaComun: {connect: {id: 4}},
-        usuario:{connect:{idUsuario:206990320}},
+        usuario:{connect:{idUsuario:405660125}},
        diaReservacion: new Date("2023-04-15"),
     estado: "Pendiente",
        detalles: "no indica",

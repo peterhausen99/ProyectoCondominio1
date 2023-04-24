@@ -31,6 +31,11 @@ export class IncidenciaAllComponent implements AfterViewInit {
       this.listaIncidencias();
     }
 
+    filtrar(event: Event) {
+      const filtro = (event.target as HTMLInputElement).value;
+      this.dataSource.filter = filtro.trim().toLowerCase();
+    }  
+
     listaIncidencias(){
       //Llamar al API, nombre de ruta
       this.gService.list('incidencia/')

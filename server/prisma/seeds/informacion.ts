@@ -37,6 +37,24 @@ export const informacion = [
         tipo:"Archivo"
     }, 
 
+    //5
+    {
+        id:5,
+        titulo: "Aniversario",
+        mensaje: "Se les informa que el dia 15 de abril se cumplen 3 años de la apertura del condominio, el cual se celebrara en el salon principal a las 7:00pm",
+        estado: "Activo",
+        tipo:"Noticia"
+    }, 
+
+    //6
+    {
+        id:6,
+        titulo: "Informe mes de abril",
+        mensaje: "Se les informa que ya se encuentra disponible el informe del mes de abril",
+        estado: "Activo",
+        tipo:"Archivo"
+    }, 
+
 
   
   ];
