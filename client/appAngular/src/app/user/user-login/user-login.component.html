@@ -1,14 +1,14 @@
 <form [formGroup]="formulario"  novalidate>
     <mat-card class="shipping-card" style="background-color: #4682b4;">
-      <mat-card-header>
-        <mat-card-title style="color: white;">Login Usuario </mat-card-title>
+      <mat-card-header><h1>Bienvenido</h1>
+        <mat-card-title> </mat-card-title>
       </mat-card-header> 
       <mat-card-content >
         <div class="row" >
           <div class="col" >
-            <mat-form-field class="full-width" >
-              <mat-label >Correo</mat-label>
-              <input matInput type="text" placeholder="Correo usuario" formControlName="correo" />
+            <mat-form-field class="full-width">
+              <mat-label>Correo</mat-label>
+              <input matInput type="text" placeholder="Correo" formControlName="correo" />
              <mat-error *ngIf="errorHandling('correo', 'required')">
                 Correo es <strong>requerido</strong>
               </mat-error>
@@ -21,23 +21,26 @@
         <div class="row">
           <div class="col">
             <mat-form-field class="full-width">
-            <mat-label>contrasenna</mat-label>
-            <input matInput [type]="hide ? 'contrasenna' : 'text'" placeholder="contrasenna usuario" formControlName="contrasenna" />
+            <mat-label>Contraseña</mat-label>
+            <input matInput [type]="hide ? 'contrasenna' : 'text'" placeholder="Contraseña" formControlName="contrasenna" />
             <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide contrasenna'" [attr.aria-pressed]="hide">
               <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
             </button>
            <mat-error *ngIf="errorHandling('contrasenna', 'required')">
-            contrasenna es <strong>requerido</strong>
+            Contraseña es <strong>requerido</strong>
             </mat-error>
           </mat-form-field>
           </div>
         </div>
       </mat-card-content>
-      <mat-card-actions>
-        <button mat-raised-button color="primary" (click)="submitForm()" style="background-color: #515151;">Login</button>
-        <button mat-raised-button color="primary" type="reset" (click)="onReset()" style="background-color: #515151;">Cancelar</button>
+      <mat-card-actions >
+        <button class="full-width" mat-raised-button color="primary" (click)="submitForm()" style="background-color: white;color:steelblue">Login</button>
+        <!--<button mat-raised-button color="primary" type="reset" (click)="onReset()" style="background-color: #515151;">Cancelar</button>-->
+
+
       </mat-card-actions>
     </mat-card>
+
     </form>
   
   

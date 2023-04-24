@@ -1,18 +1,21 @@
 
 <mat-card class="full-width">
     <!-- Titulo del Card -->
-    <mat-card-title>
+
+    <mat-card-content> <mat-card-title>
       <h1>Usuarios</h1>
-      <a
-        mat-fab
+      
+    </mat-card-title>
+    <button mat-raised-button
         matTooltip="Crear Usuario"
         aria-label="Crear Usuario"
-        color="primary"
+        style="background-color: steelblue;color:white"
         (click)="crearUsuario()"
       >
-        <mat-icon>add</mat-icon>
-      </a>
-    </mat-card-title>
+      Agregar nuevo usuario
+      </button>
+    </mat-card-content>
+   <hr>
     <mat-card-content>
       <div class="mat-elevation-z8" *ngIf="dataSource">
           <!-- Table -->

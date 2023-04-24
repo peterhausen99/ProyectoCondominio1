@@ -1,17 +1,22 @@
 <mat-card class="full-width">
     <!-- Titulo del Card -->
-    <mat-card-title>
-      <h1>Información</h1>
-      <a
-        mat-fab
-        matTooltip="Crear Información"
-        aria-label="Crear Información"
-        color="primary"
-        (click)="crearInformacion()"
-      >
-        <mat-icon>add</mat-icon>
-      </a>
-    </mat-card-title>
+    
+
+    <mat-card-content>
+      <mat-card-title>
+        Información
+      </mat-card-title>
+<br>
+      <!--      -->
+      <button mat-raised-button class="boton" matTooltip="Crear Información" aria-label="Crear Información"
+      
+      style="background-color: steelblue;color:white"
+      (click)="crearInformacion()">
+      Agregar nueva información
+      </button>
+
+    </mat-card-content>
+<hr>
     <mat-card-content>
       <div class="mat-elevation-z8" *ngIf="dataSource">
           <!-- Table -->

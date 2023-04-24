@@ -1,8 +1,11 @@
 mat-form-field.mat-form-field {
     font-size: 16px;
+   
   }
   .full-width {
     width: 100%;
+    
+  
   }
   
   .shipping-card {
@@ -28,4 +31,19 @@ mat-form-field.mat-form-field {
   .col:last-child {
     margin-right: 0;
   }
+
+
+  mat-card-header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color:white;
+  }
+
+
+.mat-form-field-label {
+    /*change color of label*/
+    background-color: red !important;
   
+  }
+
