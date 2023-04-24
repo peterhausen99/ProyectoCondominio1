@@ -29,7 +29,7 @@ module.exports.get = async (request, response, next) => {
   };
 
 
-  module.exports.register = async (request, response, next) => {
+  module.exports.create = async (request, response, next) => {
     const userData = request.body;
     //Salt es una cadena aleatoria.
     //"salt round" factor de costo controla cuánto tiempo se necesita para calcular un solo hash de BCrypt
@@ -41,8 +41,8 @@ module.exports.get = async (request, response, next) => {
     const hash = await bcrypt.hash(password, salt) */
     const user = await prisma.usuario.create({
       data: {
-        idUsuario: userData.idUsuario,
-        perfilUsuarioId: userData.perfilUsuarioId,
+        idUsuario: parseInt(userData.idUsuario),
+        perfilUsuarioId: parseInt(userData.perfilUsuarioId),
         nombre: userData.nombre,
         apellido1: userData.apellido1,
         apellido2: userData.apellido2,
@@ -65,12 +65,9 @@ module.exports.login = async (request, response, next) => {
   let userReq = request.body;
   //Buscar el usuario según el email dado
   const usuario = await prisma.usuario.findUnique({
-    where: {
-      correo: userReq.correo,
-    },
-    include: {
-      perfilUsuario: true
-    },
+    where: {correo: userReq.correo},
+    include: { perfilUsuario: true
+},
   });
   //Sino lo encuentra según su email
   if (!usuario) {
@@ -87,7 +84,13 @@ module.exports.login = async (request, response, next) => {
       message: "Credenciales no validas",
     });
 	}else{
-    //Si el usuario es correcto: email y password
+   if(usuario.estado=="Inactivo"){
+    response.status(423).send({
+      success: false, 
+      message: "Usario inactivo",
+    });
+
+   }else{ //Si el usuario es correcto: email y password
     //Crear el token
     const payload = {
       correo: usuario.correo,
@@ -107,8 +110,36 @@ module.exports.login = async (request, response, next) => {
         usuario,
         token,
       },
-    });
+    });}
   }
+};
+
+
+//Actualizar un 
+module.exports.update = async (request, response, next) => {
+  let usuario = request.body;
+  let id = parseInt(request.params.id);
+  //Obtener el que esta registrado en la BD
+  /*const usuarioExist = await prisma.usuario.findUnique({
+    where: { idUsuario: id }, 
+    
+  });*/
+
+  const newUsuario = await prisma.usuario.update({
+    where: { idUsuario: usuario.idUsuario },
+    data: {
+      perfilUsuarioId: parseInt(usuario.perfilUsuarioId),
+      nombre: usuario.nombre,
+      apellido1: usuario.apellido1,
+      apellido2: usuario.apellido2,
+      correo: usuario.correo,
+      contrasenna: usuario.contrasenna,
+      telefono: usuario.telefono,
+      estado: usuario.estado
+    },
+  });
+  //response.json(newUsuario);
+  response.json(newUsuario);
 };
 
 

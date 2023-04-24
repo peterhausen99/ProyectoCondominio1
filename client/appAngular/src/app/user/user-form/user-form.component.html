@@ -1,9 +1,22 @@
-<form [formGroup]="formCreate"  novalidate>
+<form [formGroup]="usuarioForm" (ngSubmit)="isCreate ? crearUsuario(): actualizarUsuario()" novalidate>
     <mat-card class="shipping-card" style="background-color: #4682b4;">
       <mat-card-header>
         <mat-card-title>Crear Usuario </mat-card-title>
       </mat-card-header> 
       <mat-card-content>
+
+        <div class="row">
+          <div class="col">
+            <mat-form-field class="full-width">
+              <mat-label>Cédula</mat-label>
+              <input matInput type="text" placeholder="Cédula" formControlName="idUsuario" />
+             <mat-error *ngIf="errorHandling('idUsuario', 'required')">
+                Número de céduña <strong>requerido</strong>
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+
         <div class="row">
           <div class="col">
             <mat-form-field class="full-width">
@@ -15,6 +28,44 @@
             </mat-form-field>
           </div>
         </div>
+
+        <div class="row">
+          <div class="col">
+            <mat-form-field class="full-width">
+              <mat-label>Primer apellido</mat-label>
+              <input matInput type="text" placeholder="Primer apellido" formControlName="apellido1" />
+             <mat-error *ngIf="errorHandling('apellido1', 'required')">
+                Primer apellido es <strong>requerido</strong>
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col">
+            <mat-form-field class="full-width">
+              <mat-label>Segundo apellido</mat-label>
+              <input matInput type="text" placeholder="Segundo apellido" formControlName="apellido2" />
+             <mat-error *ngIf="errorHandling('apellido2', 'required')">
+                Segundo apellido es <strong>requerido</strong>
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col">
+            <mat-form-field class="full-width">
+              <mat-label>Télefono</mat-label>
+              <input matInput type="text" placeholder="Télefono" formControlName="telefono" />
+             <mat-error *ngIf="errorHandling('telefono', 'required')">
+              Télefono es <strong>requerido</strong>
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+
+      
         <div class="row">
           <div class="col">
             <mat-form-field class="full-width">
@@ -29,8 +80,8 @@
         <div class="row">
           <div class="col">
             <mat-form-field class="full-width">
-              <mat-label>contrasenna</mat-label>
-              <input matInput [type]="hide ? 'contrasenna' : 'text'" placeholder="contrasenna usuario" formControlName="contrasenna" />
+              <mat-label>Contraseña</mat-label>
+              <input matInput [type]="hide ? 'contrasenna' : 'text'" placeholder="Contraseña" formControlName="contrasenna" />
               <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide contrasenna'" [attr.aria-pressed]="hide">
                 <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
               </button>
@@ -40,24 +91,42 @@
             </mat-form-field>
           </div>
         </div>
+
         <div class="row">
           <div class="col">
             <mat-form-field  class="full-width">
-              <mat-label>perfilUsuario</mat-label>
-                <mat-select placeholder="perfilUsuario" formControlName="perfilUsuario">
-                  <mat-option *ngFor="let r of perfilUsuario" [value]="r.id">
-                    {{ r.nombre }}
+              <mat-label>Perfil usuario</mat-label>
+                <mat-select placeholder="Perfil usuario" formControlName="perfilUsuarioId">
+                  <mat-option *ngFor="let r of perfilUsuarioList" [value]="r.id">
+                    {{ r.descripcion }}
                   </mat-option>
                 </mat-select>
               </mat-form-field>
           </div>
         </div>
+
+        <div class="row">
+          <div class="col">
+            <mat-radio-group formControlName="estado">
+              <h3><mat-label style="color:darkgray">Estado</mat-label></h3>
+              <mat-radio-button value="Activo">Activo</mat-radio-button>
+              <mat-radio-button value="Inactivo">Inactivo </mat-radio-button>
+              <mat-error *ngIf="errorHandling('estado', 'required')">
+                Correo es <strong>requerido</strong>
+              </mat-error>
+            </mat-radio-group>
+          </div>
+        </div>
+
+        <br>
+
       </mat-card-content>
       <mat-card-actions>
-        <button mat-raised-button color="primary" (click)="submitForm()" style="background-color: #515151;">Registrar</button>
-        <button mat-raised-button color="accent" type="reset" (click)="onReset()" style="background-color: #515151;">Cancelar</button>
+        <button mat-raised-button color="primary" type="submit">Guardar</button>
+    <!--    <button mat-raised-button color="accent" type="reset" (click)="onReset()" style="background-color: #515151;">Cancelar</button>-->
       </mat-card-actions>
     </mat-card>
+    <br>
     </form>
     
     

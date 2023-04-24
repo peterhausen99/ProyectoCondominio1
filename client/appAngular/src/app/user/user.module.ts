@@ -16,13 +16,22 @@ import { MatIconModule } from '@angular/material/icon';
 import { LayoutModule } from '@angular/cdk/layout';
 import {MatCardModule} from '@angular/material/card'; 
 import { ReactiveFormsModule } from '@angular/forms';
+import { UserAllComponent } from './user-all/user-all.component';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatTableModule} from '@angular/material/table';
+import { MatPaginatorModule} from '@angular/material/paginator';
+import { MatSortModule} from '@angular/material/sort';
+
+
 
 
 @NgModule({
   declarations: [
     UserFormComponent,
     UserIndexComponent,
-    UserLoginComponent
+    UserLoginComponent,
+    UserAllComponent
   ],
   imports: [
     CommonModule,
@@ -36,7 +45,12 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatInputModule,
     MatSelectModule,
     MatRadioModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatGridListModule,
+    MatMenuModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
   ],
   exports: [
     UserIndexComponent,

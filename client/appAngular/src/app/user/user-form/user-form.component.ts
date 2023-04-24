@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router,Params } from '@angular/router';
 
 import { GenericService } from 'src/app/share/generic.service';
 import { takeUntil } from 'rxjs/operators';
@@ -14,34 +14,74 @@ import { AuthenticationService } from 'src/app/share/authentication.service';
   styleUrls: ['./user-form.component.css']
 })
 export class UserFormComponent implements OnInit{
+  isCreate: boolean = true;
+  titleForm:string='Crear';
   hide = true;
   usuario: any;
-  perfilUsuario: any;
-  formCreate: FormGroup;
+  idUsuario: number = 0;
+  perfilUsuarioList: any;
+  usuarioForm: FormGroup;
   makeSubmit: boolean = false;
   destroy$: Subject<boolean> = new Subject<boolean>();
+  usuarioInfo: any;
   constructor(
     public fb: FormBuilder,
     private router: Router,
     private gService: GenericService,
-    private authService: AuthenticationService
+    private authService: AuthenticationService,
+    private route: ActivatedRoute
   ) {
-    this.reactiveForm();
-  }
-
-
-  reactiveForm() {
-    this.formCreate = this.fb.group({
-      nombre: ['', [Validators.required]],
-      correo: ['', [Validators.required]],
-      contrasenna: ['', [Validators.required]],
-      perfilUsuario: ['', [Validators.required]],
-    });
+    this.formularioReactive();
     this.getPerfiles();
   }
 
-  ngOnInit(): void {}
-  submitForm() {
+
+  formularioReactive() {
+    this.usuarioForm = this.fb.group({
+      idUsuario: [null, null],
+      nombre: [null, [Validators.required]],
+      apellido1: [null, [Validators.required]],
+      apellido2: [null, [Validators.required]],
+      correo: [null, [Validators.required]],
+      telefono: [null, [Validators.required]],
+      estado: [null, [Validators.required]],
+      contrasenna: [null, [Validators.required]],
+      perfilUsuarioId: [null, [Validators.required]],
+    });
+   
+  }
+
+  ngOnInit(): void {
+
+   
+    //Verificar si se envio un id por parametro para crear formulario para actualizar
+    this.route.params.subscribe((params: Params) => {
+      this.idUsuario = params['id'];
+      if (this.idUsuario != undefined) {
+        this.isCreate = false;
+        this.titleForm = 'Actualizar';
+        //Obtener incidencia a actualizar del API
+        this.gService
+          .get('usuario', this.idUsuario)
+          .pipe(takeUntil(this.destroy$))
+          .subscribe((data: any) => {
+            this.usuarioInfo = data;
+            this.usuarioForm.setValue({
+              idUsuario: this.usuarioInfo.idUsuario,
+              nombre: this.usuarioInfo.nombre,
+              apellido1: this.usuarioInfo.apellido1,
+              apellido2: this.usuarioInfo.apellido2,
+              correo: this.usuarioInfo.correo,
+              telefono: this.usuarioInfo.telefono,
+              estado: this.usuarioInfo.estado,
+              contrasenna: this.usuarioInfo.contrasenna,
+              perfilUsuarioId: this.usuarioInfo.perfilUsuarioId             
+            });
+          });
+      }
+    });
+  }
+  /*submitForm() {
     this.makeSubmit=true;
     //Validación
     if(this.formCreate.invalid){
@@ -55,26 +95,73 @@ export class UserFormComponent implements OnInit{
         queryParams:{register:'true'},
       })
     })
+  }*/
+
+
+ //Crear 
+ crearUsuario() {
+  if (this.usuarioForm.invalid) {
+    return;
   }
+ 
+  console.log(this.usuarioForm.value);
+  //Llamar al API y enviar la infomracion
+  this.gService
+    .create('usuario', this.usuarioForm.value)
+    .pipe(takeUntil(this.destroy$))
+    .subscribe((data: any) => {
+      console.log(data);
+      this.router.navigate(['/usuario/all'], {
+        queryParams: { create: 'true' },
+      });
+    });
+}//cierra crear 
+
+
 
   onReset() {
-    this.formCreate.reset();
+    this.usuarioForm.reset();
   }
+
+  actualizarUsuario() {
+    //Verificar validación
+    if (this.usuarioForm.invalid) {
+      return;
+    }
+    console.log(this.usuarioForm.value);
+    //Accion API create enviando toda la informacion del formulario
+    this.gService
+      .update('usuario', this.usuarioForm.value)
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((data: any) => {
+        //Obtener respuesta
+        console.log(data);
+        this.router.navigate(['/usuario/all'], {
+          queryParams: { update: 'true' },
+        });
+      });
+  }
+
   getPerfiles() {
     this.gService
       .list('perfilUsuario')
       .pipe(takeUntil(this.destroy$))
       .subscribe((data: any) => {
-        this.perfilUsuario = data;
-        console.log( this.perfilUsuario);
+        this.perfilUsuarioList = data;
+        console.log( this.perfilUsuarioList);
       });
   }
   public errorHandling = (control: string, error: string) => {
     return (
-      this.formCreate.controls[control].hasError(error) &&
-      this.formCreate.controls[control].invalid &&
-      (this.makeSubmit || this.formCreate.controls[control].touched)
+      this.usuarioForm.controls[control].hasError(error) &&
+      this.usuarioForm.controls[control].invalid &&
+      (this.makeSubmit || this.usuarioForm.controls[control].touched)
     );
   };
+
+  ngOnDestroy() {
+    this.destroy$.next(true);
+    this.destroy$.unsubscribe();
+  }
 
 }
