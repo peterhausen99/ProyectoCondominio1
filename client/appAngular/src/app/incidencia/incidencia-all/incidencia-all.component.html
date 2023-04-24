@@ -1,11 +1,17 @@
 <mat-card class="full-width">
     <!-- Titulo del Card -->
-    <mat-card-title>
-      <h1>Incidencias</h1>
-    </mat-card-title>
+    
+
+
     <mat-card-content>
+      <mat-card-title>
+        <h1>Incidencias</h1>
+      </mat-card-title>
+    </mat-card-content>
 
 
+
+    <mat-card-content>
       <mat-form-field>
         <mat-label>Filtrar estado</mat-label>
         <input matInput (keyup)="filtrar($event)" placeholder="buscar">

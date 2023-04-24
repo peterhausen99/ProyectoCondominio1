@@ -1,7 +1,9 @@
 <form [formGroup]="usuarioForm" (ngSubmit)="isCreate ? crearUsuario(): actualizarUsuario()" novalidate>
-    <mat-card class="shipping-card" style="background-color: #4682b4;">
+    <mat-card class="shipping-card" style="background-color: gray">
       <mat-card-header>
-        <mat-card-title>Crear Usuario </mat-card-title>
+        <mat-card-title>
+         <h1> Crear Usuario</h1>
+         </mat-card-title>
       </mat-card-header> 
       <mat-card-content>
 
@@ -104,11 +106,11 @@
               </mat-form-field>
           </div>
         </div>
-
+<hr>
         <div class="row">
           <div class="col">
             <mat-radio-group formControlName="estado">
-              <h3><mat-label style="color:darkgray">Estado</mat-label></h3>
+              <h3><mat-label style="color:white">Estado</mat-label></h3>
               <mat-radio-button value="Activo">Activo</mat-radio-button>
               <mat-radio-button value="Inactivo">Inactivo </mat-radio-button>
               <mat-error *ngIf="errorHandling('estado', 'required')">
@@ -117,7 +119,7 @@
             </mat-radio-group>
           </div>
         </div>
-
+<hr>
         <br>
 
       </mat-card-content>

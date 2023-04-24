@@ -38,7 +38,7 @@ export class UserFormComponent implements OnInit{
 
   formularioReactive() {
     this.usuarioForm = this.fb.group({
-      idUsuario: [null, null],
+      idUsuario: [null, [Validators.required]],
       nombre: [null, [Validators.required]],
       apellido1: [null, [Validators.required]],
       apellido2: [null, [Validators.required]],
