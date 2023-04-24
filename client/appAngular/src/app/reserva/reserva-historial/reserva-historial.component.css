@@ -1,0 +1,15 @@
+.full-width-table {
+    width: 100%;
+  }
+
+  .full-width{
+    background-color: whitesmoke
+  }
+
+  button{
+    background-color: steelblue;
+}
+  
+mat-card-title{
+  color:steelblue
+}
