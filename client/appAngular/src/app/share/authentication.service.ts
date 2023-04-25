@@ -45,7 +45,7 @@ export class AuthenticationService {
   //Crear usuario
   createUser(user: any): Observable<any> {
     return this.http.post<any>(
-      this.ServerUrl + 'usuario/registrar',
+      this.ServerUrl + 'usuario/create',
       user
     );
   }

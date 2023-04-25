@@ -7,7 +7,7 @@ export const usuarios = [
     apellido1: "Quintero",
     apellido2: "Artavia",
     correo: "pedro-admin@prueba.com",
-    contrasenna: "123456",
+    contrasenna: "$2b$10$1BaQqXuZYNLDAC42PY5fN.ufSOKjApmjkaZrQUYf7ms71PaS1mASO",
     telefono: "6532-9854",
     estado: "Activo"
  
@@ -20,7 +20,7 @@ export const usuarios = [
     apellido1: "Corella",
     apellido2: "Mejia",
     correo: "joseph-admin@prueba.com",
-    contrasenna: "123456",
+    contrasenna: "$2b$10$1BaQqXuZYNLDAC42PY5fN.ufSOKjApmjkaZrQUYf7ms71PaS1mASO",
     telefono: "6925-1425",
     estado: "Activo"
 
@@ -34,7 +34,7 @@ export const usuarios = [
     apellido1: "Pérez",
     apellido2: "Marín",
     correo: "pedro-residente@prueba.com",
-    contrasenna: "123456",
+    contrasenna: "$2b$10$1BaQqXuZYNLDAC42PY5fN.ufSOKjApmjkaZrQUYf7ms71PaS1mASO",
     telefono: "7856-2345",
     estado: "Activo"
   },
@@ -47,7 +47,7 @@ export const usuarios = [
     apellido1: "Rojas",
     apellido2: "Avila",
     correo: "joseph-residente@prueba.com",
-    contrasenna: "123456",
+    contrasenna: "$2b$10$1BaQqXuZYNLDAC42PY5fN.ufSOKjApmjkaZrQUYf7ms71PaS1mASO",
     telefono: "8945-2312",
     estado: "Activo"
   },

@@ -5,4 +5,24 @@
   .full-width{
     background-color: whitesmoke
   }
-  
+
+
+  mat-card-title{
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    color: steelblue;
+    font-size: x-large;
+  }
+
+button{
+    background-color: steelblue;
+}
+
+.boton{
+  background-color: red;
+}
+
+mat-raised-button{
+  background-color: red;
+}

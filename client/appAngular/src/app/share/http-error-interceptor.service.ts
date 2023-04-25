@@ -61,6 +61,9 @@ export class HttpErrorInterceptorService implements HttpInterceptor {
           case 422:
             message = 'Se ha presentado un error';
             break;
+            case 423:
+            message = 'Usario Inactivo';
+            break;
         }
         //Mostrar un mensaje de error
         this.noti.mensaje('Error',error.status+' '+ message,TipoMessage.error);

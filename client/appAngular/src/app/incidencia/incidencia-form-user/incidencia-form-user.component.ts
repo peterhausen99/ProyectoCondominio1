@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Subject, takeUntil } from 'rxjs';
 import { GenericService } from 'src/app/share/generic.service';
+import { AuthenticationService } from 'src/app/share/authentication.service';
+import { NotificacionService, TipoMessage } from 'src/app/share/notification.service';
 
 @Component({
   selector: 'app-incidencia-form-user',
@@ -18,12 +20,15 @@ export class IncidenciaFormUserComponent implements OnInit {
   idIncidencia: number = 0;
   titleForm: string = 'Crear';
   incidenciaInfo: any;
+  currentUser: any;
 
   constructor(
     private fb: FormBuilder,
     private gService: GenericService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private authService: AuthenticationService,
+    private notificacion:NotificacionService,
   ) {
     this.formularioReactive();
   }
@@ -56,9 +61,12 @@ export class IncidenciaFormUserComponent implements OnInit {
 
   //Crear el formulario
   formularioReactive() {
+    this.authService.currentUser.subscribe((x) => (this.currentUser = x));
+
+
     this.incidenciaForm = this.fb.group({
       id: [null, null],
-      idUsuario: [null, Validators.required],
+      idUsuario: [this.currentUser.usuario.idUsuario, Validators.required],
       titulo: [
         null,
         Validators.compose([
@@ -96,6 +104,7 @@ export class IncidenciaFormUserComponent implements OnInit {
           queryParams: { create: 'true' },
         });
       });
+      this.notificacion.mensaje('Incidencia',`La incidencia se encuentra en tramite`,TipoMessage.success);
   } //cierra crear incidencia
 
   //Actualizar incidencia

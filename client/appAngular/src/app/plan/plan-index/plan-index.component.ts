@@ -42,6 +42,7 @@ export class PlanIndexComponent implements OnInit {
     }
     this.dialog.open(PlanDiagComponent,dialogConfig)
   }
+  
   comprar(id:number){
     this.notificacion.mensaje('Orden',
     'Plan agregado',TipoMessage.success);

@@ -85,8 +85,6 @@ export class AsignacionplanAdminComponent implements OnInit{
         console.log(data);
         this.residenciaList = data;
       });
-
-
   }
 
 

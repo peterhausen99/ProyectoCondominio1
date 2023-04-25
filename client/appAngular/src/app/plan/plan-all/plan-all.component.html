@@ -1,20 +1,24 @@
 <mat-card class="full-width" >
     <!-- Titulo del Card -->
-    <mat-card-title>
-      Planes Disponibles
-      <a
-        mat-fab
+    
+
+      <mat-card-content>
+        <mat-card-title>   Planes Disponibles
+        </mat-card-title>
+        <br>
+        <button
+        mat-raised-button
         matTooltip="Crear Plan"
         aria-label="Crear Plan"
-        color="primary"
+        style="background-color: steelblue;color:white"
         (click)="crearPlan()"
       >
-        <mat-icon>add</mat-icon>
-      </a>
+      Agregar nuevo plan
+      </button>
+      </mat-card-content>
+
       <br>
-    </mat-card-title>
- 
-  
+
     <mat-card-content>
       <br>
       <div class="mat-elevation-z8" *ngIf="dataSource">

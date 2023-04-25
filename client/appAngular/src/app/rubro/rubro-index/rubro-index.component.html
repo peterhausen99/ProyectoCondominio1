@@ -1,18 +1,25 @@
 <mat-card class="full-width">
     <!-- Titulo del Card -->
-    <mat-card-title>
-      Rubros
-      <a
-        mat-fab
-        matTooltip="Crear Rubro"
-        aria-label="Crear Rubro"
-        color="primary"
-        (click)="crearRubro()"
-      >
-        <mat-icon>add</mat-icon>
-      </a>
-      <br>
-    </mat-card-title>
+    <mat-card-content>
+      <mat-card-title>
+        <h1>Rubros</h1>
+       </mat-card-title>
+        <br>
+        <button
+        mat-raised-button
+          matTooltip="Crear Rubro"
+          aria-label="Crear Rubro"
+          style="background-color: steelblue;color:white"
+          (click)="crearRubro()"
+        >
+        Agregar nuevo rubro
+        </button>
+        <br>
+     
+    </mat-card-content>
+
+
+   
     <mat-card-content>
       <br>
       <div class="mat-elevation-z8" *ngIf="dataSource">

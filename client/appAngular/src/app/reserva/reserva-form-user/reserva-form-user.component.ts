@@ -4,6 +4,7 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Subject, takeUntil } from 'rxjs';
 import { GenericService } from 'src/app/share/generic.service';
 import { NotificacionService, TipoMessage } from 'src/app/share/notification.service';
+import { AuthenticationService } from 'src/app/share/authentication.service';
 
 @Component({
   selector: 'app-reserva-form-user',
@@ -21,13 +22,16 @@ export class ReservaFormUserComponent implements OnInit {
   reservaInfo: any;
   reservaList: any;
   areaComunList2:[];
+  currentUser: any;
+  idUsuarioC:any;
 
   constructor(
     private notificacion:NotificacionService,
     private fb: FormBuilder,
     private gService: GenericService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private authService: AuthenticationService
   ) {
     this.formularioReactive();
     this.listaAreaComun();
@@ -35,6 +39,8 @@ export class ReservaFormUserComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    
+   
     //Verificar si se envio un id por parametro para crear formulario para actualizar
     this.route.params.subscribe((params: Params) => {
       this.idReserva = params['id'];
@@ -65,9 +71,12 @@ export class ReservaFormUserComponent implements OnInit {
 
   //Crear el formulario
   formularioReactive() {
+    this.authService.currentUser.subscribe((x) => (this.currentUser = x));
+    this.idUsuarioC=this.currentUser.usuario.idUsuario;
+    
     this.reservaForm = this.fb.group({
       id: [null, null],
-      idUsuario: [null, Validators.required],
+      idUsuario: [this.idUsuarioC, null],
       idAreaComun: [null, Validators.required],
       horario: [null, Validators.required],
       detalles: ['No indica', null],

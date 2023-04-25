@@ -119,8 +119,6 @@ module.exports.create = async (request, response, next) => {
         descripcion : plan.descripcion,
         totalPlan : suma,
         rubros: {
-          //Generos [{id:valor}]
-          //Orden  [{id:idPlan, cantidad: valorCantidad}]
           disconnect:planExist.rubros,
           connect: plan.rubros,
         },

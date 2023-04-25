@@ -7,11 +7,11 @@ import { Subject, takeUntil } from 'rxjs';
 import { GenericService } from 'src/app/share/generic.service';
 
 @Component({
-  selector: 'app-incidencia-all',
-  templateUrl: './incidencia-all.component.html',
-  styleUrls: ['./incidencia-all.component.css']
+  selector: 'app-user-all',
+  templateUrl: './user-all.component.html',
+  styleUrls: ['./user-all.component.css']
 })
-export class IncidenciaAllComponent implements AfterViewInit {
+export class UserAllComponent implements AfterViewInit{
 
   datos:any;
   destroy$:Subject<boolean>=new Subject<boolean>();
@@ -21,24 +21,19 @@ export class IncidenciaAllComponent implements AfterViewInit {
   dataSource=new MatTableDataSource<any>();
 
   //Columnas que se muestran
-  displayedColumns=['id','usuario','titulo','estado','fecha','acciones'];
+  displayedColumns=['idUsuario','nombre','correo','perfilUsuario','estado','acciones'];
 
   constructor(private router:Router,
     private route:ActivatedRoute, private gService:GenericService
     ) { }
 
     ngAfterViewInit(): void {
-      this.listaIncidencias();
+      this.listaUsuarios();
     }
 
-    filtrar(event: Event) {
-      const filtro = (event.target as HTMLInputElement).value;
-      this.dataSource.filter = filtro.trim().toLowerCase();
-    }  
-
-    listaIncidencias(){
+    listaUsuarios(){
       //Llamar al API, nombre de ruta
-      this.gService.list('incidencia/')
+      this.gService.list('usuario/')
       .pipe(takeUntil(this.destroy$))
       .subscribe((data:any)=>{
           console.log(data);
@@ -50,20 +45,13 @@ export class IncidenciaAllComponent implements AfterViewInit {
     }
 
 
-    detalleIncidencia(id:number){
-      this.router.navigate(['/incidencia',id],{
-        relativeTo:this.route
-      });
-    }
-
-
-    crearIncidencia(){
-      this.router.navigate(['/incidencia/create'],{
+    crearUsuario(){
+      this.router.navigate(['/usuario/create'],{
         relativeTo:this.route
       })
      }
-     actualizarIncidencia(id: number){
-      this.router.navigate(['/incidencia/update',id],{
+     actualizarUsuario(id: number){
+      this.router.navigate(['/usuario/update',id],{
         relativeTo:this.route
       })
      }
@@ -74,12 +62,4 @@ export class IncidenciaAllComponent implements AfterViewInit {
       this.destroy$.unsubscribe();
     }
 
-
-
-
-
-
-
-
-
-}//cierra clase
+}//cierra todo

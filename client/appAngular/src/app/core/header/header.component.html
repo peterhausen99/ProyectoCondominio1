@@ -1,26 +1,14 @@
-<p>
-  <mat-toolbar>
-    <button
-      mat-icon-button
-      [matMenuTriggerFor]="menu1"
-      class="example-icon"
-      aria-label="Example icon-button with menu icon"
-    >
+
+
+  <mat-toolbar *ngIf="isAutenticatedAdmin"> <!---->
+    <button mat-icon-button [matMenuTriggerFor]="menu1" class="example-icon"
+      aria-label="Example icon-button with menu icon">
       <mat-icon>menu</mat-icon>
     </button>
     <span>Menú</span>
-
-
-
     <!-- Menu #1 -->
-
-
     <mat-menu #menu1="matMenu">
-      <button
-        mat-menu-item
-        [routerLink]="'/'"
-        routerLinkActive="mat-raised-button"
-      >
+      <button mat-menu-item [routerLink]="'/home/inicio'" routerLinkActive="mat-raised-button">
         Inicio
       </button>
 
@@ -28,175 +16,144 @@
 
       <button mat-menu-item [matMenuTriggerFor]="menu3">Procesos</button>
 
-      <button mat-menu-item [matMenuTriggerFor]="menu4">COMO UN USUARIO  </button>
+     
 
-      <button
-        mat-menu-item
-        [routerLink]="'/home/acerca-de'"
-        routerLinkActive="mat-raised-button"
-      >
+      <button mat-menu-item [routerLink]="'/home/acerca-de'" routerLinkActive="mat-raised-button">
         Acerca de
       </button>
     </mat-menu>
 
-
-<!--MANTENIMIENTO-->
+    <!--MANTENIMIENTO-->
 
     <!--                  SUB MENU 2                  -->
     <mat-menu #menu2="matMenu">
-      <button
-        mat-menu-item
-        [routerLink]="'/asignacionplan'"
-        [routerLinkActive]="'mat-raised-button'"
-      >
+      <button mat-menu-item [routerLink]="'/asignacionplan'" [routerLinkActive]="'mat-raised-button'">
         Estados de cuenta
       </button>
 
-     
-
-      <button
-        mat-menu-item
-        [routerLink]="'/informacion/all'"
-        [routerLinkActive]="'mat-raised-button'"
-      >
+      <button mat-menu-item [routerLink]="'/informacion/all'" [routerLinkActive]="'mat-raised-button'">
         Información
       </button>
 
-       <button
-        mat-menu-item
-        [routerLink]="'/plan/all'"
-        [routerLinkActive]="'mat-raised-button'"
-      >
+      <button mat-menu-item [routerLink]="'/plan/all'" [routerLinkActive]="'mat-raised-button'">
         Planes de Cobro
       </button>
-<!--
-      <button
-        mat-menu-item
-        [routerLink]="'/plan'"
-        [routerLinkActive]="'mat-raised-button'"
-      >
-        Planes de cobro
-      </button>-->
 
-      <!-- <button
-        mat-menu-item
-        [routerLink]="'/residencia/all'"
-        [routerLinkActive]="'mat-raised-button'"
-      >
-        Residencias
-      </button>-->
-      
-
-      <button
-        mat-menu-item
-        [routerLink]="'/residencia'"
-        [routerLinkActive]="'mat-raised-button'"
-      >
+      <button mat-menu-item [routerLink]="'/residencia'" [routerLinkActive]="'mat-raised-button'">
         Residencias
       </button>
 
-      <button
-        mat-menu-item
-        [routerLink]="'/rubro'"
-        [routerLinkActive]="'mat-raised-button'"
-      >
+      <button mat-menu-item [routerLink]="'/rubro'" [routerLinkActive]="'mat-raised-button'">
         Rubros
+      </button>
+
+      <button mat-menu-item [routerLink]="'/usuario/all'" [routerLinkActive]="'mat-raised-button'">
+        Usuarios
       </button>
     </mat-menu>
 
-
-<!--PROCESOS-->
+    <!--PROCESOS-->
     <!--                  SUB MENU 3                  -->
     <mat-menu #menu3="matMenu">
-      <button
-        mat-menu-item
-        [routerLink]="'/asignacionplan'"
-        [routerLinkActive]="'mat-raised-button'"
-      >
+      <button mat-menu-item [routerLink]="'/asignacionplan'" [routerLinkActive]="'mat-raised-button'">
         Asignación Planes de Cobro
       </button>
 
-      <button
-        mat-menu-item
-        [routerLink]="'/reserva/all'"
-        [routerLinkActive]="'mat-raised-button'"
-      >
+      <button mat-menu-item [routerLink]="'/reserva/all'" [routerLinkActive]="'mat-raised-button'">
         Reservas áreas comunes
       </button>
 
-      <button
-      mat-menu-item
-      [routerLink]="'/incidencia/all'"
-      [routerLinkActive]="'mat-raised-button'"
-    >
-      Incidencias
-    </button>
+      <button mat-menu-item [routerLink]="'/incidencia/all'" [routerLinkActive]="'mat-raised-button'">
+        Incidencias
+      </button>
     </mat-menu>
 
-
-       
     
-<!--                 INGRESANDO COMO UN USUARIO                 -->
-    <!--                  SUB MENU 4                  -->
-    <mat-menu #menu4="matMenu">
-      <button
-        mat-menu-item
-        [routerLink]="'/incidencia/createByUser'"
-        [routerLinkActive]="'mat-raised-button'"
-      >
-      Crear incidencia 
+
+    <div class="example-button-container" align="end"></div>
+    <div class="example-spacer"></div>
+    <div class="example-spacer">
+      <!-- Gestion de Usuarios -->
+      <span class="mat-caption" *ngIf="isAutenticatedAdmin">
+        {{ currentUser.usuario.nombre }} {{currentUser.usuario.apellido1}} - {{currentUser.usuario.correo}} - {{currentUser.usuario.perfilUsuarioId}}
+      </span>
+
+      <button mat-icon-button [matMenuTriggerFor]="menu5">
+        <mat-icon [ngStyle]="{ color: isAutenticatedAdmin ? ' white' : '#9E9E9E' }">person</mat-icon>
       </button>
 
+      <mat-menu #menu5="matMenu">
+        <a mat-menu-item *ngIf="!isAutenticatedAdmin" (click)="login()">
+          <mat-icon>person_add</mat-icon>
+          <span> Login </span>
+        </a>
+        <a mat-menu-item *ngIf="isAutenticatedAdmin" (click)="logout()">
+          <mat-icon>person_remove</mat-icon>
+          <span> Logout </span>
+        </a>
+      </mat-menu>
+    </div>
+  </mat-toolbar>
 
-      <button
-        mat-menu-item
-        [routerLink]="'/reserva/createByUser'"
-        [routerLinkActive]="'mat-raised-button'"
-      >
-      Crear reserva 
+
+<!-------------------------------------------------------------------------------------------------->
+
+  <mat-toolbar *ngIf="isAutenticatedRes"> <!---->
+    <button mat-icon-button [matMenuTriggerFor]="menu1" class="example-icon"
+      aria-label="Example icon-button with menu icon">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span>Menú</span>
+    <!-- Menu #1 -->
+    <mat-menu #menu1="matMenu">
+      <button mat-menu-item [routerLink]="'/home/inicio'" routerLinkActive="mat-raised-button">
+        Inicio
       </button>
 
+      
+      <button mat-menu-item [routerLink]="'/incidencia/createByUser'" [routerLinkActive]="'mat-raised-button'">
+        Crear incidencia
+      </button>
 
-      <button
-        mat-menu-item
-        [routerLink]="'/reserva/historial'"
-        [routerLinkActive]="'mat-raised-button'"
-      >
+      <button mat-menu-item [routerLink]="'/reserva/createByUser'" [routerLinkActive]="'mat-raised-button'">
+        Crear reserva
+      </button>
+
+      <button mat-menu-item [routerLink]="'/reserva/historial'" [routerLinkActive]="'mat-raised-button'">
         Historial
       </button>
-  
 
-
-    </mat-menu>
-
-
-
-    <div class="example-button-container" align="end">
-      
-    </div>
-    <div class="example-spacer" >
-      
-    </div>
-    <div class="example-spacer" >
-         
-    <!-- Gestion de Usuarios -->
-    <span class="mat-caption" *ngIf="isAutenticated"> {{currentUser.user.email}}</span> 
-    <button mat-icon-button [matMenuTriggerFor]="menu5">
      
-      <mat-icon [ngStyle]="{'color':isAutenticated ? ' white' : '#9E9E9E' }">person</mat-icon>
-    </button>
-    
-    <mat-menu #menu5="matMenu">
-      <a mat-menu-item  *ngIf="!(isAutenticated)" (click)="login()">
-        <mat-icon>person_add</mat-icon>
-        <span> Login </span> 
-      </a>
-      <a mat-menu-item *ngIf="isAutenticated" (click)="logout()" >
-        <mat-icon>person_remove</mat-icon>
-        <span> Logout </span>
-      </a>
+
+      <button mat-menu-item [routerLink]="'/home/acerca-de'" routerLinkActive="mat-raised-button">
+        Acerca de
+      </button>
     </mat-menu>
-  </div>
-  
+
+    <div class="example-button-container" align="end"></div>
+    <div class="example-spacer"></div>
+    <div class="example-spacer">
+      <!-- Gestion de Usuarios -->
+      <span class="mat-caption" *ngIf="isAutenticatedRes">
+        {{ currentUser.usuario.nombre }} {{currentUser.usuario.apellido1}} - {{currentUser.usuario.correo}} - {{currentUser.usuario.perfilUsuarioId}}
+      </span>
+
+      <button mat-icon-button [matMenuTriggerFor]="menu5">
+        <mat-icon [ngStyle]="{ color: isAutenticatedRes ? ' white' : '#9E9E9E' }">person</mat-icon>
+      </button>
+
+      <mat-menu #menu5="matMenu">
+        <a mat-menu-item *ngIf="!isAutenticatedRes" (click)="login()">
+          <mat-icon>person_add</mat-icon>
+          <span> Login </span>
+        </a>
+        <a mat-menu-item *ngIf="isAutenticatedRes" (click)="logout()">
+          <mat-icon>person_remove</mat-icon>
+          <span> Logout </span>
+        </a>
+      </mat-menu>
+    </div>
   </mat-toolbar>
-</p>
+
+
+<!---->

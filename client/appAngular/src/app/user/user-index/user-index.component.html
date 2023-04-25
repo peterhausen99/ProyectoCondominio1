@@ -1,11 +1,11 @@
 <mat-card class="main-div">
     <mat-card-header>
-      <mat-card-title>Usuarios</mat-card-title>
+      <mat-card-title></mat-card-title>
     </mat-card-header> 
     <mat-card-content>
-  <nav mat-tab-nav-bar  [tabPanel]="tabPanel" style="background-color: #4682b4; ;">
-    <a mat-tab-link [routerLink]="['/usuario/login']" routerLinkActive="active-link" ><p style="color:white;">Login</p></a>
-    <a mat-tab-link [routerLink]="['/usuario/registrar']" routerLinkActive="active-link"><p style="color:white;">Registrarse</p></a>
+  <nav mat-tab-nav-bar  [tabPanel]="tabPanel">
+   <!-- <a mat-tab-link [routerLink]="['/usuario/login']" routerLinkActive="active-link" ><p style="color:white;">Login</p></a>-->
+   <!--<a mat-tab-link [routerLink]="['/usuario/registrar']" routerLinkActive="active-link"><p style="color:white;">Registrarse</p></a>--> 
   </nav>
   <mat-tab-nav-panel #tabPanel></mat-tab-nav-panel>
   <div>	

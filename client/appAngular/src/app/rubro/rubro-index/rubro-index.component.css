@@ -5,3 +5,10 @@
     width: 90%;
   }
   
+  button{
+    background-color: steelblue;
+}
+
+mat-card-title{
+  color:steelblue
+}
