@@ -22,12 +22,34 @@ module.exports.get = async (request, response, next) => {
     });
     response.json(residencia);
   };
-
+//nuevo modulo
+  module.exports.create = async (request, response, next) => {
+    let areaComun = request.body;
+    const newAreaComun = await prisma.areaComun.create({
+      data: {
+        descripcion: areaComun.descripcion,
+        estado: areaComun.estado
+      },
+    });
+    response.json(newAreaComun);
+  };
+//nuevo modulo
+  module.exports.update = async (request, response, next) => {
+    let areaComun = request.body;
+    let idAreaComun = parseInt(request.params.id);
+    //Obtener el  que esta registrado en la BD
+    const areaComunExist = await prisma.areaComun.findUnique({
+      where: { id: idAreaComun }, 
+    });
   
+    const newAreaComun = await prisma.areaComun.update({
+      where: { id: idAreaComun },
+      data: {
+        //id: informacion.id,
+        descripcion: areaComun.descripcion,
+        estado: areaComun.estado,
 
-
-module.exports.create = async (request, response, next) => {
-};
-
-module.exports.update = async (request, response, next) => {
-};
+      },
+    });
+    response.json(newAreaComun);
+  };
