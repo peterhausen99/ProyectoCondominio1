@@ -22,34 +22,63 @@ module.exports.get = async (request, response, next) => {
     });
     response.json(residencia);
   };
+
+ /* model Residencia {
+    id Int @id @default(autoincrement())
+    usuario   Usuario @relation(fields: [idUsuario], references: [idUsuario])
+    idUsuario Int
+    cantidadPersonas Int
+    estado           String
+    annoInicio       DateTime @default(now())
+    cantidadCarros   Int
+    createdAt        DateTime @default(now())
+    updatedAt        DateTime @default(now()) @updatedAt
+    plan AsignacionPlan []
+  }
+
+        last insert
+        id:4,
+        idUsuario: 405660125,
+        cantidadPersonas: 1,
+        estado: "Activo",
+        annoInicio: new Date("2022-12-20"),
+        cantidadCarros: 1,
+
+
+  */
+
 //nuevo modulo
-  module.exports.create = async (request, response, next) => {
-    let areaComun = request.body;
-    const newAreaComun = await prisma.areaComun.create({
-      data: {
-        descripcion: areaComun.descripcion,
-        estado: areaComun.estado
-      },
-    });
-    response.json(newAreaComun);
-  };
+module.exports.create = async (request, response, next) => {
+  let residencia = request.body;
+  const newResidencia = await prisma.residencia.create({
+    data: {
+      usuario: { connect: { idUsuario: parseInt(residencia.idUsuario) } },
+      cantidadPersonas: parseInt(residencia.cantidadPersonas),
+        estado: residencia.estado,
+        cantidadCarros: parseInt(residencia.cantidadCarros),
+      
+    },
+  });
+  response.json(newResidencia);
+};
 //nuevo modulo
   module.exports.update = async (request, response, next) => {
-    let areaComun = request.body;
-    let idAreaComun = parseInt(request.params.id);
+    let residencia = request.body;
+    let idResidencia = parseInt(request.params.id);
     //Obtener el  que esta registrado en la BD
-    const areaComunExist = await prisma.areaComun.findUnique({
-      where: { id: idAreaComun }, 
+    const residenciaExist = await prisma.residencia.findUnique({
+      where: { id: idResidencia }, 
     });
   
-    const newAreaComun = await prisma.areaComun.update({
-      where: { id: idAreaComun },
+    const newResidencia = await prisma.residencia.update({
+      where: { id: idResidencia },
       data: {
-        //id: informacion.id,
-        descripcion: areaComun.descripcion,
-        estado: areaComun.estado,
-
+        usuario: { connect: { idUsuario: parseInt(residencia.idUsuario) } },
+        cantidadPersonas: parseInt(residencia.cantidadPersonas),
+        estado: residencia.estado,
+        cantidadCarros: parseInt(residencia.cantidadCarros),
+        
       },
     });
-    response.json(newAreaComun);
+    response.json(newResidencia);
   };

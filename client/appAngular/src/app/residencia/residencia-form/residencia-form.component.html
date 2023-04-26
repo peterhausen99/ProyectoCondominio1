@@ -1,0 +1,78 @@
+
+<form [formGroup]="residenciaForm" (ngSubmit)="isCreate ? crearResidencia(): actualizarResidencia()" novalidate >
+    <input type="hidden" formControlName="id" />
+    <mat-card class="shipping-card">
+      <mat-card-header>
+        <mat-card-title>
+          <h1 style="color:white"> {{titleForm}}  Residencias</h1>
+        </mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+  
+        <div class="row">
+            <div class="col" *ngIf="usuariosList">
+              <mat-form-field class="full-width">
+                <mat-select placeholder="Usuario" formControlName="idUsuario">
+                  <mat-option *ngFor="let item of usuariosList" [value]="item.idUsuario">
+                    {{ item.nombre}} 
+                  </mat-option>
+                </mat-select>
+                <mat-error
+                  *ngIf="residenciaForm.controls['idUsuario'].hasError('required')"
+                >
+                  Descripcion es <strong>requerido</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+          <br>
+        <div class="row">
+            <div class="col">
+              <mat-form-field class="full-width">
+                <input matInput placeholder="Cantidad de Personas" formControlName="cantidadPersonas">
+                <mat-error *ngIf="residenciaForm.controls['cantidadPersonas'].hasError('required')">
+                  Valor es <strong>requerido</strong>
+                </mat-error>
+                <mat-error *ngIf="residenciaForm.controls['cantidadPersonas'].hasError('pattern')">
+                    El valor solo puede ser<strong>números entre 0 y 9</strong>
+                  </mat-error>
+              </mat-form-field>
+            </div>
+          </div>    
+          <br>
+
+          <div class="row">
+            <div class="col">
+              <mat-radio-group formControlName="estado">
+                <h3><mat-label style="color:darkgray">Estado</mat-label></h3>
+                <mat-radio-button value="Activo">Activo</mat-radio-button>
+                <mat-radio-button value="Inactivo">Inactivo </mat-radio-button>
+                <mat-error *ngIf="residenciaForm.controls['estado'].hasError('required')">
+                  Estado de informacion es <strong>requerido</strong>
+                </mat-error>
+              </mat-radio-group>
+            </div>
+          </div>
+          <br>
+          <div class="row">
+            <div class="col">
+              <mat-form-field class="full-width">
+                <input matInput placeholder="Cantidad de Carros" formControlName="cantidadCarros">
+                <mat-error *ngIf="residenciaForm.controls['cantidadCarros'].hasError('required')">
+                  Valor es <strong>requerido</strong>
+                </mat-error>
+                <mat-error *ngIf="residenciaForm.controls['cantidadCarros'].hasError('pattern')">
+                    El valor solo puede ser<strong>números entre 0 y 5</strong>
+                  </mat-error>
+              </mat-form-field>
+            </div>
+          </div>  
+  <hr>
+  <br>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button style="background-color: steelblue;color:white" type="submit">Guardar</button>
+      </mat-card-actions>
+    </mat-card>
+  </form>
+  

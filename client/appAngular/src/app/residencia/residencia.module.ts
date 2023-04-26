@@ -9,6 +9,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { ResidenciaIndexComponent } from './residencia-index/residencia-index.component';
 import { MatDividerModule } from '@angular/material/divider';
 import { ResidenciaDetailComponent } from './residencia-detail/residencia-detail.component';
+import { ResidenciaFormComponent } from './residencia-form/residencia-form.component';
 import { ResidenciaDiagComponent } from './residencia-diag/residencia-diag.component';
 import { ResidenciaAllComponent } from './residencia-all/residencia-all.component';
 import { LayoutModule} from '@angular/cdk/layout';
@@ -24,9 +25,11 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 
 
+
 @NgModule({
   declarations: [
       ResidenciaIndexComponent,
+      ResidenciaFormComponent,
       ResidenciaDetailComponent,
       ResidenciaDiagComponent,
       ResidenciaAllComponent

@@ -1,18 +1,24 @@
 <mat-card class="full-width">
     <!-- Titulo del Card -->
     <mat-card-title>
-      <h1>Residencias (ALL)</h1>
+      <br>
+      <h1>&nbsp; Residencias Administrador</h1>
+      &nbsp;&nbsp;&nbsp;Agregar nueva
       <a
         mat-fab
         matTooltip="Crear Residencia"
         aria-label="Crear Residencia"
-        color="primary"
+        color="primary"x
         (click)="crearResidencia()"
       >
+      
         <mat-icon>add</mat-icon>
       </a>
+      <br>
     </mat-card-title>
+    <br>
     <mat-card-content>
+      <br>
       <div class="mat-elevation-z8" *ngIf="dataSource">
           <!-- Table -->
         <table mat-table 
