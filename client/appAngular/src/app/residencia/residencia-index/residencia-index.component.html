@@ -1,6 +1,24 @@
 <div class="grid-container">
   <h1 class="mat-h1" style="color:steelblue">Residencias</h1>
-  <img src="https://us.123rf.com/450wm/glopphy/glopphy2202/glopphy220200038/182950931-conjunto-de-logotipos-de-casas-para-el-fondo-de-dise%C3%B1o-de-imagen-vectorial-de-la-tarjeta-de.jpg?ver=6" alt="Texto alternativo de la imagen" width="150" height="100">
+  <img src="https://thumbs.dreamstime.com/b/conjunto-de-casas-rurales-edificios-suburban-street-home-rural-country-aislados-dibujos-animados-iconos-vector-condominio-219541452.jpg" alt="Texto alternativo de la imagen" width="800" height="100">
+  <br>
+  <div>
+  <h2>
+  <button
+  
+            mat-mini-fab
+            color="primary"
+            matTooltip="Actualizar Residencia"
+            aria-label="Actualizar Residencia"
+            (click)="mantenimientoResidencia()">
+            <mat-icon class="mat-18">add</mat-icon>
+          </button>
+          Administrar Residencias
+        </h2>
+        </div>
+        <br> 
+        <hr>
+        <br>      
   <mat-grid-list [cols]="3" rowHeight="12em" gutterSize="10px" *ngIf="datos">
     <mat-grid-tile *ngFor="let item of datos">
       <mat-card class="dashboard-card">
@@ -31,8 +49,8 @@
             color="primary"
             matTooltip="Actualizar Residencia"
             aria-label="Actualizar Residencia"
-            (click)="detalleResidencia(item.id)">
-            <mat-icon class="mat-18">edit</mat-icon>
+            (click)="agregarPlan(item.id)">
+            <mat-icon class="mat-18">add</mat-icon>
           </button>
 
 

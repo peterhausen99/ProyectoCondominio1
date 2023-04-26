@@ -45,9 +45,18 @@ export class ResidenciaIndexComponent implements OnInit{
     }
     this.dialog.open(ResidenciaDiagComponent,dialogConfig)
   }
-
+  mantenimientoResidencia(){
+    this.router.navigate(['/residencia/all'],{
+      relativeTo:this.route
+    })
+   }
   crearResidencia(){
     this.router.navigate(['/residencia/create'],{
+      relativeTo:this.route
+    })
+   }
+   agregarPlan(id:number){
+    this.router.navigate(['/asignacionplan/create',id],{
       relativeTo:this.route
     })
    }
