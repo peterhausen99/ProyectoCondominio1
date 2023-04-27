@@ -39,7 +39,7 @@ export class AuthGuard implements CanActivate {
       
       //if(route.data['perfilUsuario'].length && !route.data['perfilUsuario'].includes(idPerfilUsuario)){ 
 
-      if(idPerfilUsuario!=1){  //1 es admin - 2 es residente
+     if(idPerfilUsuario!=1){  //1 es admin - 2 es residente
         this.router.navigate(['/'], {
           //Parametro para mostrar mensaje en login
           queryParams: { auth: 'no' }
