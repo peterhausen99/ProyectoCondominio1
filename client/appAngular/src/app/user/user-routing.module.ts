@@ -4,6 +4,7 @@ import { UserFormComponent } from './user-form/user-form.component';
 import { UserIndexComponent } from './user-index/user-index.component';
 import { UserLoginComponent } from './user-login/user-login.component';
 import { UserAllComponent } from './user-all/user-all.component';
+import { AuthGuard } from '../share/guards/auth.guard';
 
 const routes: Routes = [
   {
@@ -14,9 +15,12 @@ const routes: Routes = [
     ],
   },
 
-  {path:'usuario/all',component:UserAllComponent},
-  {path:'usuario/create',component:UserFormComponent},
-  {path:'usuario/update/:id',component:UserFormComponent},
+  {path:'usuario/all',component:UserAllComponent,canActivate:[AuthGuard],data:{roles:[1]}},
+ // {path:'usuario/all',component:UserAllComponent},
+  {path:'usuario/create',component:UserFormComponent,canActivate:[AuthGuard],data:{roles:[1]}},
+  //{path:'usuario/create',component:UserFormComponent},
+  {path:'usuario/update/:id',component:UserFormComponent,canActivate:[AuthGuard],data:{roles:[1]}},
+  //{path:'usuario/update/:id',component:UserFormComponent},
 
 
 ];

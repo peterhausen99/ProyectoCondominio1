@@ -15,7 +15,7 @@ export class HeaderComponent implements OnInit  {
   currentUser: any;
   qtyItems:Number = 0;
   destroy$:Subject<boolean>=new Subject<boolean>();
-
+  pageReloaded = false;
 
 
 
@@ -23,11 +23,12 @@ export class HeaderComponent implements OnInit  {
     private cartService: CartService,
     private router: Router,
     private authService: AuthenticationService) {
-
    }
-
+ 
     ngOnInit(): void {
-    
+
+
+
     //Suscribirse al observable que gestiona la cantidad de items del carrito
     this.cartService.countItems.subscribe((value)=>{
       this.qtyItems=value;
@@ -61,8 +62,5 @@ export class HeaderComponent implements OnInit  {
     this.destroy$.next(true);
     this.destroy$.unsubscribe();
   }
-
-
-
 }
 

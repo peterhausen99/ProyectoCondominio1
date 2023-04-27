@@ -1,0 +1,16 @@
+.dashboard-card {
+    margin: 2%;
+  }
+  .dashboard-card-content {
+    text-align: left;
+  }
+
+
+  mat-card-title{
+    color:white;
+  }
+
+  button{
+    background-color: steelblue;
+  }
+  
