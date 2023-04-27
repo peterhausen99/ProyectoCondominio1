@@ -69,14 +69,14 @@ module.exports.get = async (request, response, next) => {
 
 module.exports.create = async (request, response, next,) => {
   let plan = request.body;
-  const newPlan = await prisma.plan.create({
+  const newPlan = await prisma.asignacionPlan.create({
     data: {
       idResidencia: parseInt(plan.idResidencia),
       idPlan: parseInt(plan.idPlan),
       mes: plan.mes,
-      estado: plan.estado,
-      iva: plan.detalles,
-     total: plan.horario
+      estado: "Pendiente",
+      iva: plan.iva+1,
+     total: plan.total+1
     },
   });
   response.json(newPlan);
