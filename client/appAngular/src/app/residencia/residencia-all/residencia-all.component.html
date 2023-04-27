@@ -1,21 +1,20 @@
 <mat-card class="full-width">
     <!-- Titulo del Card -->
-    <mat-card-title>
-      <br>
-      <h1>&nbsp; Residencias Administrador</h1>
-      &nbsp;&nbsp;&nbsp;Agregar nueva
-      <a
-        mat-fab
+
+  <mat-card-content>
+     <mat-card-title>
+        <h1>Residencias</h1>
+      </mat-card-title>
+<button
+        mat-raised-button class="boton"
         matTooltip="Crear Residencia"
         aria-label="Crear Residencia"
-        color="primary"x
-        (click)="crearResidencia()"
-      >
-      
-        <mat-icon>add</mat-icon>
-      </a>
-      <br>
-    </mat-card-title>
+       style="background-color: steelblue;color:white"
+        (click)="crearResidencia()">
+      Agregar nueva residencia
+      </button>
+  </mat-card-content>
+
     <br>
     <mat-card-content>
       <br>
